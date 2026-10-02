@@ -9,21 +9,19 @@ rnd = random.Random(7)
 def arc_band(it, m, cx, cy, r, th, a0, a1, z0, z1, seg=10):
     """band around vertical axis; angle measured from -Y toward +X (degrees)."""
     b = it._b(m)
-    A = []
+    rings = []
     for k in range(seg + 1):
         t = math.radians(a0 + (a1 - a0) * k / seg)
-        for rr in (r, r - th):
-            for z in (z0, z1):
-                A.append(b.verts.new((cx + rr * math.sin(t), cy - rr * math.cos(t), z)))
-    for k in range(seg):
-        i0 = k * 4; i1 = (k + 1) * 4
-        # verts order per k: (r,z0),(r,z1),(r-th,z0),(r-th,z1)
-        for q in ((0, 1, 5, 4), (2, 6, 7, 3), (1, 3, 7, 5), (0, 4, 6, 2)):
-            b.faces.new([A[i0 + q[0]] if q[0] < 4 else A[i1 + q[0] - 4], A[i0 + q[1]] if q[1] < 4 else A[i1 + q[1] - 4],
-                         A[i0 + q[2]] if q[2] < 4 else A[i1 + q[2] - 4], A[i0 + q[3]] if q[3] < 4 else A[i1 + q[3] - 4]])
-    b.faces.new([A[0], A[1], A[3], A[2]])
-    n = seg * 4
-    b.faces.new([A[n], A[n + 2], A[n + 3], A[n + 1]])
+        s_, c_ = math.sin(t), math.cos(t)
+        rings.append([b.verts.new((cx + r * s_, cy - r * c_, z0)), b.verts.new((cx + r * s_, cy - r * c_, z1)),
+                      b.verts.new((cx + (r - th) * s_, cy - (r - th) * c_, z1)), b.verts.new((cx + (r - th) * s_, cy - (r - th) * c_, z0))])
+    fs = []
+    for A, B in zip(rings, rings[1:]):
+        for i in range(4):
+            j = (i + 1) % 4
+            fs.append(b.faces.new([A[i], A[j], B[j], B[i]]))
+    fs.append(b.faces.new(rings[0][::-1])); fs.append(b.faces.new(rings[-1]))
+    bmesh.ops.recalc_face_normals(b, faces=fs)
 
 
 # ------------------------------------------------------------------ seating

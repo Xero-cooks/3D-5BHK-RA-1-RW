@@ -90,8 +90,8 @@ class Item:
         b = s._b(m)
         before = set(b.verts)
         vs = [b.verts.new((X, Y, Z)) for Z in (z0, z1) for Y in (y0, y1) for X in (x0, x1)]
-        for q in ((0, 1, 3, 2), (4, 5, 7, 6), (0, 1, 5, 4), (2, 3, 7, 6), (0, 2, 6, 4), (1, 3, 7, 5)):
-            b.faces.new([vs[i] for i in q])
+        fs = [b.faces.new([vs[i] for i in q]) for q in ((0, 1, 3, 2), (4, 5, 7, 6), (0, 1, 5, 4), (2, 3, 7, 6), (0, 2, 6, 4), (1, 3, 7, 5))]
+        bmesh.ops.recalc_face_normals(b, faces=fs)
         if rot:
             R = Euler([math.radians(a) for a in rot], 'XYZ').to_matrix()
             bmesh.ops.rotate(b, cent=((x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2), matrix=R, verts=vs)

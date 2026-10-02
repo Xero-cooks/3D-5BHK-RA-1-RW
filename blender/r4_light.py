@@ -105,8 +105,11 @@ def set_time(name):
     for o in bpy.data.objects:
         if o.type == 'LIGHT' and o.get('r4'):
             f = p['room'] if o.name.startswith('LT_Room') else p['ext']
+            if o.get('kind') == 'pool': f = p['ext']
             o.data.energy = o.data['base_energy'] * f; o.hide_render = (f <= 0.001)
     set_led(*p['led'])
+    m = bpy.data.materials.get('R4_LED_Pool')
+    if m and 'LED_STRENGTH' in m.node_tree.nodes: m.node_tree.nodes['LED_STRENGTH'].outputs[0].default_value = 1.0 + 11.0 * p['ext']
     sc['r4_time'] = name
     return name
 
@@ -149,7 +152,47 @@ def cameras():
         ob['r4'] = 1
     return n
 
+def ground_far():
+    nm = 'SITE_Ground_Far'
+    if bpy.data.objects.get(nm): return 0
+    me = bpy.data.meshes.new(nm)
+    S = 1500.0
+    me.from_pydata([(-S, -S, -0.06), (S, -S, -0.06), (S, S, -0.06), (-S, S, -0.06)], [], [(0, 1, 2, 3)])
+    ob = bpy.data.objects.new(nm, me)
+    c = bpy.data.collections['01_Site_Ground']; c.objects.link(ob); ob['r4'] = 1
+    mt = bpy.data.materials.get('R4_Grass_Far')
+    if mt: ob.data.materials.append(mt)
+    return 1
+
+def pool_shell():
+    import bmesh
+    cut = bpy.data.objects.get('POOL_Basin_Cutter')
+    if not cut or bpy.data.objects.get('POOL_Shell_Tiles'): return 0
+    cx, cy = cut.location.x, cut.location.y; dx, dy = cut.dimensions.x / 2 - 0.02, cut.dimensions.y / 2 - 0.02
+    z0, z1 = -1.45, 0.0
+    me = bpy.data.meshes.new('POOL_Shell_Tiles'); bm = bmesh.new()
+    v = [bm.verts.new(p) for p in ((-dx, -dy, z0), (dx, -dy, z0), (dx, dy, z0), (-dx, dy, z0), (-dx, -dy, z1), (dx, -dy, z1), (dx, dy, z1), (-dx, dy, z1))]
+    for f in ((0, 3, 2, 1), (0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6), (3, 0, 4, 7)): bm.faces.new([v[i] for i in f])
+    bm.normal_update(); bm.to_mesh(me); bm.free()
+    ob = bpy.data.objects.new('POOL_Shell_Tiles', me); ob.location = (cx, cy, 0)
+    bpy.data.collections['14_Pool_Water'].objects.link(ob); ob['r4'] = 1
+    mt = bpy.data.materials.get('R4_Pool_Tile_Mosaic')
+    if mt: me.materials.append(mt)
+    # underwater lights (emissive niches + real lights)
+    L = coll('17_Lighting_Pool'); lt = bpy.data.materials.get('R4_LED_Pool'); n = 0
+    pos = [(cx + x, cy - dy + 0.02, -0.75, 0) for x in (-8, -3, 3, 8)] + [(cx + x, cy + dy - 0.02, -0.75, 1) for x in (-8, -3, 3, 8)]
+    for i, (x, y, z, side) in enumerate(pos):
+        nm = f'POOL_Light_{i + 1:02d}'
+        d = bpy.data.lights.new('LT_' + nm, 'POINT'); d.energy = 120.0; d['base_energy'] = 120.0; d.color = (0.55, 0.9, 1.0); d.shadow_soft_size = 0.1
+        lo = bpy.data.objects.new('LT_' + nm, d); lo.location = (x, y + (0.25 if side == 0 else -0.25), z); L.objects.link(lo); lo['r4'] = 1
+        lo['kind'] = 'pool'
+        me2 = bpy.data.meshes.new(nm); b2 = bmesh.new(); bmesh.ops.create_cube(b2, size=1.0); b2.to_mesh(me2); b2.free()
+        e = bpy.data.objects.new(nm, me2); e.scale = (0.28, 0.03, 0.18); e.location = (x, y, z); bpy.data.collections['14_Pool_Water'].objects.link(e); e['r4'] = 1
+        if lt: me2.materials.append(lt)
+        n += 1
+    return n
+
 def run():
     make_world(); setup_render(False)
-    r = {'room': room_lights(), 'ext': exterior_lights(), 'cams': cameras()}
+    r = {'room': room_lights(), 'ext': exterior_lights(), 'cams': cameras(), 'ground': ground_far(), 'pool': pool_shell()}
     set_time('DAY'); return r

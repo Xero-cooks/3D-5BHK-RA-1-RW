@@ -63,6 +63,7 @@ def build_all():
     add(m.ceramic, 'R4_Ceramic_White', '#F3F1EC'); add(m.ceramic, 'R4_Glass_Black_TV', '#050506', 0.03)
     add(m.glass, 'R4_Glass_Clear', '#D8E8E4'); add(m.glass, 'R4_Glass_Smoked', '#3A3F44', 0.0, 0.06, True); add(m.glass, 'R4_Glass_Frosted', '#EAF0EE', 0.0, 0.06, False, True)
     add(m.mirror, 'R4_Mirror')
+    add(m.grass, 'R4_Grass_Far', '#5C7A34', '#4A6A2C', '#7C8A44', 0.15, 0.4); add(m.emissive, 'R4_LED_Pool', '#BFEFFF', 1.0)
     add(m.emissive, 'R4_LED_Warm', '#FFC47A', 8.0); add(m.emissive, 'R4_LED_White', '#F4F6FF', 10.0)
     # --- fabrics / rugs / art
     for n, h in (('cream', '#E3D8C0'), ('brown', '#5B4030'), ('charcoal', '#3A3A3C'), ('grey', '#8A8A88'), ('taupe', '#A59580'), ('white', '#EDEAE2'),

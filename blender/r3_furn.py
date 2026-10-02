@@ -527,7 +527,7 @@ def pot_plant(name, x, y, z, kind='snake', pot='terracotta', h=0.6, pot_r=0.14, 
         for k in range(7):
             a = 2 * math.pi * k / 7 + r.uniform(-0.2, 0.2)
             L = h * r.uniform(0.7, 1.0)
-            frond(it, 'leaf', (0.03 * math.cos(a), 0.03 * math.sin(a), zt), a, L, tilt=r.uniform(0.25, 0.7), leaflets=9, ll=h * 0.22)
+            frond(it, 'leaf', (0.03 * math.cos(a), 0.03 * math.sin(a), zt), a, L, tilt=r.uniform(0.08, 0.38), leaflets=9, ll=h * 0.22)
     elif kind == 'money':
         for k in range(7):
             a = r.uniform(0, 2 * math.pi)

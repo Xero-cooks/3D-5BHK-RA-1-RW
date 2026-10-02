@@ -88,7 +88,7 @@ def bath_room(tag, fl, rect, shower='E', vanity=False, ywall=None):
         K.glass_panel(f'{n}_ShowerGlass_W', s0, yb - 0.95, s0, yb, z + 0.04, z + 2.0)
         K.glass_panel(f'{n}_ShowerGlass_S', s0, yb - 0.95, s1, yb - 0.95, z + 0.04, z + 2.0)
         K.floor_drain(f'{n}_Drain', (s0 + s1) / 2, yb - 0.47, z)
-        K.bucket_mug(f'{n}_Bucket', s1 - 0.25, yb - 0.25, z)
+        K.bucket_mug(f'{n}_Bucket', s1 - 0.45, yb - 0.45, z)
         K.towel_ring(f'{n}_TowelRing', xa, ya + 0.9, z + 1.2, 'E')
         K.geyser(f'{n}_Geyser', xa, yb - 0.4, z + 1.85, 'E')
     else:
@@ -96,7 +96,7 @@ def bath_room(tag, fl, rect, shower='E', vanity=False, ywall=None):
         K.glass_panel(f'{n}_ShowerGlass_E', s1, yb - 0.95, s1, yb, z + 0.04, z + 2.0)
         K.glass_panel(f'{n}_ShowerGlass_S', s0, yb - 0.95, s1, yb - 0.95, z + 0.04, z + 2.0)
         K.floor_drain(f'{n}_Drain', (s0 + s1) / 2, yb - 0.47, z)
-        K.bucket_mug(f'{n}_Bucket', s0 + 0.25, yb - 0.25, z)
+        K.bucket_mug(f'{n}_Bucket', s0 + 0.45, yb - 0.45, z)
         K.towel_ring(f'{n}_TowelRing', xb, ya + 0.9, z + 1.2, 'W')
         K.geyser(f'{n}_Geyser', xb, yb - 0.4, z + 1.85, 'W')
     K.floor_drain(f'{n}_Drain2', (xa + xb) / 2, (ya + yb) / 2 - 0.2, z)
@@ -144,7 +144,7 @@ def ground_floor(rooms):
     F.armchair_wicker('GF_Hall_CornerChair1', 6.1, 1.0, z, 'E', cush='fab_brown', pillow='fab_cream')
     F.armchair_wicker('GF_Hall_CornerChair2', 7.35, 2.05, z, 'S', cush='fab_brown', pillow='fab_black_floral')
     F.vase_tall('GF_Hall_VaseTall', 7.78, 0.4, z, h=1.0, r=0.16)
-    F.pot_plant('GF_Hall_Areca', 0.55, 6.4, z, 'areca', 'terracotta', h=1.1, pot_r=0.2, pot_h=0.4, kindtag='floor')
+    F.pot_plant('GF_Hall_Areca', 0.8, 6.4, z, 'areca', 'terracotta', h=1.1, pot_r=0.2, pot_h=0.4, kindtag='floor')
     F.pot_plant('GF_Hall_Snake', 0.45, 0.45, z, 'snake', 'black', h=0.75, pot_r=0.16, pot_h=0.34, kindtag='floor')
     X.set('decor', fl, 'Hall')
     curt('Curtain_Slider', 'S', 4.0, 4.6, fl, 'A', 2.4)
@@ -175,7 +175,7 @@ def ground_floor(rooms):
     F.table_lamp('GF_Dining_Console_Lamp', 12.6, 5.8, z + 0.85)
     curt('Curtain_Slider', 'S', 10.75, 3.4, fl, 'A', 2.4)
     F.framed_art('GF_Dining_Art', 10.4, 6.9425, z + 1.4, 'S', 1.3, 0.8, 'art_red', 'art_ochre', seed=8)
-    F.pot_plant('GF_Dining_Fern', 12.5, 0.5, z, 'fern', 'terracotta', h=0.8, pot_r=0.2, pot_h=0.34, kindtag='floor')
+    F.pot_plant('GF_Dining_Fern', 12.5, 0.75, z, 'fern', 'terracotta', h=0.8, pot_r=0.2, pot_h=0.34, kindtag='floor')
     F.pot_plant('GF_Dining_Bowl_Plant', 10.4, 3.4, z + 0.76, 'money', 'ceramic', h=0.25, pot_r=0.07, pot_h=0.12, kindtag='prop')
     X.set('light', fl, 'Dining')
     for i in range(3):
@@ -292,7 +292,7 @@ def ground_floor(rooms):
     F.bookshelf('GF_Foyer_ShoeRack', R[1], 10.3, z, 'W', w=1.2, h=1.0, d=0.35, rows=3, seed=2, fill=0.5, mat='wood_med')
     F.doormat('GF_Foyer_Doormat', 12.0, 13.4, z, 'N', 1.1, 0.7, 'rug_red')
     F.rug('GF_Foyer_Rug', 12.0, 10.9, z, 2.8, 2.0, base='rug_cream', stripe='rug_pink')
-    F.pot_plant('GF_Foyer_PlantW', 10.15, 13.5, z, 'areca', 'terracotta', h=1.2, pot_r=0.2, pot_h=0.4, kindtag='floor')
+    F.pot_plant('GF_Foyer_PlantW', 10.15, 13.25, z, 'areca', 'terracotta', h=1.2, pot_r=0.2, pot_h=0.4, kindtag='floor')
     F.pot_plant('GF_Foyer_PlantE', 13.85, 13.5, z, 'ficus', 'ceramic', h=1.1, pot_r=0.2, pot_h=0.4, kindtag='floor')
     X.set('decor', fl, 'Foyer')
     F.wall_mirror('GF_Foyer_Mirror', R[0], 11.2, z + 1.3, 'E', 0.8, 1.1, frame='brass')
@@ -339,7 +339,7 @@ def ground_floor(rooms):
     R = X.R
     F.console('GF_Corridor_Console_1', 7.0, R[2], z, 'N', w=1.4, d=0.35, h=0.8)
     F.console('GF_Corridor_Console_2', 19.0, R[2], z, 'N', w=1.4, d=0.35, h=0.8)
-    F.pot_plant('GF_Corridor_PlantW', 0.5, 7.75, z, 'snake', 'ceramic', h=0.8, pot_r=0.15, pot_h=0.34, kindtag='floor')
+    F.pot_plant('GF_Corridor_PlantW', 0.6, 7.75, z, 'snake', 'ceramic', h=0.8, pot_r=0.15, pot_h=0.34, kindtag='floor')
     F.pot_plant('GF_Corridor_PlantE', 23.5, 7.75, z, 'aloe', 'terracotta', h=0.6, pot_r=0.17, pot_h=0.3, kindtag='floor')
     X.set('decor', fl, 'Corridor')
     F.wall_mirror('GF_Corridor_Mirror', 7.0, R[2], z + 1.25, 'N', 0.8, 1.0, frame='wood_dark')
@@ -469,7 +469,7 @@ def first_floor(rooms):
     X.set('furn', fl, 'Landing', rooms['FF_Landing']); R = X.R
     F.ottoman_bench('FF_Landing_Bench', 12.0, R[3], z, 'S', w=1.7, d=0.45)
     F.console('FF_Landing_Console', R[0], 11.2, z, 'E', w=1.2, d=0.35, h=0.85)
-    F.pot_plant('FF_Landing_PlantA', 10.0, 13.5, z, 'areca', 'terracotta', h=1.1, pot_r=0.2, pot_h=0.4, kindtag='floor')
+    F.pot_plant('FF_Landing_PlantA', 10.0, 13.25, z, 'areca', 'terracotta', h=1.1, pot_r=0.2, pot_h=0.4, kindtag='floor')
     F.pot_plant('FF_Landing_PlantB', 14.0, 13.5, z, 'ficus', 'ceramic', h=1.0, pot_r=0.2, pot_h=0.4, kindtag='floor')
     X.set('decor', fl, 'Landing')
     F.wall_mirror('FF_Landing_Mirror', R[0], 11.2, z + 1.3, 'E', 0.8, 1.0, frame='wood_dark')
@@ -482,7 +482,7 @@ def first_floor(rooms):
     X.set('furn', fl, 'Corridor', rooms['FF_Corridor']); R = X.R
     F.console('FF_Corridor_Console_1', 8.3, R[2], z, 'N', w=1.2, d=0.35, h=0.8)
     F.console('FF_Corridor_Console_2', 19.2, R[2], z, 'N', w=1.2, d=0.35, h=0.8)
-    F.pot_plant('FF_Corridor_PlantW', 0.5, 7.75, z, 'snake', 'ceramic', h=0.8, pot_r=0.15, pot_h=0.34, kindtag='floor')
+    F.pot_plant('FF_Corridor_PlantW', 0.6, 7.75, z, 'snake', 'ceramic', h=0.8, pot_r=0.15, pot_h=0.34, kindtag='floor')
     F.pot_plant('FF_Corridor_PlantE', 23.5, 7.75, z, 'aloe', 'terracotta', h=0.6, pot_r=0.17, pot_h=0.3, kindtag='floor')
     X.set('decor', fl, 'Corridor')
     F.framed_art('FF_Corridor_Art_1', 5.5, R[3], z + 1.4, 'S', 1.0, 0.7, 'art_blue', 'art_ochre', seed=101)
@@ -491,6 +491,21 @@ def first_floor(rooms):
     for i, px in enumerate((2.0, 6.0, 10.0, 14.0, 18.0, 22.0)):
         F.downlight(f'FF_Corridor_Downlight_{i + 1}', px, 7.75, CE[fl])
     F.tube_light('FF_Corridor_TubeLight', 12.0, R[3], z + 2.3, 'S')
+    # roof stair hall (service lobby below the terrace stair mumty)
+    X.set('furn', fl, 'RoofStairHall', rooms['FF_Roof Stair Hall']); R = X.R
+    F.console('FF_RoofHall_ShoeCabinet', R[1], 11.2, z, 'W', w=1.5, d=0.38, h=0.9)
+    F.stool('FF_RoofHall_Stool', R[1] - 0.8, 12.6, z, r=0.2, h=0.45)
+    F.pot_plant('FF_RoofHall_Plant', R[1] - 0.45, R[3] - 0.45, z, 'snake', 'ceramic', h=0.9, pot_r=0.16, pot_h=0.34, kindtag='floor')
+    F.pot_plant('FF_RoofHall_PlantB', R[0] + 0.5, R[3] - 0.45, z, 'areca', 'terracotta', h=1.0, pot_r=0.2, pot_h=0.4, kindtag='floor')
+    F.doormat('FF_RoofHall_Mat', R[0] + 1.2, 11.2, z, 'E', 0.9, 0.6)
+    X.set('decor', fl, 'RoofStairHall')
+    F.framed_art('FF_RoofHall_Art', R[1], 11.2, z + 1.55, 'W', 0.9, 0.65, 'art_red', 'art_ochre', seed=111)
+    F.wall_mirror('FF_RoofHall_Mirror', R[1], 9.7, z + 1.2, 'W', 0.6, 0.9, frame='wood_dark')
+    X.set('light', fl, 'RoofStairHall')
+    F.ceiling_fan('FF_RoofHall_CeilingFan', (R[0] + R[1]) / 2, 11.2, CE[fl])
+    for i, (px, py) in enumerate(((20.8, 9.6), (22.9, 9.6), (20.8, 12.8), (22.9, 12.8))):
+        F.downlight(f'FF_RoofHall_Downlight_{i + 1}', px, py, CE[fl])
+    F.switchplate('FF_RoofHall_Switch', R[0], 10.3, z + 1.2, 'E', 2)
     return 'FF furnished'
 
 

@@ -95,6 +95,35 @@ def room_rects():
             bb = o['bbox']; out.append((f"{o['floor']}_{o['room_name']}", o['floor'], bb[0], bb[1], bb[2], bb[3]))
     return out
 
+def split_walls():
+    """Cut long wall faces at every room boundary so each segment can take its own room finish."""
+    import bmesh
+    from mathutils import Vector
+    rects = room_rects(); n = 0
+    for o in bpy.data.objects:
+        if o.type != 'MESH' or '_WALL_' not in o.name or not o.name.startswith(('Res_', 'Club_', 'Pav_')): continue
+        if 'Parapet' in o.name or o.get('r4_split'): continue
+        fl = 'GF' if '_GF_' in o.name else 'FF' if ('_FF_' in o.name or 'Mumty' in o.name) else None
+        if not fl: continue
+        mw = o.matrix_world; inv = mw.inverted(); m3t = inv.to_3x3().transposed()
+        bb = [mw @ Vector(c) for c in o.bound_box]
+        x0, x1 = min(b.x for b in bb), max(b.x for b in bb); y0, y1 = min(b.y for b in bb), max(b.y for b in bb)
+        cuts = []
+        if x1 - x0 > 0.6:
+            for c in sorted({v for k, f, a, b, c1, d in rects if f == fl for v in (a, b)}):
+                if x0 + 0.02 < c < x1 - 0.02: cuts.append((Vector((c, 0, 0)), Vector((1, 0, 0))))
+        if y1 - y0 > 0.6:
+            for c in sorted({v for k, f, a, b, c1, d in rects if f == fl for v in (c1, d)}):
+                if y0 + 0.02 < c < y1 - 0.02: cuts.append((Vector((0, c, 0)), Vector((0, 1, 0))))
+        o['r4_split'] = 1
+        if not cuts: continue
+        bm = bmesh.new(); bm.from_mesh(o.data)
+        for co, no in cuts:
+            geom = bm.verts[:] + bm.edges[:] + bm.faces[:]
+            bmesh.ops.bisect_plane(bm, geom=geom, dist=1e-5, plane_co=inv @ co, plane_no=(m3t @ no).normalized())
+        bm.to_mesh(o.data); bm.free(); o.data.update(); n += 1
+    return n
+
 def walls():
     rooms = room_rects(); touched = 0; unmatched = set()
     ext = get('R4_Plaster_Exterior')
@@ -148,7 +177,7 @@ def purge_old():
 
 def run():
     r = {'remap': remap_r3(), 'floors': floors(), 'blk': blk()}
-    r['walls'] = walls(); r['special'] = specials(); r['purged'] = purge_old()
+    r['split'] = split_walls(); r['walls'] = walls(); r['special'] = specials(); r['purged'] = purge_old()
     left = {}
     for o in bpy.data.objects:
         if o.type == 'MESH' and o.name.startswith(('Res_', 'SITE_', 'LAND_', 'Club_', 'Pav_', 'POOL_')):

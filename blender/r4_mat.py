@@ -153,7 +153,7 @@ def paint(name, hexc, rough=0.8, ao=True, peel=0.12, dirt=0.0):
         base = m.mixc(m.math('MULTIPLY', d, dirt), base, shade(hexc, 0.7))
     if ao: base = m.mixc(0.55, base, m.ao(base, 0.35))
     h = m.noise(P, 700.0, 2.0, 0.6)
-    nrm = m.bump(h, peel, 0.002)
+    nrm = m.bump(h, peel * 0.4, 0.002)
     return m.finish(m.principled(base, rough, nrm, spec=0.4))
 
 def plaster_ext(name, hexc, dirt=0.35, rough=0.88):
@@ -166,7 +166,7 @@ def plaster_ext(name, hexc, dirt=0.35, rough=0.88):
     base = m.mixc(m.math('MINIMUM', d, 0.7), base, shade('#6E6558', 1.0))
     base = m.mixc(0.7, base, m.ao(base, 0.5))
     h = m.math('ADD', m.noise(P, 220.0, 6.0, 0.65), m.math('MULTIPLY', m.noise(P, 30.0, 3.0), 0.4))
-    nrm = m.bump(h, 0.45, 0.003)
+    nrm = m.bump(h, 0.3, 0.003)
     return m.finish(m.principled(base, rough, nrm, spec=0.3))
 
 def tile(name, base, varc, sx, sy, gw, rough, grout='#B7AC98', vein=None, rows='none', coat=0.0, bump=0.5, speck=0.0, grout_rough=0.85):

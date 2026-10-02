@@ -1,16 +1,64 @@
 {
   "project": "3D-5BHK-RA-1-RW",
-  "round_completed": 2,
-  "next_round": 3,
+  "round_completed": 3,
+  "next_round": 4,
   "awaiting_user_reply": true,
-  "focus": "main residence only (user instruction); clubhouse/pavilion/pool left at Round 1 blockout",
-  "blender_file": "Documents/3D-5BHK-RA-1-RW/Round2_Architecture.blend (Blender 5.2, Windows)",
-  "build_scripts": ["blender/r1_foundation.py", "blender/r2_residence.py"],
-  "coordinate_system": "metres; X east, Y north, Z up; origin = SW corner of residence wall centrelines",
+  "focus": "main residence only (clubhouse/pavilion/pool remain Round 1 blockout)",
+  "blender_file": "Round3_Furnished.blend",
+  "build_scripts": [
+    "blender/r1_foundation.py",
+    "blender/r2_residence.py",
+    "blender/r3_core.py",
+    "blender/r3_furn.py",
+    "blender/r3_kb.py",
+    "blender/r3_rooms.py",
+    "blender/r3_arch.py",
+    "blender/r3_ext.py",
+    "blender/r3_site.py"
+  ],
+  "coordinate_system": "X east, Y north, Z up; origin = SW corner of residence (wall centrelines); metres",
   "buildings": {
-    "residence": {"x": [0, 24], "y": [0, 14], "gf_ffl": 0.6, "ff_ffl": 3.8, "roof_top": 7.0, "mumty_top": 9.5},
-    "clubhouse": {"status": "round1 blockout"},
-    "pavilion": {"status": "round1 blockout"}
+    "residence": {
+      "x": [
+        0,
+        24
+      ],
+      "y": [
+        0,
+        14
+      ],
+      "gf_ffl": 0.6,
+      "ff_ffl": 3.8,
+      "roof_top": 7.0
+    },
+    "clubhouse": {
+      "x": [
+        32,
+        48
+      ],
+      "y": [
+        -26,
+        -10
+      ],
+      "status": "Round 1 blockout"
+    },
+    "pavilion": {
+      "x": [
+        -34,
+        -22
+      ],
+      "y": [
+        -32,
+        -24
+      ],
+      "status": "Round 1 blockout"
+    }
   },
-  "objects": {"total": 491, "residence": 395}
+  "objects": {
+    "total": 3140,
+    "residence": 2439,
+    "clubhouse": 51,
+    "pavilion": 23,
+    "round3_new": 756
+  }
 }

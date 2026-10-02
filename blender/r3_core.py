@@ -76,7 +76,7 @@ def ctx(coll, par, room='', fl='', tag='r3'):
 
 class Item:
     def __init__(s, name, x=0.0, y=0.0, z=0.0, face='N', kind='floor', rotdeg=None):
-        s.name = name; s.p = Vector((x, y, z)); s.kind = kind
+        s.name = name; s.p = Vector((x, y, z + (0.022 if kind == 'rug' else 0.0))); s.kind = kind
         s.rot = math.radians(ROT[face] if rotdeg is None else rotdeg)
         s.bms = {}
 

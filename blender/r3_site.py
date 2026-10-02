@@ -47,17 +47,23 @@ def blob_cluster(it, cx, cy, cz, rad, n, mats, rr, sz=0.75, size=(0.3, 0.55), se
         it.sph(rr.choice(mats), cx + d * math.cos(a), cy + d * math.sin(a), cz + zz * rad * 0.9, r, sz=sz, seg=seg, rings=5)
 
 
-def tree_round(name, x, y, h=7.0, crown=3.2, seed=1, mats=('leaf', 'leaf_dark', 'leaf_light')):
+def tree_round(name, x, y, h=7.0, crown=3.2, seed=1, mats=('leaf', 'leaf_dark', 'leaf_light', 'leaf_dark')):
     rr = random.Random(seed)
     it = Item(name, x, y, 0.0, kind='prop')
     th = h * 0.5
     it.loft('trunk', [(0, 0, 0), (0.03, 0.0, th * 0.4), (0.0, 0.05, th * 0.8), (0.02, 0.03, th)], [0.24, 0.17, 0.13, 0.1], seg=9)
-    for k in range(5):
-        a = 2 * math.pi * k / 5 + rr.uniform(-0.3, 0.3)
-        it.loft('trunk', [(0, 0, th * 0.85), (0.5 * math.cos(a), 0.5 * math.sin(a), th + 0.45), (1.0 * math.cos(a), 1.0 * math.sin(a), th + 1.0)], [0.08, 0.055, 0.035], seg=6)
-    cz = th + 0.3
-    blob_cluster(it, 0, 0, cz, crown, 36, list(mats), rr, sz=0.7, size=(0.32, 0.5), seg=8)
-    blob_cluster(it, 0, 0, cz + crown * 0.5, crown * 0.6, 12, list(mats), rr, sz=0.75, size=(0.35, 0.5), seg=8)
+    br = []
+    for k in range(6):
+        a = 2 * math.pi * k / 6 + rr.uniform(-0.3, 0.3)
+        e = (crown * 0.55 * math.cos(a), crown * 0.55 * math.sin(a), th + crown * 0.55)
+        it.loft('trunk', [(0, 0, th * 0.85), (e[0] * 0.5, e[1] * 0.5, th + crown * 0.2), e], [0.08, 0.055, 0.03], seg=6)
+        br.append(e)
+    cz = th + crown * 0.35
+    for k in range(90):
+        a = rr.uniform(0, 6.28); u = rr.random() ** 0.6; v = rr.uniform(0.05, 1.0)
+        rad = crown * u * math.sqrt(max(0.0, 1 - (v - 0.5) ** 2 * 3.0))
+        px, py, pz = rad * math.cos(a), rad * math.sin(a), cz + (v - 0.35) * crown * 1.15
+        it.sph(rr.choice(mats), px, py, pz, crown * rr.uniform(0.17, 0.27), sz=0.72, seg=8, rings=5)
     return it.finish()
 
 
@@ -65,14 +71,13 @@ def tree_column(name, x, y, h=9.0, w=1.1, seed=2):
     rr = random.Random(seed)
     it = Item(name, x, y, 0.0, kind='prop')
     it.loft('trunk', [(0, 0, 0), (0.0, 0.0, h * 0.35)], [0.16, 0.1], seg=8)
-    n = 14
-    for k in range(n):
-        t = k / (n - 1)
-        zz = h * 0.28 + t * h * 0.72
-        rad = w * (0.55 + 0.75 * math.sin(math.pi * min(1, t * 0.85 + 0.15))) * (1 - 0.55 * t)
-        for j in range(4):
-            a = rr.uniform(0, 6.28)
-            it.sph(rr.choice(('leaf', 'leaf_dark', 'leaf_light')), rad * 0.55 * math.cos(a), rad * 0.55 * math.sin(a), zz + rr.uniform(-0.1, 0.1), rad * rr.uniform(0.45, 0.7), sz=0.55, seg=7, rings=5)
+    for k in range(70):
+        t = rr.random() ** 0.8
+        zz = h * 0.25 + t * h * 0.75
+        prof = math.sin(math.pi * min(1.0, 0.25 + 0.75 * (1 - t) ** 0.9)) * 0.9 + 0.12
+        rad = w * prof * (1 - 0.25 * t)
+        a = rr.uniform(0, 6.28); d = rad * math.sqrt(rr.random())
+        it.sph(rr.choice(('leaf', 'leaf_dark', 'leaf_light', 'leaf_dark')), d * math.cos(a), d * math.sin(a), zz, w * rr.uniform(0.28, 0.42) * (1 - 0.4 * t), sz=0.9, seg=7, rings=5)
     return it.finish()
 
 
@@ -110,13 +115,14 @@ def hedge(name, x0, y0, x1, y1, h=0.7, w=0.5, seed=1):
     rr = random.Random(seed)
     it = Item(name, (x0 + x1) / 2, (y0 + y1) / 2, 0.0, kind='prop')
     L = math.hypot(x1 - x0, y1 - y0)
-    ang = math.atan2(y1 - y0, x1 - x0)
-    it.rot = ang
-    it.box('hedge', -L / 2, L / 2, -w / 2, w / 2, 0.0, h * 0.85, bev=0.08, seg=2)
-    n = int(L / 0.35)
+    it.rot = math.atan2(y1 - y0, x1 - x0)
+    it.box('hedge', -L / 2, L / 2, -w / 2 * 0.9, w / 2 * 0.9, 0.0, h * 0.8, bev=0.1, seg=2)
+    n = int(L / 0.2)
     for k in range(n):
         xx = -L / 2 + (k + 0.5) * L / n
-        it.sph('hedge' if k % 2 else 'leaf_dark', xx, rr.uniform(-0.05, 0.05), h * 0.85, 0.24 + rr.uniform(0, 0.04), sy=w / 0.5 * 0.9, sz=0.55, seg=7, rings=5)
+        for j in range(2):
+            it.sph(rr.choice(('hedge', 'leaf_dark', 'hedge', 'leaf')), xx + rr.uniform(-0.05, 0.05), rr.uniform(-w * 0.25, w * 0.25), h * (0.72 + 0.1 * j) + rr.uniform(-0.03, 0.03),
+                   0.17 + rr.uniform(0, 0.07), sy=w / 0.5 * 1.1, sz=0.6, seg=6, rings=4)
     return it.finish()
 
 

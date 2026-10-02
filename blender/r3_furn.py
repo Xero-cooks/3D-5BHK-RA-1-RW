@@ -1,6 +1,6 @@
 """Round 3 furniture + decor catalogue (module r3f). Requires module r3c (r3_core)."""
 import bpy, bmesh, math, sys, random
-from mathutils import Vector
+from mathutils import Vector, Matrix
 c = sys.modules['r3c']
 Item = c.Item
 rnd = random.Random(7)
@@ -586,8 +586,12 @@ def vase_tall(name, x, y, z, h=0.9, r=0.17, mat='terracotta', branches=True, see
 
 def wall_plate(name, x, y, z, face='N', r=0.13, mat='black_metal', rim='brass'):
     it = Item(name, x, y, z, face, kind='wall')
-    it.lathe(mat, [(0, 0.012), (r * 0.8, 0.015), (r, 0.005), (r, 0.0), (0, 0.0)], seg=24)
-    it.lathe(rim, [(r * 0.72, 0.013), (r * 0.75, 0.016), (r * 0.5, 0.017), (r * 0.46, 0.014)], seg=24)
+    for m, prof in ((mat, [(0, 0.012), (r * 0.8, 0.015), (r, 0.005), (r, 0.0), (0, 0.0)]),
+                    (rim, [(r * 0.72, 0.013), (r * 0.75, 0.016), (r * 0.5, 0.017), (r * 0.46, 0.014)])):
+        bm = it._b(m); n0 = len(bm.verts)
+        it.lathe(m, prof, seg=24)
+        vs = list(bm.verts)[n0:]
+        bmesh.ops.rotate(bm, cent=(0, 0, 0), matrix=Matrix.Rotation(math.radians(-90), 3, 'X'), verts=vs)
     return it.finish()
 
 

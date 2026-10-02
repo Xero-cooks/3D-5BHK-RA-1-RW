@@ -6,7 +6,7 @@ SKY_OFFSET = 0.0     # sun_rotation (deg) = SKY_SIGN * az + SKY_OFFSET  (set aft
 SKY_SIGN = 1.0
 PRESETS = {
     # az: sun azimuth deg clockwise from +Y (north); el: elevation deg
-    'DAY':    dict(az=215, el=44, sun=3.2, sun_col=(1.0, 0.95, 0.86), bg=0.5, expo=-0.8, room=0.30, led=(1.5, 3.0), ext=0.0, moon=0.0, dust=0.7),
+    'DAY':    dict(az=215, el=44, sun=3.2, sun_col=(1.0, 0.95, 0.86), bg=0.5, expo=-0.8, room=0.5, led=(1.5, 3.0), ext=0.0, moon=0.0, dust=0.7),
     'GOLDEN': dict(az=262, el=9,  sun=3.0, sun_col=(1.0, 0.70, 0.40), bg=1.0, expo=0.2, room=0.65, led=(5.0, 6.0), ext=0.35, moon=0.0, dust=3.0),
     'NIGHT':  dict(az=215, el=-14, sun=0.0, sun_col=(1.0, 1.0, 1.0), bg=0.7, expo=0.9, room=1.0, led=(14.0, 14.0), ext=1.0, moon=0.12, dust=1.0),
 }

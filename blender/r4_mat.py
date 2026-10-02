@@ -286,16 +286,25 @@ def ceramic(name, hexc, rough=0.04):
 def glass(name, tint='#DDEBE8', rough=0.0, tintk=0.06, smoked=False, frosted=False):
     m = M(name)
     col = srgb(tint)
-    b = m.principled(col, rough if not frosted else 0.28, None, trans=1.0, ior=1.45, spec=0.5)
+    if frosted:
+        b = m.principled(col, 0.28, None, trans=1.0, ior=1.45, spec=0.5)
+    else:
+        # thin-sheet glass: tinted transparency + Fresnel reflection (no refraction blur, light still reaches interiors)
+        tr0 = m.n('ShaderNodeBsdfTransparent'); m.setin(tr0.inputs['Color'], shade('#202226', 1.0) if smoked else col)
+        gl = m.n('ShaderNodeBsdfGlossy'); m.setin(gl.inputs['Color'], (1, 1, 1, 1)); m.setin(gl.inputs['Roughness'], max(rough, 0.01))
+        fr = m.n('ShaderNodeFresnel'); fr.inputs['IOR'].default_value = 1.5
+        mx = m.n('ShaderNodeMixShader')
+        m.nt.links.new(fr.outputs[0], mx.inputs[0])
+        m.nt.links.new(tr0.outputs[0], mx.inputs[1]); m.nt.links.new(gl.outputs[0], mx.inputs[2])
+        b = mx
     lp = m.n('ShaderNodeLightPath'); tr = m.n('ShaderNodeBsdfTransparent')
     m.setin(tr.inputs['Color'], col if not smoked else shade('#202226', 1.0))
     mix = m.n('ShaderNodeMixShader')
     m.nt.links.new(lp.outputs['Is Shadow Ray'], mix.inputs[0])
-    m.nt.links.new(b.outputs['BSDF'], mix.inputs[1]); m.nt.links.new(tr.outputs['BSDF'], mix.inputs[2])
+    m.nt.links.new((b.outputs['BSDF'] if frosted else b.outputs[0]), mix.inputs[1]); m.nt.links.new(tr.outputs['BSDF'], mix.inputs[2])
     mat = m.out(mix.outputs[0])
-    try: mat.surface_render_method = 'BLENDED' if False else 'DITHERED'
+    try: mat.surface_render_method = 'DITHERED'
     except Exception: pass
-    if smoked: pass
     return mat
 
 def mirror(name):

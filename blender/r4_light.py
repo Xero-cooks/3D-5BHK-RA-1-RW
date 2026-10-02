@@ -163,9 +163,9 @@ def pool_box():
 def ground_far():
     nm = 'SITE_Ground_Far'
     old = bpy.data.objects.get(nm)
-    if old and old.get('r4v') == 3: return 0
+    if old and old.get('r4v') == 4: return 0
     if old: bpy.data.objects.remove(old, do_unlink=True)
-    S = 1500.0; z = -0.06
+    S = 40000.0; z = -0.06
     pb = pool_box()
     if pb:
         x0, x1, y0, y1 = pb[0] - 0.3, pb[1] + 0.3, pb[2] - 0.3, pb[3] + 0.3
@@ -176,7 +176,7 @@ def ground_far():
     me = bpy.data.meshes.new(nm)
     me.from_pydata([(x, y, z) for x, y in vs], [], fs)
     ob = bpy.data.objects.new(nm, me)
-    c = bpy.data.collections['01_Site_Ground']; c.objects.link(ob); ob['r4'] = 1; ob['r4v'] = 3
+    c = bpy.data.collections['01_Site_Ground']; c.objects.link(ob); ob['r4'] = 1; ob['r4v'] = 4
     mt = bpy.data.materials.get('R4_Grass_Far')
     if mt: ob.data.materials.append(mt)
     return 1

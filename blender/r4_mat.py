@@ -17,8 +17,7 @@ def shade(h, k):
 class M:
     def __init__(s, name):
         old = bpy.data.materials.get(name)
-        if old: bpy.data.materials.remove(old)
-        s.mat = bpy.data.materials.new(name)
+        s.mat = old if old else bpy.data.materials.new(name)
         try: s.mat.use_nodes = True
         except Exception: pass
         s.nt = s.mat.node_tree
@@ -397,3 +396,38 @@ def cane(name, hexc, hex2, wicker=False):
     return m.finish(m.principled(col, 0.55, nrm, sheen=0.2))
 
 def led_white_tube(): return emissive('R4_LED_Tube_White', '#F6F8FF', 12.0)
+
+def leather(name, hexc, rough=0.48):
+    m = M(name); P = m.P()
+    v = m.voronoi(m.mapping(P, (1, 1, 1)), 220.0, 1.0, 'F1', 'Distance')
+    cr = m.math('SUBTRACT', 1.0, m.math('MULTIPLY', v, 1.6, clamp=True))
+    wear = m.noise(P, 6.0, 4.0)
+    col = m.mixc(m.math('MULTIPLY', wear, 0.25), srgb(hexc), shade(hexc, 1.25))
+    col = m.mixc(m.math('MULTIPLY', m.math('SUBTRACT', 1.0, cr), 0.18), col, shade(hexc, 0.6))
+    r = m.mixf(m.noise(P, 18.0, 3.0), rough * 0.8, rough * 1.25)
+    nrm = m.bump(m.math('ADD', cr, m.math('MULTIPLY', m.noise(P, 60.0, 3.0), 0.3)), 0.35, 0.0012)
+    return m.finish(m.principled(col, r, nrm, coat=0.12, coat_rough=0.3, sheen=0.15, spec=0.5))
+
+def pvc_panel(name, hexc='#EEECE6', pitch=0.2):
+    m = M(name); Uv, U, V = m.planar()
+    joint, rnd, fu, fv = m.grid(U, V, pitch, 50.0, 0.003, 'none')
+    col = m.mixc(joint, srgb(hexc), shade(hexc, 0.72))
+    nrm = m.bump(m.math('SUBTRACT', 1.0, joint), 0.8, 0.002)
+    return m.finish(m.principled(col, 0.38, nrm, coat=0.15, coat_rough=0.2, spec=0.5))
+
+def water(name, deep='#2FA8BC', clear='#9FD8DE'):
+    m = M(name); P = m.P()
+    w1 = m.noise(m.mapping(P, (1.0, 1.0, 0.2)), 2.2, 3.0, 0.5); w2 = m.noise(m.mapping(P, (1.0, 1.0, 0.2), (3, 1, 0)), 7.5, 2.0, 0.5)
+    h = m.math('ADD', m.math('MULTIPLY', w1, 0.6), m.math('MULTIPLY', w2, 0.4))
+    nrm = m.bump(h, 0.12, 0.05)
+    b = m.principled(srgb(clear), 0.02, nrm, trans=1.0, ior=1.333, spec=0.5)
+    ab = m.n('ShaderNodeVolumeAbsorption'); ab.inputs['Color'].default_value = srgb(deep); ab.inputs['Density'].default_value = 0.55
+    tex = m.n('ShaderNodeOutputMaterial')
+    m.nt.links.new(b.outputs['BSDF'], tex.inputs['Surface']); m.nt.links.new(ab.outputs[0], tex.inputs['Volume'])
+    return m.mat
+
+def rubber(name, hexc='#2A2B2D'):
+    m = M(name); P = m.P()
+    sp = m.ramp(m.noise(P, 500.0, 1.0), [(0.55, (0, 0, 0, 1)), (0.8, (1, 1, 1, 1))])
+    col = m.mixc(m.math('MULTIPLY', sp, 0.5), srgb(hexc), srgb('#5A5C60'))
+    return m.finish(m.principled(col, 0.8, m.bump(m.noise(P, 300.0, 2.0), 0.4, 0.002)))

@@ -81,6 +81,13 @@ def build_all():
     add(m.bark, 'R4_Bark', '#5A4A3A'); add(m.bark, 'R4_Palm_Trunk', '#7A6A55', True)
     add(P, 'R4_Terracotta', '#B0592F', 0.75); add(P, 'R4_Clay_Dark', '#5A3828', 0.75); add(P, 'R4_Cardboard', '#B8946A', 0.9, False)
     add(m.paper, 'R4_Paper'); add(m.cane, 'R4_Cane_Weave', '#C9A66B', '#B58F55'); add(m.cane, 'R4_Wicker', '#E6E0D2', '#D8D0C0', True)
+    # --- round-4 additions: leather, PVC, pool, rubber, roof tile, club/pavilion finishes
+    add(m.leather, 'R4_Leather_Charcoal', '#2B2B2D'); add(m.leather, 'R4_Leather_Brown', '#4A2E1E'); add(m.leather, 'R4_Leather_Tan', '#9A6A3F')
+    add(m.pvc_panel, 'R4_PVC_Panel_White'); add(m.water, 'R4_Water_Pool')
+    add(m.rubber, 'R4_Rubber_Gym')
+    add(m.tile, 'R4_Pool_Deck_Travertine', '#D5C6A8', '#C8B898', 0.6, 0.4, 0.006, 0.7, grout='#8E8268', speck=0.3, bump=0.8)
+    add(m.tile, 'R4_Pool_Tile_Mosaic', '#4FA6B6', '#3E94A8', 0.025, 0.025, 0.002, 0.15, grout='#9FB5B8', coat=0.4, bump=0.5)
+    add(m.tile, 'R4_Roof_Tile_Terracotta', '#A65432', '#8F4528', 0.3, 0.2, 0.01, 0.65, grout='#5A3020', rows='half', speck=0.3, bump=1.4)
     return B
 
 MAP_R3 = {

@@ -25,6 +25,7 @@ def remap_r3():
     return n
 
 FLOOR = {  # room suffix regex -> material
+ r'Gym': 'R4_Rubber_Gym', r'Changing': 'R4_Floor_Tile_Bath', r'Studio|Games|Multi': 'R4_Floor_Laminate_Oak_Honey', r'Annex': 'R4_Floor_Vitrified_Ivory',
  r'Hall|Dining|Foyer': 'R4_Floor_Vitrified_Cream',
  r'Corridor|Lobby|Stair|Landing|Lounge': 'R4_Floor_Vitrified_Ivory',
  r'Kitchen': 'R4_Floor_Tile_Kitchen',
@@ -37,7 +38,7 @@ FLOOR = {  # room suffix regex -> material
 def floors():
     n = 0
     for o in bpy.data.objects:
-        if o.type == 'MESH' and o.name.startswith('Res_FLOORFIN_'):
+        if o.type == 'MESH' and 'FLOORFIN_' in o.name:
             room = o.name.split('_', 3)[-1]
             for pat, mat in FLOOR.items():
                 if re.search(pat, room):
@@ -63,11 +64,12 @@ def blk():
     R('BLK_Niche_Panel', lambda n: 'TVPanel' in n, 'R4_Panel_Stone_Cladding'); R('BLK_Niche_Panel', lambda n: 'Headboard' in n, 'R4_Fabric_Headboard')
     R('BLK_Niche_Panel', lambda n: True, 'R4_Laminate_Cream')
     R('BLK_Ground_Lawn', lambda n: True, 'R4_Grass_Lawn'); R('BLK_Laterite', lambda n: True, 'R4_Soil_Laterite')
-    R('BLK_Wall_Exterior', lambda n: n.startswith('Res_ROOF_Parapet'), 'R4_Plaster_Exterior')
+    R('BLK_Wall_Exterior', lambda n: 'ROOF_Parapet' in n, 'R4_Plaster_Exterior')
+    R('BLK_Pool_Deck', lambda n: True, 'R4_Pool_Deck_Travertine'); R('BLK_Pool_Water', lambda n: 'Water' in n, 'R4_Water_Pool')
+    R('BLK_Roof', lambda n: True, 'R4_Roof_Tile_Terracotta')
     cnt = 0
     for o in bpy.data.objects:
-        if o.type != 'MESH' or not (o.name.startswith('Res_') or o.name.startswith('SITE_') or o.name.startswith('LAND_')): continue
-        if o.name == 'SITE_Pool_Deck': continue
+        if o.type != 'MESH' or not o.name.startswith(('Res_', 'SITE_', 'LAND_', 'Club_', 'Pav_', 'POOL_')): continue
         for s in o.material_slots:
             if not s.material or not s.material.name.startswith('BLK_'): continue
             for old, test, new in rules:
@@ -79,7 +81,7 @@ def blk():
 
 def wallpaint(key):
     nm = key.split('_', 1)[1]
-    if 'Bath' in nm: return 'R4_Wall_Tile_Bath'
+    if 'Bath' in nm or 'Changing' in nm: return 'R4_Wall_Tile_Bath'
     if re.search(r'Master|Dress|Bedroom G1', nm): return 'R4_Paint_Sand'
     if re.search(r'Bedroom G2|Bedroom F4', nm): return 'R4_Paint_Taupe'
     if re.search(r'Dining|Kitchen|Study|Lounge', nm): return 'R4_Paint_Cream'
@@ -89,7 +91,7 @@ def wallpaint(key):
 def room_rects():
     out = []
     for o in bpy.data.objects:
-        if o.get('room_type') and o.parent and o.parent.name == 'BLD_Residence':
+        if o.get('room_type') and o.parent and o.parent.name.startswith('BLD_'):
             bb = o['bbox']; out.append((f"{o['floor']}_{o['room_name']}", o['floor'], bb[0], bb[1], bb[2], bb[3]))
     return out
 
@@ -97,7 +99,7 @@ def walls():
     rooms = room_rects(); touched = 0; unmatched = set()
     ext = get('R4_Plaster_Exterior')
     for o in bpy.data.objects:
-        if o.type != 'MESH' or not o.name.startswith('Res_WALL_'): continue
+        if o.type != 'MESH' or '_WALL_' not in o.name or not o.name.startswith(('Res_', 'Club_', 'Pav_')): continue
         if 'Parapet' in o.name: continue
         fl = 'GF' if '_GF_' in o.name else 'FF' if ('_FF_' in o.name or 'Mumty' in o.name) else None
         if not fl: continue
@@ -122,19 +124,34 @@ def walls():
         me.update(); touched += 1
     return touched, sorted(unmatched)
 
+def specials():
+    n = 0
+    lea = {'Hall_Sofa': 'R4_Leather_Charcoal', 'Master_Sofa': 'R4_Leather_Tan', 'Lounge_Sofa': 'R4_Leather_Brown', 'Study_Sofa': 'R4_Leather_Tan', 'Office_Sofa': 'R4_Leather_Charcoal'}
+    for o in bpy.data.objects:
+        if o.type != 'MESH': continue
+        for k, mn in lea.items():
+            if k in o.name and 'Curtain' not in o.name:
+                for sl in o.material_slots:
+                    if sl.material and sl.material.name in ('R4_Fabric_grey', 'R4_Fabric_charcoal', 'R4_Fabric_taupe', 'R4_Fabric_brown'):
+                        sl.material = get(mn); n += 1
+        if 'CEILING' in o.name and 'Bath' in o.name and o.name.startswith('Res_'):
+            for sl in o.material_slots:
+                if sl.material: sl.material = get('R4_PVC_Panel_White'); n += 1
+    return n
+
 def purge_old():
     k = 0
     for mt in list(bpy.data.materials):
-        if mt.name.startswith('R3_') and mt.users == 0:
+        if mt.name.startswith(('R3_', 'BLK_')) and mt.users == 0 and mt.name not in ('BLK_Cutter', 'BLK_Room'):
             bpy.data.materials.remove(mt); k += 1
     return k
 
 def run():
     r = {'remap': remap_r3(), 'floors': floors(), 'blk': blk()}
-    r['walls'] = walls(); r['purged'] = purge_old()
+    r['walls'] = walls(); r['special'] = specials(); r['purged'] = purge_old()
     left = {}
     for o in bpy.data.objects:
-        if o.type == 'MESH' and (o.name.startswith('Res_') or o.name.startswith('SITE_') or o.name.startswith('LAND_')) and o.name != 'SITE_Pool_Deck':
+        if o.type == 'MESH' and o.name.startswith(('Res_', 'SITE_', 'LAND_', 'Club_', 'Pav_', 'POOL_')):
             for s in o.material_slots:
                 if s.material and s.material.name.startswith(('BLK_', 'R3_')): left[s.material.name] = left.get(s.material.name, 0) + 1
     r['left'] = left

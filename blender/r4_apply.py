@@ -77,15 +77,14 @@ def blk():
                     break
     return cnt
 
-WALLPAINT = {
- 'GF_Hall': 'R4_Paint_Ivory', 'GF_Dining': 'R4_Paint_Cream', 'GF_Foyer': 'R4_Paint_Ivory', 'GF_Kitchen': 'R4_Paint_Cream', 'GF_Utility': 'R4_Paint_Stone',
- 'GF_BedG1': 'R4_Paint_Sand', 'GF_BedG2': 'R4_Paint_Taupe', 'GF_Study': 'R4_Paint_Cream', 'GF_Corridor': 'R4_Paint_Ivory', 'GF_StairHall': 'R4_Paint_Ivory',
- 'GF_Store': 'R4_Paint_Stone', 'GF_LobbyG1': 'R4_Paint_Ivory', 'GF_BathG1': 'R4_Wall_Tile_Bath', 'GF_BathG2': 'R4_Wall_Tile_Bath',
- 'FF_Master': 'R4_Paint_Sand', 'FF_Bed3': 'R4_Paint_Ivory', 'FF_Bed4': 'R4_Paint_Taupe', 'FF_Lounge': 'R4_Paint_Cream', 'FF_Office': 'R4_Paint_Stone',
- 'FF_Landing': 'R4_Paint_Ivory', 'FF_Corridor': 'R4_Paint_Ivory', 'FF_StairHall': 'R4_Paint_Ivory', 'FF_RoofStairHall': 'R4_Paint_Ivory',
- 'FF_LobbyF3': 'R4_Paint_Ivory', 'FF_LobbyF4': 'R4_Paint_Ivory', 'FF_Dressing': 'R4_Paint_Sand', 'FF_MasterBath': 'R4_Wall_Tile_Bath',
- 'FF_BathF3': 'R4_Wall_Tile_Bath', 'FF_BathF4': 'R4_Wall_Tile_Bath',
-}
+def wallpaint(key):
+    nm = key.split('_', 1)[1]
+    if 'Bath' in nm: return 'R4_Wall_Tile_Bath'
+    if re.search(r'Master|Dress|Bedroom G1', nm): return 'R4_Paint_Sand'
+    if re.search(r'Bedroom G2|Bedroom F4', nm): return 'R4_Paint_Taupe'
+    if re.search(r'Dining|Kitchen|Study|Lounge', nm): return 'R4_Paint_Cream'
+    if re.search(r'Utility|Store|Office', nm): return 'R4_Paint_Stone'
+    return 'R4_Paint_Ivory'
 
 def room_rects():
     out = []
@@ -113,7 +112,7 @@ def walls():
                 if f == fl and x0 <= q.x <= x1 and y0 <= q.y <= y1:
                     hit = key; break
             if not hit: p.material_index = 0; continue
-            mn = WALLPAINT.get(hit)
+            mn = wallpaint(hit)
             if not mn: unmatched.add(hit); p.material_index = 0; continue
             if mn not in idx:
                 idx[mn] = len(slots); slots.append(get(mn))

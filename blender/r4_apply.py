@@ -133,23 +133,24 @@ def walls():
         fl = 'GF' if '_GF_' in o.name else 'FF' if ('_FF_' in o.name or 'Mumty' in o.name) else None
         if not fl: continue
         me = o.data; mw = o.matrix_world; m3 = mw.to_3x3()
-        slots = [ext]; idx = {ext.name: 0}
+        slots = [ext]; idx = {ext.name: 0}; asg = []
         for p in me.polygons:
             n = (m3 @ p.normal).normalized()
-            if abs(n.z) > 0.7: p.material_index = 0; continue
+            if abs(n.z) > 0.7: asg.append(0); continue
             q = mw @ p.center + n * 0.22
             hit = None
             for key, f, x0, x1, y0, y1 in rooms:
                 if f == fl and x0 <= q.x <= x1 and y0 <= q.y <= y1:
                     hit = key; break
-            if not hit: p.material_index = 0; continue
+            if not hit: asg.append(0); continue
             mn = wallpaint(hit)
-            if not mn: unmatched.add(hit); p.material_index = 0; continue
+            if not mn: unmatched.add(hit); asg.append(0); continue
             if mn not in idx:
                 idx[mn] = len(slots); slots.append(get(mn))
-            p.material_index = idx[mn]
+            asg.append(idx[mn])
         me.materials.clear()
         for mt in slots: me.materials.append(mt)
+        me.polygons.foreach_set('material_index', asg)
         me.update(); touched += 1
     return touched, sorted(unmatched)
 

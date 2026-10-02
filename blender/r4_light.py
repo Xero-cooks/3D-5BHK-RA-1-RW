@@ -6,7 +6,7 @@ SKY_OFFSET = 0.0     # sun_rotation (deg) = SKY_SIGN * az + SKY_OFFSET  (set aft
 SKY_SIGN = 1.0
 PRESETS = {
     # az: sun azimuth deg clockwise from +Y (north); el: elevation deg
-    'DAY':    dict(az=215, el=44, sun=3.2, sun_col=(1.0, 0.95, 0.86), bg=0.5, expo=-0.8, room=0.5, led=(1.5, 3.0), ext=0.0, moon=0.0, dust=0.7),
+    'DAY':    dict(az=215, el=44, sun=3.2, sun_col=(1.0, 0.95, 0.86), bg=0.5, expo=-0.6, room=0.5, led=(1.5, 3.0), ext=0.0, moon=0.0, dust=0.35),
     'GOLDEN': dict(az=262, el=9,  sun=3.0, sun_col=(1.0, 0.70, 0.40), bg=1.0, expo=0.2, room=0.65, led=(5.0, 6.0), ext=0.35, moon=0.0, dust=3.0),
     'NIGHT':  dict(az=215, el=-14, sun=0.0, sun_col=(1.0, 1.0, 1.0), bg=0.7, expo=0.9, room=1.0, led=(14.0, 14.0), ext=1.0, moon=0.12, dust=1.0),
 }
@@ -152,16 +152,23 @@ def cameras():
         ob['r4'] = 1
     return n
 
+def pool_box():
+    from mathutils import Vector
+    cut = bpy.data.objects.get('POOL_Basin_Cutter')
+    if not cut: return None
+    bb = [cut.matrix_world @ Vector(c) for c in cut.bound_box]
+    x0, x1 = min(b.x for b in bb), max(b.x for b in bb); y0, y1 = min(b.y for b in bb), max(b.y for b in bb)
+    return x0, x1, y0, y1
+
 def ground_far():
     nm = 'SITE_Ground_Far'
     old = bpy.data.objects.get(nm)
-    if old and old.get('r4v') == 2: return 0
+    if old and old.get('r4v') == 3: return 0
     if old: bpy.data.objects.remove(old, do_unlink=True)
     S = 1500.0; z = -0.06
-    cut = bpy.data.objects.get('POOL_Basin_Cutter')
-    if cut:
-        x0 = cut.location.x - cut.dimensions.x / 2 - 0.3; x1 = cut.location.x + cut.dimensions.x / 2 + 0.3
-        y0 = cut.location.y - cut.dimensions.y / 2 - 0.3; y1 = cut.location.y + cut.dimensions.y / 2 + 0.3
+    pb = pool_box()
+    if pb:
+        x0, x1, y0, y1 = pb[0] - 0.3, pb[1] + 0.3, pb[2] - 0.3, pb[3] + 0.3
     else:
         x0, x1, y0, y1 = 0, 0.1, 0, 0.1
     vs = [(-S, -S), (S, -S), (S, S), (-S, S), (x0, y0), (x1, y0), (x1, y1), (x0, y1)]
@@ -169,7 +176,7 @@ def ground_far():
     me = bpy.data.meshes.new(nm)
     me.from_pydata([(x, y, z) for x, y in vs], [], fs)
     ob = bpy.data.objects.new(nm, me)
-    c = bpy.data.collections['01_Site_Ground']; c.objects.link(ob); ob['r4'] = 1; ob['r4v'] = 2
+    c = bpy.data.collections['01_Site_Ground']; c.objects.link(ob); ob['r4'] = 1; ob['r4v'] = 3
     mt = bpy.data.materials.get('R4_Grass_Far')
     if mt: ob.data.materials.append(mt)
     return 1
@@ -181,16 +188,18 @@ def site_fixes():
 
 def pool_shell():
     import bmesh
-    cut = bpy.data.objects.get('POOL_Basin_Cutter')
-    if not cut or bpy.data.objects.get('POOL_Shell_Tiles'): return 0
-    cx, cy = cut.location.x, cut.location.y; dx, dy = cut.dimensions.x / 2 - 0.02, cut.dimensions.y / 2 - 0.02
+    pb = pool_box(); old = bpy.data.objects.get('POOL_Shell_Tiles')
+    if not pb or (old and old.get('r4v') == 2): return 0
+    for o in list(bpy.data.objects):
+        if o.name.startswith(('POOL_Shell_Tiles', 'POOL_Light_', 'LT_POOL_Light_')): bpy.data.objects.remove(o, do_unlink=True)
+    cx, cy = (pb[0] + pb[1]) / 2, (pb[2] + pb[3]) / 2; dx, dy = (pb[1] - pb[0]) / 2 - 0.02, (pb[3] - pb[2]) / 2 - 0.02
     z0, z1 = -1.45, 0.0
     me = bpy.data.meshes.new('POOL_Shell_Tiles'); bm = bmesh.new()
     v = [bm.verts.new(p) for p in ((-dx, -dy, z0), (dx, -dy, z0), (dx, dy, z0), (-dx, dy, z0), (-dx, -dy, z1), (dx, -dy, z1), (dx, dy, z1), (-dx, dy, z1))]
     for f in ((0, 3, 2, 1), (0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6), (3, 0, 4, 7)): bm.faces.new([v[i] for i in f])
     bm.normal_update(); bm.to_mesh(me); bm.free()
     ob = bpy.data.objects.new('POOL_Shell_Tiles', me); ob.location = (cx, cy, 0)
-    bpy.data.collections['14_Pool_Water'].objects.link(ob); ob['r4'] = 1
+    bpy.data.collections['14_Pool_Water'].objects.link(ob); ob['r4'] = 1; ob['r4v'] = 2
     mt = bpy.data.materials.get('R4_Pool_Tile_Mosaic')
     if mt: me.materials.append(mt)
     # underwater lights (emissive niches + real lights)

@@ -16,7 +16,7 @@ def build_all():
     add(P, 'R4_Paint_Ivory', '#E9E1CB'); add(P, 'R4_Paint_Cream', '#E4D9BD'); add(P, 'R4_Paint_Sand', '#DDCDAA')
     add(P, 'R4_Paint_Taupe', '#D3C7B1'); add(P, 'R4_Paint_Stone', '#D9D4C5'); add(P, 'R4_Paint_White', '#F1EFE8', 0.65)
     add(P, 'R4_Paint_Ceiling', '#F5F3EE', 0.92); add(P, 'R4_Paint_Teal', '#2E8FA8', 0.4, False)
-    add(m.plaster_ext, 'R4_Plaster_Exterior', '#E7DEC9'); add(m.plaster_ext, 'R4_Plaster_Trim_White', '#EFEBE0', 0.25)
+    add(m.plaster_ext, 'R4_Plaster_Exterior', '#E8D6B0'); add(m.plaster_ext, 'R4_Plaster_Trim_White', '#EFEBE0', 0.25)
     add(m.plaster_ext, 'R4_Plaster_Plinth', '#B5AA97', 0.5)
     # --- floors / tiles
     add(m.tile, 'R4_Floor_Vitrified_Cream', '#DAD0BC', '#D0C5AE', 0.8, 0.8, 0.003, 0.07, grout='#BDB29E', vein='#BBAC92', coat=0.5, bump=0.12)

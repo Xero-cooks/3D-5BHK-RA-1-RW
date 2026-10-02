@@ -1,0 +1,17 @@
+{
+  "project": "3D-5BHK-RA-1-RW",
+  "round_completed": 1,
+  "next_round": 2,
+  "awaiting_user_reply": true,
+  "blender_file": "Documents/3D-5BHK-RA-1-RW/Round1_Foundation.blend (Blender 5.2, Windows)",
+  "build_script": "blender/r1_foundation.py",
+  "reference_inventory": {"files": 40, "unique": 39, "duplicates": ["hall.avif == hall (1).avif"]},
+  "groups": {"dwelling": 20, "clubhouse": 14, "outdoor": 5},
+  "coordinate_system": "metres; X east, Y north, Z up; origin = SW corner of residence wall centrelines",
+  "buildings": {
+    "residence": {"x": [0, 24], "y": [0, 14], "gf_ffl": 0.6, "ff_ffl": 3.8, "roof_top": 7.0},
+    "clubhouse": {"x": [32, 48], "y": [-26, -10], "gf_ffl": 0.6, "ff_ffl": 4.5, "roof_top": 8.4},
+    "pavilion": {"x": [-34, -22], "y": [-32, -24], "ffl": 0.6, "eaves": 3.6, "ridge": 6.2}
+  },
+  "objects": {"total": 268, "walls": 48, "cutters": 72, "rooms": 37, "cameras": 6}
+}

@@ -61,7 +61,7 @@ def build_all():
                     ('Red', '#C52B2B', 0.35), ('Yellow', '#E8C23A', 0.35), ('Tank_Black', '#161616', 0.5), ('PVC_Grey', '#9A9A98', 0.4)):
         add(m.plastic, f'R4_Plastic_{n}', h, r)
     add(m.ceramic, 'R4_Ceramic_White', '#F3F1EC'); add(m.ceramic, 'R4_Glass_Black_TV', '#050506', 0.03)
-    add(m.glass, 'R4_Glass_Clear', '#C9DAD6'); add(m.glass, 'R4_Glass_Smoked', '#3A3F44', 0.0, 0.06, True); add(m.glass, 'R4_Glass_Frosted', '#EAF0EE', 0.0, 0.06, False, True)
+    add(m.sheer, 'R4_Fabric_Sheer'); add(m.glass, 'R4_Glass_Clear', '#C9DAD6'); add(m.glass, 'R4_Glass_Smoked', '#3A3F44', 0.0, 0.06, True); add(m.glass, 'R4_Glass_Frosted', '#EAF0EE', 0.0, 0.06, False, True)
     add(m.mirror, 'R4_Mirror')
     add(m.grass, 'R4_Grass_Far', '#5C7A34', '#4A6A2C', '#7C8A44', 0.15, 0.4); add(m.emissive, 'R4_LED_Pool', '#BFEFFF', 1.0)
     add(m.emissive, 'R4_LED_Warm', '#FFC47A', 8.0); add(m.emissive, 'R4_LED_White', '#F4F6FF', 10.0)

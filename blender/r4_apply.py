@@ -164,6 +164,9 @@ def specials():
                 for sl in o.material_slots:
                     if sl.material and sl.material.name in ('R4_Fabric_grey', 'R4_Fabric_charcoal', 'R4_Fabric_taupe', 'R4_Fabric_brown'):
                         sl.material = get(mn); n += 1
+        if 'Curtain' in o.name:
+            for sl in o.material_slots:
+                if sl.material and sl.material.name == 'R4_Glass_Frosted': sl.material = get('R4_Fabric_Sheer'); n += 1
         if 'CEILING' in o.name and 'Bath' in o.name and o.name.startswith('Res_'):
             for sl in o.material_slots:
                 if sl.material: sl.material = get('R4_PVC_Panel_White'); n += 1

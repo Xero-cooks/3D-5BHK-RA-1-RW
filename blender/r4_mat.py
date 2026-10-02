@@ -307,6 +307,19 @@ def glass(name, tint='#DDEBE8', rough=0.0, tintk=0.06, smoked=False, frosted=Fal
     except Exception: pass
     return mat
 
+def sheer(name, hexc='#F1ECE0', opacity=0.5):
+    m = M(name); P = m.P()
+    wv = m.noise(P, 900.0, 2.0, 0.5)
+    d = m.n('ShaderNodeBsdfDiffuse'); m.setin(d.inputs['Color'], srgb(hexc))
+    t = m.n('ShaderNodeBsdfTranslucent'); m.setin(t.inputs['Color'], srgb(hexc))
+    dt = m.n('ShaderNodeMixShader'); dt.inputs[0].default_value = 0.55
+    m.nt.links.new(d.outputs[0], dt.inputs[1]); m.nt.links.new(t.outputs[0], dt.inputs[2])
+    tr = m.n('ShaderNodeBsdfTransparent')
+    fac = m.math('ADD', m.math('MULTIPLY', wv, 0.3), opacity, clamp=True)
+    mx = m.n('ShaderNodeMixShader'); m.nt.links.new(fac, mx.inputs[0])
+    m.nt.links.new(tr.outputs[0], mx.inputs[1]); m.nt.links.new(dt.outputs[0], mx.inputs[2])
+    return m.out(mx.outputs[0])
+
 def mirror(name):
     m = M(name); P = m.P()
     return m.finish(m.principled((0.9, 0.92, 0.93, 1), 0.01, None, metal=1.0, spec=0.5))

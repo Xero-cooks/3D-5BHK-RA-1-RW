@@ -6,7 +6,7 @@ SKY_OFFSET = 0.0     # sun_rotation (deg) = SKY_SIGN * az + SKY_OFFSET  (set aft
 SKY_SIGN = 1.0
 PRESETS = {
     # az: sun azimuth deg clockwise from +Y (north); el: elevation deg
-    'DAY':    dict(az=215, el=44, sun=4.2, sun_col=(1.0, 0.95, 0.86), bg=1.0, expo=0.0, room=0.30, led=(1.5, 3.0), ext=0.0, moon=0.0, dust=2.0),
+    'DAY':    dict(az=215, el=44, sun=3.2, sun_col=(1.0, 0.95, 0.86), bg=0.5, expo=-0.4, room=0.30, led=(1.5, 3.0), ext=0.0, moon=0.0, dust=0.7),
     'GOLDEN': dict(az=262, el=9,  sun=3.0, sun_col=(1.0, 0.70, 0.40), bg=1.0, expo=0.2, room=0.65, led=(5.0, 6.0), ext=0.35, moon=0.0, dust=3.0),
     'NIGHT':  dict(az=215, el=-14, sun=0.0, sun_col=(1.0, 1.0, 1.0), bg=0.7, expo=0.9, room=1.0, led=(14.0, 14.0), ext=1.0, moon=0.12, dust=1.0),
 }
@@ -154,12 +154,22 @@ def cameras():
 
 def ground_far():
     nm = 'SITE_Ground_Far'
-    if bpy.data.objects.get(nm): return 0
+    old = bpy.data.objects.get(nm)
+    if old and old.get('r4v') == 2: return 0
+    if old: bpy.data.objects.remove(old, do_unlink=True)
+    S = 1500.0; z = -0.06
+    cut = bpy.data.objects.get('POOL_Basin_Cutter')
+    if cut:
+        x0 = cut.location.x - cut.dimensions.x / 2 - 0.3; x1 = cut.location.x + cut.dimensions.x / 2 + 0.3
+        y0 = cut.location.y - cut.dimensions.y / 2 - 0.3; y1 = cut.location.y + cut.dimensions.y / 2 + 0.3
+    else:
+        x0, x1, y0, y1 = 0, 0.1, 0, 0.1
+    vs = [(-S, -S), (S, -S), (S, S), (-S, S), (x0, y0), (x1, y0), (x1, y1), (x0, y1)]
+    fs = [(0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6), (3, 0, 4, 7)]
     me = bpy.data.meshes.new(nm)
-    S = 1500.0
-    me.from_pydata([(-S, -S, -0.06), (S, -S, -0.06), (S, S, -0.06), (-S, S, -0.06)], [], [(0, 1, 2, 3)])
+    me.from_pydata([(x, y, z) for x, y in vs], [], fs)
     ob = bpy.data.objects.new(nm, me)
-    c = bpy.data.collections['01_Site_Ground']; c.objects.link(ob); ob['r4'] = 1
+    c = bpy.data.collections['01_Site_Ground']; c.objects.link(ob); ob['r4'] = 1; ob['r4v'] = 2
     mt = bpy.data.materials.get('R4_Grass_Far')
     if mt: ob.data.materials.append(mt)
     return 1

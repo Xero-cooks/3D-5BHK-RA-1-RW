@@ -35,7 +35,7 @@ def build_all():
     add(m.tile, 'R4_Panel_Stone_Cladding', '#B9AC96', '#A89B85', 0.3, 0.15, 0.006, 0.6, grout='#6E6556', rows='half', speck=0.3, bump=1.2)
     add(m.mosaic, 'R4_Tile_Mosaic_Beige', '#C9B697', '#B7A07C')
     # --- ground
-    add(m.grass, 'R4_Grass_Lawn', '#4C7A2D', '#3C6A24', '#6C9440'); add(m.grass, 'R4_Grass_Dry', '#8E8A4A', '#7A7640', '#A59F5A')
+    add(m.grass, 'R4_Grass_Lawn', '#4F6B2E', '#425C27', '#72843F'); add(m.grass, 'R4_Grass_Dry', '#8E8A4A', '#7A7640', '#A59F5A')
     add(m.soil, 'R4_Soil_Laterite', '#8A4A2C', '#6B3822'); add(m.soil, 'R4_Soil', '#4A3626', '#352619')
     # --- woods / laminates
     add(m.wood, 'R4_Door_Walnut', '#33200F', '#6E4527', 0.4); add(m.wood, 'R4_Door_Teak_Main', '#3A210F', '#7A4A20', 0.35, 0.35)
@@ -61,7 +61,7 @@ def build_all():
                     ('Red', '#C52B2B', 0.35), ('Yellow', '#E8C23A', 0.35), ('Tank_Black', '#161616', 0.5), ('PVC_Grey', '#9A9A98', 0.4)):
         add(m.plastic, f'R4_Plastic_{n}', h, r)
     add(m.ceramic, 'R4_Ceramic_White', '#F3F1EC'); add(m.ceramic, 'R4_Glass_Black_TV', '#050506', 0.03)
-    add(m.glass, 'R4_Glass_Clear', '#D8E8E4'); add(m.glass, 'R4_Glass_Smoked', '#3A3F44', 0.0, 0.06, True); add(m.glass, 'R4_Glass_Frosted', '#EAF0EE', 0.0, 0.06, False, True)
+    add(m.glass, 'R4_Glass_Clear', '#C9DAD6'); add(m.glass, 'R4_Glass_Smoked', '#3A3F44', 0.0, 0.06, True); add(m.glass, 'R4_Glass_Frosted', '#EAF0EE', 0.0, 0.06, False, True)
     add(m.mirror, 'R4_Mirror')
     add(m.grass, 'R4_Grass_Far', '#5C7A34', '#4A6A2C', '#7C8A44', 0.15, 0.4); add(m.emissive, 'R4_LED_Pool', '#BFEFFF', 1.0)
     add(m.emissive, 'R4_LED_Warm', '#FFC47A', 8.0); add(m.emissive, 'R4_LED_White', '#F4F6FF', 10.0)

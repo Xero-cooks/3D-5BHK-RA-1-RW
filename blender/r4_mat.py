@@ -161,8 +161,8 @@ def plaster_ext(name, hexc, dirt=0.35, rough=0.88):
     var = m.noise(P, 0.5, 3.0, 0.5)
     base = m.ramp(var, [(0.3, shade(hexc, 0.94)), (0.7, shade(hexc, 1.03))])
     splash = m.math('MULTIPLY', m.math('SUBTRACT', 1.0, m.math('DIVIDE', m.math('SUBTRACT', Pz, 0.6), 1.2, clamp=True)), 0.45 * dirt / 0.35)
-    streak = m.ramp(m.noise(m.mapping(P, (6, 6, 0.35)), 3.0, 4.0, 0.6), [(0.48, (0, 0, 0, 1)), (0.85, (1, 1, 1, 1))])
-    d = m.math('ADD', splash, m.math('MULTIPLY', streak, 0.5 * dirt / 0.35))
+    streak = m.ramp(m.noise(m.mapping(P, (2.2, 2.2, 0.9)), 2.0, 4.0, 0.6), [(0.5, (0, 0, 0, 1)), (0.9, (1, 1, 1, 1))])
+    d = m.math('ADD', splash, m.math('MULTIPLY', streak, 0.22 * dirt / 0.35))
     base = m.mixc(m.math('MINIMUM', d, 0.7), base, shade('#6E6558', 1.0))
     base = m.mixc(0.7, base, m.ao(base, 0.5))
     h = m.math('ADD', m.noise(P, 220.0, 6.0, 0.65), m.math('MULTIPLY', m.noise(P, 30.0, 3.0), 0.4))
@@ -415,7 +415,7 @@ def pvc_panel(name, hexc='#EEECE6', pitch=0.2):
     nrm = m.bump(m.math('SUBTRACT', 1.0, joint), 0.8, 0.002)
     return m.finish(m.principled(col, 0.38, nrm, coat=0.15, coat_rough=0.2, spec=0.5))
 
-def water(name, deep='#2FA8BC', clear='#9FD8DE'):
+def water(name, deep='#1F95AD', clear='#74CBD6'):
     m = M(name); P = m.P()
     w1 = m.noise(m.mapping(P, (1.0, 1.0, 0.2)), 2.2, 3.0, 0.5); w2 = m.noise(m.mapping(P, (1.0, 1.0, 0.2), (3, 1, 0)), 7.5, 2.0, 0.5)
     h = m.math('ADD', m.math('MULTIPLY', w1, 0.6), m.math('MULTIPLY', w2, 0.4))

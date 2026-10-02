@@ -22,13 +22,17 @@ def coll(name, parent='17_Lighting'):
         bpy.data.collections[parent].children.link(c)
     return c
 
+def dust(sky, v):
+    for a in ('aerosol_density', 'dust_density'):
+        if hasattr(sky, a): setattr(sky, a, v); return a
+
 def make_world():
     w = bpy.data.worlds.get('World') or bpy.data.worlds.new('World')
     bpy.context.scene.world = w; w.use_nodes = True; nt = w.node_tree; nt.nodes.clear()
     sky = nt.nodes.new('ShaderNodeTexSky'); sky.name = 'R4_Sky'
     try: sky.sky_type = 'MULTIPLE_SCATTERING'
     except Exception: sky.sky_type = 'NISHITA'
-    sky.sun_disc = False; sky.air_density = 1.0; sky.dust_density = 2.0; sky.ozone_density = 1.0; sky.altitude = 0.0
+    sky.sun_disc = False; sky.air_density = 1.0; sky.ozone_density = 1.0; sky.altitude = 0.0; dust(sky, 2.0)
     bg = nt.nodes.new('ShaderNodeBackground'); bg.name = 'R4_BG'
     out = nt.nodes.new('ShaderNodeOutputWorld')
     nt.links.new(sky.outputs[0], bg.inputs[0]); nt.links.new(bg.outputs[0], out.inputs[0])
@@ -92,7 +96,7 @@ def set_led(w, wt):
 def set_time(name):
     p = PRESETS[name]; sc = bpy.context.scene
     w = sc.world; sky = w.node_tree.nodes['R4_Sky']; bg = w.node_tree.nodes['R4_BG']
-    sky.sun_elevation = math.radians(p['el']); sky.sun_rotation = math.radians(SKY_SIGN * p['az'] + SKY_OFFSET); sky.dust_density = p['dust']
+    sky.sun_elevation = math.radians(p['el']); sky.sun_rotation = math.radians(SKY_SIGN * p['az'] + SKY_OFFSET); dust(sky, p['dust'])
     bg.inputs['Strength'].default_value = p['bg']
     sun, moon = sun_lamps()
     d = sun_dir(p['az'], max(p['el'], 1.0)); aim(sun, d); sun.data.energy = p['sun']; sun.data.color = p['sun_col']

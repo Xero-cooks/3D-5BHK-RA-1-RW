@@ -1,10 +1,10 @@
 {
   "project": "3D-5BHK-RA-1-RW",
-  "round_completed": 3,
-  "next_round": 4,
+  "round_completed": 4,
+  "next_round": 5,
   "awaiting_user_reply": true,
-  "focus": "main residence only (clubhouse/pavilion/pool remain Round 1 blockout)",
-  "blender_file": "Round3_Furnished.blend",
+  "focus": "whole property: materials + lighting done; clubhouse/pavilion geometry still blockout",
+  "blender_file": "Round4_Materials_Lighting.blend",
   "build_scripts": [
     "blender/r1_foundation.py",
     "blender/r2_residence.py",
@@ -14,7 +14,12 @@
     "blender/r3_rooms.py",
     "blender/r3_arch.py",
     "blender/r3_ext.py",
-    "blender/r3_site.py"
+    "blender/r3_site.py",
+    "blender/r4_mat.py",
+    "blender/r4_lib.py",
+    "blender/r4_apply.py",
+    "blender/r4_light.py",
+    "blender/r4_helpers.py"
   ],
   "coordinate_system": "X east, Y north, Z up; origin = SW corner of residence (wall centrelines); metres",
   "buildings": {
@@ -60,5 +65,15 @@
     "clubhouse": 51,
     "pavilion": 23,
     "round3_new": 756
+  },
+  "lighting": {
+    "presets": [
+      "DAY",
+      "GOLDEN",
+      "NIGHT"
+    ],
+    "cameras": "CAM4_* (12) in 18_Cameras",
+    "render": "Cycles, AgX, OIDN",
+    "viewport": "keep Solid"
   }
 }

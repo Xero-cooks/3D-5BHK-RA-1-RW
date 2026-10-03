@@ -154,6 +154,22 @@ def walls():
         me.update(); touched += 1
     return touched, sorted(unmatched)
 
+def trim_overlaps(eps=0.02):
+    """Club/Pav exterior wall ends overlap their neighbours with coplanar faces (Cycles reads them as occluders -> black strips).
+    Pull each end inward by eps so the end caps sit inside the neighbouring wall."""
+    n = 0
+    for o in bpy.data.objects:
+        if o.type != 'MESH' or '_WALL_' not in o.name or '_EXT_' not in o.name or not o.name.startswith(('Club_', 'Pav_')): continue
+        if o.get('r4_trim'): continue
+        me = o.data; xs = [v.co.x for v in me.vertices]; ys = [v.co.y for v in me.vertices]
+        ax = 0 if (max(xs) - min(xs)) >= (max(ys) - min(ys)) else 1
+        vals = [v.co[ax] for v in me.vertices]; lo, hi = min(vals), max(vals)
+        for v in me.vertices:
+            if abs(v.co[ax] - lo) < 1e-4: v.co[ax] += eps
+            elif abs(v.co[ax] - hi) < 1e-4: v.co[ax] -= eps
+        me.update(); o['r4_trim'] = 1; n += 1
+    return n
+
 def specials():
     n = 0
     lea = {'Hall_Sofa': 'R4_Leather_Charcoal', 'Master_Sofa': 'R4_Leather_Tan', 'Lounge_Sofa': 'R4_Leather_Brown', 'Study_Sofa': 'R4_Leather_Tan', 'Office_Sofa': 'R4_Leather_Charcoal'}
@@ -181,7 +197,7 @@ def purge_old():
 
 def run():
     r = {'remap': remap_r3(), 'floors': floors(), 'blk': blk()}
-    r['split'] = split_walls(); r['walls'] = walls(); r['special'] = specials(); r['purged'] = purge_old()
+    r['split'] = split_walls(); r['walls'] = walls(); r['trim'] = trim_overlaps(); r['special'] = specials(); r['purged'] = purge_old()
     left = {}
     for o in bpy.data.objects:
         if o.type == 'MESH' and o.name.startswith(('Res_', 'SITE_', 'LAND_', 'Club_', 'Pav_', 'POOL_')):

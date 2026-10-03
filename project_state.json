@@ -1,10 +1,15 @@
 {
   "project": "3D-5BHK-RA-1-RW",
-  "round_completed": 4,
-  "next_round": 5,
+  "round_completed": 6,
+  "next_round": "none - final; awaiting user feedback or human assets",
   "awaiting_user_reply": true,
-  "focus": "whole property: materials + lighting done; clubhouse/pavilion geometry still blockout",
-  "blender_file": "Round4_Materials_Lighting.blend",
+  "focus": "final production push: clubhouse + pavilion fitted out, black-artifact fixes, cameras",
+  "blender_file": "Round6_Final.blend",
+  "notes": [
+    "Round 5 never executed; backlog folded into R6 (docs/ROUND_5_GAP_NOTE.md)",
+    "Re-run blender/r6_fixes.py (fx4) and blender/r6_facade.py if CornerFill_* / Club_FACADE_* missing in the saved .blend",
+    "Keep viewport Solid"
+  ],
   "build_scripts": [
     "blender/r1_foundation.py",
     "blender/r2_residence.py",
@@ -19,7 +24,20 @@
     "blender/r4_lib.py",
     "blender/r4_apply.py",
     "blender/r4_light.py",
-    "blender/r4_helpers.py"
+    "blender/r4_helpers.py",
+    "blender/r6_kit.py",
+    "blender/r6_foliage.py",
+    "blender/r6_club_glaze.py",
+    "blender/r6_equip.py",
+    "blender/r6_club_gf.py",
+    "blender/r6_club_gf2.py",
+    "blender/r6_club_ff.py",
+    "blender/r6_pavilion.py",
+    "blender/r6_pool.py",
+    "blender/r6_site.py",
+    "blender/r6_cams.py",
+    "blender/r6_facade.py",
+    "blender/r6_fixes.py"
   ],
   "coordinate_system": "X east, Y north, Z up; origin = SW corner of residence (wall centrelines); metres",
   "buildings": {
@@ -34,7 +52,8 @@
       ],
       "gf_ffl": 0.6,
       "ff_ffl": 3.8,
-      "roof_top": 7.0
+      "roof_top": 7.0,
+      "status": "R3-R4 interiors; exterior inferred"
     },
     "clubhouse": {
       "x": [
@@ -45,7 +64,7 @@
         -26,
         -10
       ],
-      "status": "Round 1 blockout"
+      "status": "Round 6 furnished/glazed/lit (inferred layout)"
     },
     "pavilion": {
       "x": [
@@ -56,15 +75,8 @@
         -32,
         -24
       ],
-      "status": "Round 1 blockout"
+      "status": "Round 6 furnished/glazed/lit, new hip roof (inferred)"
     }
-  },
-  "objects": {
-    "total": 3140,
-    "residence": 2439,
-    "clubhouse": 51,
-    "pavilion": 23,
-    "round3_new": 756
   },
   "lighting": {
     "presets": [
@@ -72,7 +84,7 @@
       "GOLDEN",
       "NIGHT"
     ],
-    "cameras": "CAM4_* (12) in 18_Cameras",
+    "cameras": "CAM4_* (12) + CAM6_* (20) in 18_Cameras",
     "render": "Cycles, AgX, OIDN",
     "viewport": "keep Solid"
   }

@@ -94,7 +94,7 @@ class M:
         if nrm is not None: s.setin(nd.inputs['Normal'], nrm)
         return nd.outputs['Normal']
     def ao(s, color, dist=0.5):
-        nd = s.n('ShaderNodeAmbientOcclusion'); nd.samples = 6
+        nd = s.n('ShaderNodeAmbientOcclusion'); nd.samples = 6; nd.only_local = True; nd.inside = False
         s.setin(nd.inputs['Color'], color); s.setin(nd.inputs['Distance'], dist); return nd.outputs['Color']
     def objrand(s):
         nd = s.n('ShaderNodeObjectInfo'); return nd.outputs['Random']

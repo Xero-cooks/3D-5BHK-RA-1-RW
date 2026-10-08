@@ -28,7 +28,7 @@ npm start
 npm run release:check  # EXPECTED to fail against the current broken collision ramps
 ```
 
-Build-time asset preparation is explicit: CI/deployment must run `npm run assets:prepare` before `npm run build`. Generated `public/assets` is ignored to avoid duplicating the 129 MB LFS asset in Git.
+Build-time asset preparation is automatic: `prebuild` invokes `npm run assets:ensure`, which retrieves missing approved assets from checksum-pinned GitHub URLs. `npm run assets:prepare` remains available for staging a supplied local export. See `ANTIDEPLOY.md` for the small source-upload strategy. Generated `public/assets` is ignored to avoid duplicating the 129 MB LFS asset in Git.
 
 ## Architecture
 
@@ -79,10 +79,10 @@ Debug: `npm run dev`, then `/?debug`. For explicitly enabled diagnostic producti
 
 ## Deploy
 
-No live hosting account has been configured by this change. Deploy the `viewer` subdirectory to a Node-capable Next.js host, or export with an appropriate static-host configuration (not configured here). A typical hosted build is:
+Antideploy deployment preparation is documented in `ANTIDEPLOY.md`; successful account connection and live deployment must be confirmed separately. Deploy the `viewer` subdirectory to a Node-capable Next.js host, or export with an appropriate static-host configuration (not configured here). A typical hosted build is:
 
 ```sh
-npm ci && npm run assets:prepare && npm run build
+npm ci && npm run build
 ```
 
 Use HTTPS for pointer lock and reliable browser controls. Ensure the host checkout retrieves Git LFS: many hosted Git integrations deliver only pointer files. Supply the real binaries through a CI artifact or CDN if LFS is unavailable; stage them before build. A 129 MB visual asset may exceed some host static-file limits. In that case serve `/assets/*` via a same-origin CDN/reverse proxy with correct `model/gltf-binary` and JSON MIME types, CORS if cross-origin, immutable caching only for versioned asset URLs, and compression negotiated by the CDN. Do not hardcode a guessed compressed size. The fetch stream exposes download progress when decoded content length is known; parse/batch/physics have separate friendly loading phases. The GLTF decode itself is main-thread work and can still stall low-end phones; worker-backed compressed derivatives are a later optimization.
@@ -101,3 +101,8 @@ Brotli/gzip must be measured against this binary; do not assume the handoff's 35
 See `TEST_REPORT.md` for exact tested versus blocked behavior. Do not interpret a successful `next build` or synthetic ramp test as a completed property walkthrough.
 
 Additional visual audit: leaf/hedge material colors default to white in the supplied glTF (no base-color factor/texture). This is documented for targeted material export correction, not hidden with invented runtime colors.
+
+
+### Antideploy
+
+See [`ANTIDEPLOY.md`](ANTIDEPLOY.md). The build downloads size- and checksum-pinned source assets, so the original 129 MB visual GLB is not included in the platform-limited source upload. No AI API key or database is required.

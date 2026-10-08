@@ -1,0 +1,29 @@
+{
+  "sourceCommit": "309f90e525a28975980f043c259c57ce773a2976",
+  "assets": [
+    {
+      "name": "farmhouse_visual.glb",
+      "bytes": 129077104,
+      "sha256": "263b5ecbcfbd0737a9ecc7798b99ab1fc55dd08933d1c15bc37ad6759d927953",
+      "url": "https://media.githubusercontent.com/media/Xero-cooks/3D-5BHK-RA-1-RW/309f90e525a28975980f043c259c57ce773a2976/web_export/farmhouse_visual.glb"
+    },
+    {
+      "name": "farmhouse_collision.glb",
+      "bytes": 46700,
+      "sha256": "285f47f1fbb27981400dade5c9bdd4b686f61d1b1b1b867ce9734499721a0735",
+      "url": "https://raw.githubusercontent.com/Xero-cooks/3D-5BHK-RA-1-RW/309f90e525a28975980f043c259c57ce773a2976/web_export/farmhouse_collision.glb"
+    },
+    {
+      "name": "spawn_points.json",
+      "bytes": 2298,
+      "sha256": "71fb46a57ae9fb583e30dc8f9c99251f31d243c13981ad4041e8e3912f3067c6",
+      "url": "https://raw.githubusercontent.com/Xero-cooks/3D-5BHK-RA-1-RW/309f90e525a28975980f043c259c57ce773a2976/web_export/spawn_points.json"
+    },
+    {
+      "name": "room_metadata.json",
+      "bytes": 2341,
+      "sha256": "56eab3b5cbd6346c8a4e9932c7a25d4e4072d00b9c7db4614ee7fe1764702ba9",
+      "url": "https://raw.githubusercontent.com/Xero-cooks/3D-5BHK-RA-1-RW/309f90e525a28975980f043c259c57ce773a2976/web_export/room_metadata.json"
+    }
+  ]
+}

@@ -11,7 +11,10 @@
     "assets:prepare": "node scripts/prepare-assets.mjs",
     "assets:audit": "node scripts/audit-assets.mjs",
     "release:check": "npm run assets:audit && node scripts/check-release.mjs",
-    "test:browser": "node scripts/browser-smoke.mjs"
+    "test:browser": "node scripts/browser-smoke.mjs",
+    "assets:ensure": "node scripts/ensure-assets.mjs",
+    "prebuild": "npm run assets:ensure",
+    "deploy:package": "node scripts/package-antideploy.mjs"
   },
   "type": "module",
   "dependencies": {
@@ -30,5 +33,8 @@
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   },
-  "private": true
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  }
 }

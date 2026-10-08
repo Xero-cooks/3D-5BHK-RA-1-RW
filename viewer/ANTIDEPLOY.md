@@ -1,0 +1,61 @@
+# Antideploy deployment — walkthrough preview
+
+This remains an **engineering preview**, not a completed property walkthrough. Asset collision/material corrections and physical-device performance testing in `TEST_REPORT.md` are still required. Hosting the preview does not bypass the customer-release gate.
+
+## Build and runtime
+
+Upload the `viewer` directory as the project root. Antideploy can recognize the existing Next.js package scripts without a custom Dockerfile:
+
+- Install: `npm ci`
+- Build: `npm run build`
+- Runtime: `npm start` (`next start --hostname 0.0.0.0` honors the platform's `PORT` environment variable)
+- Node.js: 22+; locally tested with Node 24
+- Required secrets: **none**
+- Required database: **none**
+- Do not enable `NEXT_PUBLIC_ENABLE_DEBUG` on the publicly hosted preview.
+
+For a future GitHub-connected monorepo application, set Antideploy `rootDirectory` to `viewer`. A directory-archive application already uploads `viewer` as its root and needs no monorepo setting. Directory uploads do not automatically establish a GitHub deployment integration.
+
+## Large assets: verified build-time retrieval
+
+Antideploy's public API advertises a maximum upload total and file size of **29,360,128 bytes (28 MiB)**. The original visual GLB is **129,077,104 bytes**, so uploading the exported assets with the source is not supported.
+
+`npm run build` invokes `prebuild`, which runs `scripts/ensure-assets.mjs`:
+
+1. Read `scripts/asset-manifest.json`, pinned to export commit `309f90e525a28975980f043c259c57ce773a2976`.
+2. Reuse only files whose size and SHA-256 match the approved manifest.
+3. Fetch missing visual GLB from GitHub's LFS media endpoint, and the collision GLB/room/spawn JSON from the corresponding pinned raw GitHub commit.
+4. Stream each response to a temporary file, enforce its expected size, verify SHA-256, then atomically rename it into `public/assets`.
+5. Fail the build if a download or verification fails. No placeholder files, geometry simplification, guessed model URL, or silent version mixing.
+
+The deployed Next server serves these assets locally under `/assets/`. Asset retrieval requires outbound access to `media.githubusercontent.com` and `raw.githubusercontent.com` on the Antideploy build worker. No GitHub token is needed for this public repository. A future approved export replacement must update the manifest's commit/size/checksum together; the script intentionally rejects unapproved local replacements.
+
+## Safe archive
+
+```sh
+cd viewer
+npm run deploy:package
+```
+
+This writes `/tmp/farmhouse-antideploy.tar.gz`, or use an explicit destination:
+
+```sh
+node scripts/package-antideploy.mjs /tmp/farmhouse-preview.tar.gz
+```
+
+Excludes `node_modules`, `.next`, `.git`, generated `public/assets`, browser screenshots, `.env*` and TypeScript incremental build files. The source archive is far below the upload limit. The complete built asset payload will be larger; platform build/static-serving limits must be verified by the actual deployment, not inferred from source-upload acceptance.
+
+## Connection and deployment
+
+Follow https://antideploy.com/agent.md and the current API reference at https://antideploy.com/api/v1.
+
+- Connect with the device approval flow. An OpenRouter AI key is not an Antideploy account token and is not needed by this viewer.
+- Store the granted Antideploy account token only in `~/.antideploy/config.json`, file mode `0600`; never put it in Git, the deployment archive, terminal output or browser code.
+- Create/read the intended application using that authorization. Save its non-secret `applicationId` as `.antideploy.json` only after the application actually exists.
+- Confirm the public subdomain with the owner before first deployment, check availability, and configure it on the application.
+- Upload the source archive with `POST /api/v1/deploy?applicationId=<id>` as multipart field `archive`.
+- Watch the returned task until it succeeds or fails. A queued upload is not a live deployment.
+- If failed, inspect `error`, `failedStep`, build/runtime logs and fix the cause before retrying. Do not repeatedly redeploy unchanged code or ignore account/plan restrictions.
+- After success, verify the site and all four `/assets/` responses, confirm the public viewer works, and read the automatic security result. Report the live URL **and the connected account**, and disclose any security findings.
+
+No unnecessary database, AI key, storage bucket or paid service is provisioned by this configuration. This document is deployment preparation—not evidence of a successful live deployment. Final deployment status is reported separately after account approval and live verification.

@@ -70,3 +70,12 @@ See `ASSET_CORRECTION_REQUEST.md`: zero-width ramps; continuous upper slabs seal
 Visual inspection also found white/pale foliage. Direct GLB JSON inspection confirms seven named leaf/hedge materials lack base-color factors/textures, so their glTF default is white. Targeted material export correction is requested; the web renderer is not responsible for inventing the missing colors.
 
 Final smoke-suite outcome: **desktop and emulated mobile both completed**, with **0 recorded console/page errors** and **no horizontal overflow**. Desktop pointer lock was acquired; `nativeEscapeReleased` is false in headless automation and is explicitly handled by the documented programmatic release. The final desktop minimap placement was separately recaptured after moving it away from the paused entry card; no overlap remained. The normal production build was also checked without debug enablement.
+
+## Antideploy preparation verification
+
+- Fresh-directory retrieval of all four pinned assets passes size and SHA-256 verification.
+- New `prebuild` asset hook and normal production build pass with no debug environment enabled.
+- Existing five automated tests still pass; original ramp TODO/release blockers remain unchanged.
+- Production server tested with `PORT=3017`: `/` and all four `/assets/` paths return HTTP 200, with the exact expected asset lengths and GLB/JSON MIME types.
+- Source archive verified at approximately 49 KiB compressed, 190 KiB unpacked: generated assets, environment files, caches and dependencies are excluded. This is below Antideploy's published 28 MiB upload limit.
+- These are local deployment-preparation checks. Account authorization, public hostname choice, remote build/runtime, live browser checks and platform security scan require the actual authorized deployment; none is inferred from these local passes.

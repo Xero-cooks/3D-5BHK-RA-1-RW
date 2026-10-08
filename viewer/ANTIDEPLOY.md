@@ -59,3 +59,14 @@ Follow https://antideploy.com/agent.md and the current API reference at https://
 - After success, verify the site and all four `/assets/` responses, confirm the public viewer works, and read the automatic security result. Report the live URL **and the connected account**, and disclose any security findings.
 
 No unnecessary database, AI key, storage bucket or paid service is provisioned by this configuration. This document is deployment preparation—not evidence of a successful live deployment. Final deployment status is reported separately after account approval and live verification.
+
+
+## Current preview deployment
+
+URL: https://rewari-farmhouse-5bhk.antideploy.app
+
+Application ID: `b2abee02-cb3c-4c40-81da-5d77ee573582`. Deployment task: `a2fa54f2-c0b7-456f-b053-12fb94048b6b`. Platform status: **succeeded**. This is a directory-upload deployment, not automatic deployment on GitHub pushes.
+
+The public HTML and all four original asset files returned HTTP 200 with checksum/size verification. Cloudflare rejected the Python-default user agent with error 1010; browser-identifying HTTP requests succeeded. The shared verification browser reached the public interface but reported WebGL/graphics acceleration unavailable, so full live 3D interaction was not verified in that browser. Earlier local software-WebGL tests remain documented separately.
+
+Automatic platform scan found no blocking public-security issues and one low-severity missing-security-headers finding. Security-header hardening is a follow-up, not silently reported as fixed. The original asset release blockers and real-device performance acceptance remain pending. See `reports/antideploy-deployment.json`.

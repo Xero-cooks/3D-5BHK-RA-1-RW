@@ -1,0 +1,44 @@
+{
+  "applicationId": "b2abee02-cb3c-4c40-81da-5d77ee573582",
+  "url": "https://rewari-farmhouse-5bhk.antideploy.app",
+  "deploymentTaskId": "a2fa54f2-c0b7-456f-b053-12fb94048b6b",
+  "status": "succeeded",
+  "deploymentType": "directory upload",
+  "publicAssetVerification": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 6620
+    },
+    {
+      "path": "/assets/farmhouse_visual.glb",
+      "status": 200,
+      "bytes": 129077104,
+      "checksumVerified": true
+    },
+    {
+      "path": "/assets/farmhouse_collision.glb",
+      "status": 200,
+      "bytes": 46700,
+      "checksumVerified": true
+    },
+    {
+      "path": "/assets/spawn_points.json",
+      "status": 200,
+      "bytes": 2298,
+      "checksumVerified": true
+    },
+    {
+      "path": "/assets/room_metadata.json",
+      "status": 200,
+      "bytes": 2341,
+      "checksumVerified": true
+    }
+  ],
+  "security": {
+    "blockingIssues": 0,
+    "minorIssues": 1,
+    "minorFinding": "Missing security headers"
+  },
+  "liveBrowserVerification": "Public UI reached; shared browser reports graphics acceleration/WebGL unavailable, so live 3D interaction not verified there."
+}

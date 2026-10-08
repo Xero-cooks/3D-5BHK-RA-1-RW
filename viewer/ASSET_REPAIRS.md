@@ -62,3 +62,8 @@ npm start
 Both desktop (1280×800 CSS pixels) and touch/mobile emulation (390×844) passed the production browser smoke script with zero console errors and no horizontal overflow. Each loaded both assets, opened room/settings/layout panels, teleported to Master Bedroom, moved the grounded player, and exercised look input. Desktop pointer lock succeeded. Headless synthetic Escape did not release native pointer lock; the test explicitly called `document.exitPointerLock()` afterward. Native Escape and real touch-device behavior still need physical-browser sign-off.
 
 Tests used CPU software WebGL at `TEST_DPR=0.35` to fit this remote machine; this is functional browser evidence, **not a mobile FPS benchmark**. Software-GPU FPS is low; ordinary hardware GPUs and Android/iOS require separate profiling. Debug is disabled in the normal public production build.
+
+### Published verification
+Antideploy task `54a1c6fb-d69d-4c9a-8acf-19ba5fe24436` succeeded at https://rewari-farmhouse-5bhk.antideploy.app. Public GET checks for all four versioned runtime assets returned HTTP 200 and matched their derived SHA-256 and byte sizes. The live browser reached Explore and rendered the restored entrance colors/detail. This is not merely a local build result.
+
+Automatic hosting security scan completed with no reported high issues and one low missing-security-header note. No AI/API key is required by this viewer.

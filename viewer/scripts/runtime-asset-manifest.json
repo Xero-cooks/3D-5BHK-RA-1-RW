@@ -1,0 +1,26 @@
+{
+  "sourceCommit": "309f90e525a28975980f043c259c57ce773a2976",
+  "derivative": "source colors, smaller textures, actual wall apertures, measured stair ramps",
+  "assets": [
+    {
+      "name": "farmhouse_visual.glb",
+      "bytes": 74998604,
+      "sha256": "e6270e68676d717e789f0c57b8677e48b537270bda778e821484a1442dd36e26"
+    },
+    {
+      "name": "farmhouse_collision.glb",
+      "bytes": 850436,
+      "sha256": "55499643ace64a96eb91be816c6ba8b5471bd531113762668f560c48199935dc"
+    },
+    {
+      "name": "spawn_points.json",
+      "bytes": 2233,
+      "sha256": "83df11f9b8d1155bc29fc1b89bb43d64f717356f46d824609fa2c5c3d7789228"
+    },
+    {
+      "name": "room_metadata.json",
+      "bytes": 2222,
+      "sha256": "d8da0325b5c63c99a1752714eabbcd5f79c5a78c7ddfd88f108d606eba1fe52d"
+    }
+  ]
+}

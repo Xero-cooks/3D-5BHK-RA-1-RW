@@ -1,3 +1,5 @@
+> Historical original-export audit below. Browser-only derivative repairs now address doorway, ramp, approach, pool-spawn, missing-color and missing-coordinate defects. See `ASSET_REPAIRS.md`; do not treat the historical blockers as the deployed derivative status. Exact Round7 procedural baking and external texture recovery still require the actual `.blend`.
+
 # Targeted collision/metadata correction request — do not rebuild architecture
 
 Audited original main commit `309f90e525a28975980f043c259c57ce773a2976` and the actual Git LFS visual binary, not its 134-byte pointer. Visual SHA-256 from the LFS pointer: `263b5ecbcfbd0737a9ecc7798b99ab1fc55dd08933d1c15bc37ad6759d927953`.

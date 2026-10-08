@@ -7,7 +7,7 @@ import { loadGLB, optimizeScene } from "../lib/assets";
 import { setTextureQuality } from "../lib/textures";
 import { createPhysics, PlayerPhysics } from "../lib/physics";
 import { Room, Spawn, exterior } from "../lib/metadata";
-import assetManifest from "../scripts/asset-manifest.json";
+import assetManifest from "../scripts/runtime-asset-manifest.json";
 const asset=(name:string)=>{const a=assetManifest.assets.find(a=>a.name===name);if(!a)throw Error("Missing approved asset");return {...a,path:`/assets/${name}?v=${a.sha256.slice(0,16)}`};};
 
 type Bundle = {
@@ -62,7 +62,7 @@ export default function Walkthrough() {
     let jsonTimer:ReturnType<typeof setTimeout>|undefined;
     const began = performance.now();
     (async () => {
-      // Fail early rather than download 123 MiB and present non-working controls.
+      // Fail early rather than download the property and present non-working controls.
       const probe=document.createElement('canvas');const graphics=probe.getContext('webgl2');
       if(!graphics)throw Error('GRAPHICS_UNAVAILABLE');graphics.getExtension('WEBGL_lose_context')?.loseContext();
       jsonTimer=setTimeout(()=>abort.abort(new Error('Room information timed out')),30000);
@@ -112,6 +112,7 @@ export default function Walkthrough() {
       setProgress(100);
     })().catch((e) => {
       clearTimeout(jsonTimer);
+      if(cancelled)return;
       console.error("Walkthrough loading failed", e);
       if (!cancelled)
         setError(

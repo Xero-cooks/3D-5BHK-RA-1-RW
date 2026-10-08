@@ -1,6 +1,6 @@
 # Antideploy deployment — walkthrough preview
 
-This remains an **engineering preview**, not a completed property walkthrough. Asset collision/material corrections and physical-device performance testing in `TEST_REPORT.md` are still required. Hosting the preview does not bypass the customer-release gate.
+This remains an **engineering preview**, not a completed property walkthrough. Targeted collision/material repairs are described in `ASSET_REPAIRS.md`; exact Blender parity and physical-device performance testing are still required. Hosting the preview does not bypass the customer-release gate.
 
 ## Build and runtime
 
@@ -20,15 +20,17 @@ For a future GitHub-connected monorepo application, set Antideploy `rootDirector
 
 Antideploy's public API advertises a maximum upload total and file size of **29,360,128 bytes (28 MiB)**. The original visual GLB is **129,077,104 bytes**, so uploading the exported assets with the source is not supported.
 
-`npm run build` invokes `prebuild`, which runs `scripts/ensure-assets.mjs`:
+`npm run build` invokes `prebuild`, which runs `scripts/ensure-assets.mjs` followed by `scripts/derive-assets.mjs`:
 
 1. Read `scripts/asset-manifest.json`, pinned to export commit `309f90e525a28975980f043c259c57ce773a2976`.
 2. Reuse only files whose size and SHA-256 match the approved manifest.
 3. Fetch missing visual GLB from GitHub's LFS media endpoint, and the collision GLB/room/spawn JSON from the corresponding pinned raw GitHub commit.
-4. Stream each response to a temporary file, enforce its expected size, verify SHA-256, then atomically rename it into `public/assets`.
+4. Stream each response to a temporary file, enforce its expected size, verify SHA-256, then atomically rename it into `.asset-cache`.
 5. Fail the build if a download or verification fails. No placeholder files, geometry simplification, guessed model URL, or silent version mixing.
 
-The deployed Next server serves these assets locally under `/assets/`. Asset retrieval requires outbound access to `media.githubusercontent.com` and `raw.githubusercontent.com` on the Antideploy build worker. No GitHub token is needed for this public repository. A future approved export replacement must update the manifest's commit/size/checksum together; the script intentionally rejects unapproved local replacements.
+After source verification, derivation restores source palette fallbacks, box-projects existing images lacking UVs, caps embedded images at 1024px, and creates separate corrected structural collision geometry. It writes the runtime size/SHA manifest before Next compilation.
+
+The deployed Next server serves these derived assets locally under `/assets/`. Asset retrieval requires outbound access to `media.githubusercontent.com` and `raw.githubusercontent.com` on the Antideploy build worker. No GitHub token is needed for this public repository. A future approved export replacement must update the manifest's commit/size/checksum together; the script intentionally rejects unapproved local replacements.
 
 ## Safe archive
 
@@ -43,7 +45,7 @@ This writes `/tmp/farmhouse-antideploy.tar.gz`, or use an explicit destination:
 node scripts/package-antideploy.mjs /tmp/farmhouse-preview.tar.gz
 ```
 
-Excludes `node_modules`, `.next`, `.git`, generated `public/assets`, browser screenshots, `.env*` and TypeScript incremental build files. The source archive is far below the upload limit. The complete built asset payload will be larger; platform build/static-serving limits must be verified by the actual deployment, not inferred from source-upload acceptance.
+Excludes `node_modules`, `.next`, `.git`, generated `public/assets`, `.asset-cache`, browser screenshots, `.env*` and TypeScript incremental build files. The source archive is far below the upload limit. The complete built asset payload will be larger; platform build/static-serving limits must be verified by the actual deployment, not inferred from source-upload acceptance.
 
 ## Connection and deployment
 

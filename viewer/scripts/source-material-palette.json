@@ -1,0 +1,2133 @@
+{
+  "R4_Paint_Ivory": {
+    "kind": "paint",
+    "parameters": {
+      "rough": 0.8,
+      "ao": true,
+      "peel": 0.12,
+      "dirt": 0.0,
+      "hexc": "#E9E1CB"
+    },
+    "colors": [
+      "#E9E1CB"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Paint_Cream": {
+    "kind": "paint",
+    "parameters": {
+      "rough": 0.8,
+      "ao": true,
+      "peel": 0.12,
+      "dirt": 0.0,
+      "hexc": "#E4D9BD"
+    },
+    "colors": [
+      "#E4D9BD"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Paint_Sand": {
+    "kind": "paint",
+    "parameters": {
+      "rough": 0.8,
+      "ao": true,
+      "peel": 0.12,
+      "dirt": 0.0,
+      "hexc": "#DDCDAA"
+    },
+    "colors": [
+      "#DDCDAA"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Paint_Taupe": {
+    "kind": "paint",
+    "parameters": {
+      "rough": 0.8,
+      "ao": true,
+      "peel": 0.12,
+      "dirt": 0.0,
+      "hexc": "#D3C7B1"
+    },
+    "colors": [
+      "#D3C7B1"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Paint_Stone": {
+    "kind": "paint",
+    "parameters": {
+      "rough": 0.8,
+      "ao": true,
+      "peel": 0.12,
+      "dirt": 0.0,
+      "hexc": "#D9D4C5"
+    },
+    "colors": [
+      "#D9D4C5"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Paint_White": {
+    "kind": "paint",
+    "parameters": {
+      "rough": 0.65,
+      "ao": true,
+      "peel": 0.12,
+      "dirt": 0.0,
+      "hexc": "#F1EFE8"
+    },
+    "colors": [
+      "#F1EFE8"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Paint_Ceiling": {
+    "kind": "paint",
+    "parameters": {
+      "rough": 0.92,
+      "ao": true,
+      "peel": 0.12,
+      "dirt": 0.0,
+      "hexc": "#F5F3EE"
+    },
+    "colors": [
+      "#F5F3EE"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Paint_Teal": {
+    "kind": "paint",
+    "parameters": {
+      "rough": 0.4,
+      "ao": false,
+      "peel": 0.12,
+      "dirt": 0.0,
+      "hexc": "#2E8FA8"
+    },
+    "colors": [
+      "#2E8FA8"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Plaster_Exterior": {
+    "kind": "plaster_ext",
+    "parameters": {
+      "dirt": 0.35,
+      "rough": 0.88,
+      "hexc": "#E8D6B0"
+    },
+    "colors": [
+      "#E8D6B0"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Plaster_Trim_White": {
+    "kind": "plaster_ext",
+    "parameters": {
+      "dirt": 0.25,
+      "rough": 0.88,
+      "hexc": "#EFEBE0"
+    },
+    "colors": [
+      "#EFEBE0"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Plaster_Plinth": {
+    "kind": "plaster_ext",
+    "parameters": {
+      "dirt": 0.5,
+      "rough": 0.88,
+      "hexc": "#B5AA97"
+    },
+    "colors": [
+      "#B5AA97"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Floor_Vitrified_Cream": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#BDB29E",
+      "vein": "#BBAC92",
+      "rows": "none",
+      "coat": 0.5,
+      "bump": 0.12,
+      "speck": 0.0,
+      "grout_rough": 0.85,
+      "base": "#DAD0BC",
+      "varc": "#D0C5AE",
+      "sx": 0.8,
+      "sy": 0.8,
+      "gw": 0.003,
+      "rough": 0.07
+    },
+    "colors": [
+      "#BDB29E",
+      "#BBAC92",
+      "#DAD0BC",
+      "#D0C5AE"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Floor_Vitrified_Ivory": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#BDB29E",
+      "vein": "#C2B59C",
+      "rows": "none",
+      "coat": 0.5,
+      "bump": 0.12,
+      "speck": 0.0,
+      "grout_rough": 0.85,
+      "base": "#E0D8C6",
+      "varc": "#D6CDB8",
+      "sx": 0.6,
+      "sy": 0.6,
+      "gw": 0.003,
+      "rough": 0.08
+    },
+    "colors": [
+      "#BDB29E",
+      "#C2B59C",
+      "#E0D8C6",
+      "#D6CDB8"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Floor_Laminate_Oak_Grey": {
+    "kind": "planks",
+    "parameters": {
+      "length": 1.2,
+      "width": 0.19,
+      "rough": 0.42,
+      "coat": 0.15,
+      "gap": "#1E1812",
+      "along": "x",
+      "base": "#6A5748",
+      "dark": "#52443A",
+      "light": "#7F6B58"
+    },
+    "colors": [
+      "#1E1812",
+      "#6A5748",
+      "#52443A",
+      "#7F6B58"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Floor_Laminate_Oak_Honey": {
+    "kind": "planks",
+    "parameters": {
+      "length": 1.2,
+      "width": 0.19,
+      "rough": 0.38,
+      "coat": 0.15,
+      "gap": "#1E1812",
+      "along": "x",
+      "base": "#9A6B3E",
+      "dark": "#7E5530",
+      "light": "#B58652"
+    },
+    "colors": [
+      "#1E1812",
+      "#9A6B3E",
+      "#7E5530",
+      "#B58652"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Floor_Tile_Kitchen": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#B0A692",
+      "vein": null,
+      "rows": "none",
+      "coat": 0.35,
+      "bump": 0.2,
+      "speck": 0.0,
+      "grout_rough": 0.85,
+      "base": "#E3D9C5",
+      "varc": "#D8CDB6",
+      "sx": 0.6,
+      "sy": 0.6,
+      "gw": 0.003,
+      "rough": 0.12
+    },
+    "colors": [
+      "#B0A692",
+      "#E3D9C5",
+      "#D8CDB6"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Floor_Tile_Bath": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#6F675C",
+      "vein": null,
+      "rows": "none",
+      "coat": 0.0,
+      "bump": 0.6,
+      "speck": 0.4,
+      "grout_rough": 0.85,
+      "base": "#8F8678",
+      "varc": "#847B6E",
+      "sx": 0.3,
+      "sy": 0.3,
+      "gw": 0.003,
+      "rough": 0.45
+    },
+    "colors": [
+      "#6F675C",
+      "#8F8678",
+      "#847B6E"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Floor_Tile_Utility": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#5E5851",
+      "vein": null,
+      "rows": "none",
+      "coat": 0.0,
+      "bump": 0.7,
+      "speck": 0.5,
+      "grout_rough": 0.85,
+      "base": "#7C766E",
+      "varc": "#726C64",
+      "sx": 0.3,
+      "sy": 0.3,
+      "gw": 0.004,
+      "rough": 0.55
+    },
+    "colors": [
+      "#5E5851",
+      "#7C766E",
+      "#726C64"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Floor_Tile_Balcony_Peach": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#A8947A",
+      "vein": null,
+      "rows": "none",
+      "coat": 0.2,
+      "bump": 0.4,
+      "speck": 0.25,
+      "grout_rough": 0.85,
+      "base": "#D9B58B",
+      "varc": "#CFA87D",
+      "sx": 0.6,
+      "sy": 0.6,
+      "gw": 0.004,
+      "rough": 0.22
+    },
+    "colors": [
+      "#A8947A",
+      "#D9B58B",
+      "#CFA87D"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Wall_Tile_Bath": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#A39984",
+      "vein": "#B7AA94",
+      "rows": "none",
+      "coat": 0.5,
+      "bump": 0.3,
+      "speck": 0.0,
+      "grout_rough": 0.85,
+      "base": "#D6CCB9",
+      "varc": "#CBBFA9",
+      "sx": 0.3,
+      "sy": 0.6,
+      "gw": 0.003,
+      "rough": 0.1
+    },
+    "colors": [
+      "#A39984",
+      "#B7AA94",
+      "#D6CCB9",
+      "#CBBFA9"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Stair_Marble_Beige": {
+    "kind": "marble",
+    "parameters": {
+      "rough": 0.08,
+      "base": "#D8CCB3",
+      "vein": "#A8957A"
+    },
+    "colors": [
+      "#D8CCB3",
+      "#A8957A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Terrace_Tile_Grey": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#5A5750",
+      "vein": null,
+      "rows": "none",
+      "coat": 0.0,
+      "bump": 0.8,
+      "speck": 0.5,
+      "grout_rough": 0.85,
+      "base": "#8A8780",
+      "varc": "#7D7A74",
+      "sx": 0.3,
+      "sy": 0.3,
+      "gw": 0.006,
+      "rough": 0.7
+    },
+    "colors": [
+      "#5A5750",
+      "#8A8780",
+      "#7D7A74"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Paving_Sandstone": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#7B6E5E",
+      "vein": null,
+      "rows": "none",
+      "coat": 0.0,
+      "bump": 1.0,
+      "speck": 0.3,
+      "grout_rough": 0.85,
+      "base": "#C7AB8B",
+      "varc": "#B99A78",
+      "sx": 0.6,
+      "sy": 0.6,
+      "gw": 0.01,
+      "rough": 0.8
+    },
+    "colors": [
+      "#7B6E5E",
+      "#C7AB8B",
+      "#B99A78"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Paving_Interlock_Grey": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#4F4B46",
+      "vein": null,
+      "rows": "half",
+      "coat": 0.0,
+      "bump": 1.0,
+      "speck": 0.4,
+      "grout_rough": 0.85,
+      "base": "#8C8680",
+      "varc": "#7B7570",
+      "sx": 0.2,
+      "sy": 0.1,
+      "gw": 0.006,
+      "rough": 0.85
+    },
+    "colors": [
+      "#4F4B46",
+      "#8C8680",
+      "#7B7570"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Panel_Stone_Cladding": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#6E6556",
+      "vein": null,
+      "rows": "half",
+      "coat": 0.0,
+      "bump": 1.2,
+      "speck": 0.3,
+      "grout_rough": 0.85,
+      "base": "#B9AC96",
+      "varc": "#A89B85",
+      "sx": 0.3,
+      "sy": 0.15,
+      "gw": 0.006,
+      "rough": 0.6
+    },
+    "colors": [
+      "#6E6556",
+      "#B9AC96",
+      "#A89B85"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Tile_Mosaic_Beige": {
+    "kind": "mosaic",
+    "parameters": {
+      "grout": "#9C9384",
+      "base": "#C9B697",
+      "var": "#B7A07C"
+    },
+    "colors": [
+      "#9C9384",
+      "#C9B697",
+      "#B7A07C"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Grass_Lawn": {
+    "kind": "grass",
+    "parameters": {
+      "scale": 1.0,
+      "bump": 1.0,
+      "c1": "#4F6B2E",
+      "c2": "#425C27",
+      "c3": "#72843F"
+    },
+    "colors": [
+      "#4F6B2E",
+      "#425C27",
+      "#72843F"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Grass_Dry": {
+    "kind": "grass",
+    "parameters": {
+      "scale": 1.0,
+      "bump": 1.0,
+      "c1": "#8E8A4A",
+      "c2": "#7A7640",
+      "c3": "#A59F5A"
+    },
+    "colors": [
+      "#8E8A4A",
+      "#7A7640",
+      "#A59F5A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Soil_Laterite": {
+    "kind": "soil",
+    "parameters": {
+      "rough": 0.95,
+      "c1": "#8A4A2C",
+      "c2": "#6B3822"
+    },
+    "colors": [
+      "#8A4A2C",
+      "#6B3822"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Soil": {
+    "kind": "soil",
+    "parameters": {
+      "rough": 0.95,
+      "c1": "#4A3626",
+      "c2": "#352619"
+    },
+    "colors": [
+      "#4A3626",
+      "#352619"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Door_Walnut": {
+    "kind": "wood",
+    "parameters": {
+      "rough": 0.4,
+      "coat": 0.25,
+      "scale": 14.0,
+      "vertical": true,
+      "stripes": 1.0,
+      "fine": 1.0,
+      "dark": "#33200F",
+      "light": "#6E4527"
+    },
+    "colors": [
+      "#33200F",
+      "#6E4527"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Door_Teak_Main": {
+    "kind": "wood",
+    "parameters": {
+      "rough": 0.35,
+      "coat": 0.35,
+      "scale": 14.0,
+      "vertical": true,
+      "stripes": 1.0,
+      "fine": 1.0,
+      "dark": "#3A210F",
+      "light": "#7A4A20"
+    },
+    "colors": [
+      "#3A210F",
+      "#7A4A20"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Wood_Dark": {
+    "kind": "wood",
+    "parameters": {
+      "rough": 0.4,
+      "coat": 0.25,
+      "scale": 14.0,
+      "vertical": true,
+      "stripes": 1.0,
+      "fine": 1.0,
+      "dark": "#2E1B10",
+      "light": "#58351D"
+    },
+    "colors": [
+      "#2E1B10",
+      "#58351D"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Wood_Med": {
+    "kind": "wood",
+    "parameters": {
+      "rough": 0.4,
+      "coat": 0.25,
+      "scale": 14.0,
+      "vertical": true,
+      "stripes": 1.0,
+      "fine": 1.0,
+      "dark": "#5A3A20",
+      "light": "#8E6038"
+    },
+    "colors": [
+      "#5A3A20",
+      "#8E6038"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Wood_Teak": {
+    "kind": "wood",
+    "parameters": {
+      "rough": 0.4,
+      "coat": 0.25,
+      "scale": 14.0,
+      "vertical": true,
+      "stripes": 1.0,
+      "fine": 1.0,
+      "dark": "#7A4E22",
+      "light": "#B07A3E"
+    },
+    "colors": [
+      "#7A4E22",
+      "#B07A3E"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Wood_Handrail": {
+    "kind": "wood",
+    "parameters": {
+      "rough": 0.35,
+      "coat": 0.3,
+      "scale": 14.0,
+      "vertical": false,
+      "stripes": 1.0,
+      "fine": 1.0,
+      "dark": "#4A2A14",
+      "light": "#7C4A26"
+    },
+    "colors": [
+      "#4A2A14",
+      "#7C4A26"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Laminate_Cream": {
+    "kind": "laminate",
+    "parameters": {
+      "rough": 0.35,
+      "tint": "#000000",
+      "grain": 0.12,
+      "tone": 0.07,
+      "hexc": "#E7DDC8"
+    },
+    "colors": [
+      "#000000",
+      "#E7DDC8"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Laminate_White": {
+    "kind": "laminate",
+    "parameters": {
+      "rough": 0.35,
+      "tint": "#000000",
+      "grain": 0.12,
+      "tone": 0.07,
+      "hexc": "#EFEBE0"
+    },
+    "colors": [
+      "#000000",
+      "#EFEBE0"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Laminate_Woodgrain_Grey": {
+    "kind": "wood",
+    "parameters": {
+      "rough": 0.35,
+      "coat": 0.1,
+      "scale": 18.0,
+      "vertical": true,
+      "stripes": 1.0,
+      "fine": 1.0,
+      "dark": "#5E564E",
+      "light": "#8A8076"
+    },
+    "colors": [
+      "#5E564E",
+      "#8A8076"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Granite_Brown": {
+    "kind": "granite",
+    "parameters": {
+      "rough": 0.18,
+      "scale": 260.0,
+      "coat": 0.3,
+      "base": "#6B5237",
+      "specks": [
+        "#C8A878",
+        "#2A1C10",
+        "#9A7C55"
+      ]
+    },
+    "colors": [
+      "#6B5237"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Granite_Grey": {
+    "kind": "granite",
+    "parameters": {
+      "rough": 0.18,
+      "scale": 260.0,
+      "coat": 0.3,
+      "base": "#7A7873",
+      "specks": [
+        "#BDBAB2",
+        "#2E2E2E",
+        "#9C9A94"
+      ]
+    },
+    "colors": [
+      "#7A7873"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Marble_White": {
+    "kind": "marble",
+    "parameters": {
+      "rough": 0.08,
+      "base": "#EDEAE4",
+      "vein": "#9A9A9A"
+    },
+    "colors": [
+      "#EDEAE4",
+      "#9A9A9A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Stone_Boulder": {
+    "kind": "granite",
+    "parameters": {
+      "rough": 0.75,
+      "scale": 120.0,
+      "coat": 0.0,
+      "base": "#8A867F",
+      "specks": [
+        "#B8B4AA",
+        "#4A4742"
+      ]
+    },
+    "colors": [
+      "#8A867F"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Stone_Plinth": {
+    "kind": "granite",
+    "parameters": {
+      "rough": 0.45,
+      "scale": 120.0,
+      "coat": 0.05,
+      "base": "#6E6B66",
+      "specks": [
+        "#A9A59C",
+        "#2E2D2B"
+      ]
+    },
+    "colors": [
+      "#6E6B66"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Stone_Sill": {
+    "kind": "granite",
+    "parameters": {
+      "rough": 0.4,
+      "scale": 160.0,
+      "coat": 0.05,
+      "base": "#B8B0A0",
+      "specks": [
+        "#E0DACB",
+        "#7C766A"
+      ]
+    },
+    "colors": [
+      "#B8B0A0"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Concrete": {
+    "kind": "concrete",
+    "parameters": {
+      "hexc": "#8D8B86",
+      "rough": 0.92,
+      "dirt": true
+    },
+    "colors": [
+      "#8D8B86"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Concrete_Dark": {
+    "kind": "concrete",
+    "parameters": {
+      "hexc": "#6E6D6A",
+      "rough": 0.92,
+      "dirt": true
+    },
+    "colors": [
+      "#6E6D6A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Brick_Red": {
+    "kind": "brick",
+    "parameters": {
+      "sx": 0.23,
+      "sy": 0.075,
+      "gw": 0.01,
+      "hexc": "#8A3E2C",
+      "hex2": "#7A3426"
+    },
+    "colors": [
+      "#8A3E2C",
+      "#7A3426"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Metal_Black_Powder": {
+    "kind": "metal",
+    "parameters": {
+      "rough": 0.4,
+      "metallic": 0.85,
+      "brushed": false,
+      "coat": 0.0,
+      "hexc": "#18181A"
+    },
+    "colors": [
+      "#18181A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Metal_Graphite": {
+    "kind": "metal",
+    "parameters": {
+      "rough": 0.35,
+      "metallic": 1.0,
+      "brushed": false,
+      "coat": 0.0,
+      "hexc": "#3A3C40"
+    },
+    "colors": [
+      "#3A3C40"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Brass_Satin": {
+    "kind": "metal",
+    "parameters": {
+      "rough": 0.28,
+      "metallic": 1.0,
+      "brushed": false,
+      "coat": 0.0,
+      "hexc": "#C7A045"
+    },
+    "colors": [
+      "#C7A045"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Chrome": {
+    "kind": "metal",
+    "parameters": {
+      "rough": 0.04,
+      "metallic": 1.0,
+      "brushed": false,
+      "coat": 0.0,
+      "hexc": "#E8EAEC"
+    },
+    "colors": [
+      "#E8EAEC"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Steel_Stainless": {
+    "kind": "metal",
+    "parameters": {
+      "rough": 0.25,
+      "metallic": 1.0,
+      "brushed": true,
+      "coat": 0.0,
+      "hexc": "#C9CCCE"
+    },
+    "colors": [
+      "#C9CCCE"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Railing_Green_Steel": {
+    "kind": "metal",
+    "parameters": {
+      "rough": 0.45,
+      "metallic": 0.7,
+      "brushed": false,
+      "coat": 0.1,
+      "hexc": "#2E4030"
+    },
+    "colors": [
+      "#2E4030"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Frame_Aluminium_White": {
+    "kind": "metal",
+    "parameters": {
+      "rough": 0.38,
+      "metallic": 0.0,
+      "brushed": false,
+      "coat": 0.0,
+      "hexc": "#E9E6DD"
+    },
+    "colors": [
+      "#E9E6DD"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Plastic_Black": {
+    "kind": "plastic",
+    "parameters": {
+      "rough": 0.35,
+      "hexc": "#141416"
+    },
+    "colors": [
+      "#141416"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Plastic_White": {
+    "kind": "plastic",
+    "parameters": {
+      "rough": 0.3,
+      "hexc": "#ECEAE4"
+    },
+    "colors": [
+      "#ECEAE4"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Plastic_Blue": {
+    "kind": "plastic",
+    "parameters": {
+      "rough": 0.35,
+      "hexc": "#2C6FB5"
+    },
+    "colors": [
+      "#2C6FB5"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Plastic_Pink": {
+    "kind": "plastic",
+    "parameters": {
+      "rough": 0.35,
+      "hexc": "#E58AA8"
+    },
+    "colors": [
+      "#E58AA8"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Plastic_Purple": {
+    "kind": "plastic",
+    "parameters": {
+      "rough": 0.35,
+      "hexc": "#7A4A9A"
+    },
+    "colors": [
+      "#7A4A9A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Plastic_Red": {
+    "kind": "plastic",
+    "parameters": {
+      "rough": 0.35,
+      "hexc": "#C52B2B"
+    },
+    "colors": [
+      "#C52B2B"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Plastic_Yellow": {
+    "kind": "plastic",
+    "parameters": {
+      "rough": 0.35,
+      "hexc": "#E8C23A"
+    },
+    "colors": [
+      "#E8C23A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Plastic_Tank_Black": {
+    "kind": "plastic",
+    "parameters": {
+      "rough": 0.5,
+      "hexc": "#161616"
+    },
+    "colors": [
+      "#161616"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Plastic_PVC_Grey": {
+    "kind": "plastic",
+    "parameters": {
+      "rough": 0.4,
+      "hexc": "#9A9A98"
+    },
+    "colors": [
+      "#9A9A98"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Ceramic_White": {
+    "kind": "ceramic",
+    "parameters": {
+      "rough": 0.04,
+      "hexc": "#F3F1EC"
+    },
+    "colors": [
+      "#F3F1EC"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Glass_Black_TV": {
+    "kind": "ceramic",
+    "parameters": {
+      "rough": 0.03,
+      "hexc": "#050506"
+    },
+    "colors": [
+      "#050506"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_Sheer": {
+    "kind": "sheer",
+    "parameters": {
+      "hexc": "#F1ECE0",
+      "opacity": 0.5
+    },
+    "colors": [
+      "#F1ECE0"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Glass_Clear": {
+    "kind": "glass",
+    "parameters": {
+      "tint": "#C9DAD6",
+      "rough": 0.0,
+      "tintk": 0.06,
+      "smoked": false,
+      "frosted": false
+    },
+    "colors": [
+      "#C9DAD6"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Glass_Smoked": {
+    "kind": "glass",
+    "parameters": {
+      "tint": "#3A3F44",
+      "rough": 0.0,
+      "tintk": 0.06,
+      "smoked": true,
+      "frosted": false
+    },
+    "colors": [
+      "#3A3F44"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Glass_Frosted": {
+    "kind": "glass",
+    "parameters": {
+      "tint": "#EAF0EE",
+      "rough": 0.0,
+      "tintk": 0.06,
+      "smoked": false,
+      "frosted": true
+    },
+    "colors": [
+      "#EAF0EE"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Mirror": {
+    "kind": "mirror",
+    "parameters": {},
+    "colors": [],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Grass_Far": {
+    "kind": "grass",
+    "parameters": {
+      "scale": 0.15,
+      "bump": 0.4,
+      "c1": "#5C7A34",
+      "c2": "#4A6A2C",
+      "c3": "#7C8A44"
+    },
+    "colors": [
+      "#5C7A34",
+      "#4A6A2C",
+      "#7C8A44"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_LED_Pool": {
+    "kind": "emissive",
+    "parameters": {
+      "hexc": "#BFEFFF",
+      "strength": 1.0
+    },
+    "colors": [
+      "#BFEFFF"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_LED_Warm": {
+    "kind": "emissive",
+    "parameters": {
+      "hexc": "#FFC47A",
+      "strength": 8.0
+    },
+    "colors": [
+      "#FFC47A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_LED_White": {
+    "kind": "emissive",
+    "parameters": {
+      "hexc": "#F4F6FF",
+      "strength": 10.0
+    },
+    "colors": [
+      "#F4F6FF"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_cream": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#E3D8C0"
+    },
+    "colors": [
+      "#E3D8C0"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_brown": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#5B4030"
+    },
+    "colors": [
+      "#5B4030"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_charcoal": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#3A3A3C"
+    },
+    "colors": [
+      "#3A3A3C"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_grey": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#8A8A88"
+    },
+    "colors": [
+      "#8A8A88"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_taupe": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#A59580"
+    },
+    "colors": [
+      "#A59580"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_white": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#EDEAE2"
+    },
+    "colors": [
+      "#EDEAE2"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_green": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#4F6B45"
+    },
+    "colors": [
+      "#4F6B45"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_maroon": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#6E2230"
+    },
+    "colors": [
+      "#6E2230"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_mustard": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#C79A2A"
+    },
+    "colors": [
+      "#C79A2A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_ochre": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#B77B2E"
+    },
+    "colors": [
+      "#B77B2E"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_teal": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#2F7A7A"
+    },
+    "colors": [
+      "#2F7A7A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_black_floral": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": "#E8DCC0",
+      "pattern": "black_floral",
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#222222"
+    },
+    "colors": [
+      "#E8DCC0",
+      "#222222"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_floral": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": "#7A9A5A",
+      "pattern": "floral",
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#EADFC8"
+    },
+    "colors": [
+      "#7A9A5A",
+      "#EADFC8"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_mandala": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": "#C8502A",
+      "pattern": "mandala",
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#E8D8B8"
+    },
+    "colors": [
+      "#C8502A",
+      "#E8D8B8"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Fabric_Headboard": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#7A5A44"
+    },
+    "colors": [
+      "#7A5A44"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Rug_blue": {
+    "kind": "rug",
+    "parameters": {
+      "pile": 0.9,
+      "field": "#2B4A78",
+      "border": "#D9CBA8",
+      "accent": "#C8A55A"
+    },
+    "colors": [
+      "#2B4A78",
+      "#D9CBA8",
+      "#C8A55A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Rug_cream": {
+    "kind": "rug",
+    "parameters": {
+      "pile": 0.9,
+      "field": "#E2D6BC",
+      "border": "#9C8460",
+      "accent": "#B89A66"
+    },
+    "colors": [
+      "#E2D6BC",
+      "#9C8460",
+      "#B89A66"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Rug_pink": {
+    "kind": "rug",
+    "parameters": {
+      "pile": 0.9,
+      "field": "#C98095",
+      "border": "#E8D8C6",
+      "accent": "#9E4A62"
+    },
+    "colors": [
+      "#C98095",
+      "#E8D8C6",
+      "#9E4A62"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Rug_red": {
+    "kind": "rug",
+    "parameters": {
+      "pile": 0.9,
+      "field": "#8E2A28",
+      "border": "#D6C3A0",
+      "accent": "#C99A4A"
+    },
+    "colors": [
+      "#8E2A28",
+      "#D6C3A0",
+      "#C99A4A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Art_Blue": {
+    "kind": "art",
+    "parameters": {
+      "c1": "#1F3F7A",
+      "c2": "#E8DCC0",
+      "c3": "#3A6FB0"
+    },
+    "colors": [
+      "#1F3F7A",
+      "#E8DCC0",
+      "#3A6FB0"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Art_Ochre": {
+    "kind": "art",
+    "parameters": {
+      "c1": "#B77B2E",
+      "c2": "#E8DCC0",
+      "c3": "#6B4A1E"
+    },
+    "colors": [
+      "#B77B2E",
+      "#E8DCC0",
+      "#6B4A1E"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Art_Red": {
+    "kind": "art",
+    "parameters": {
+      "c1": "#9E2A2A",
+      "c2": "#E8DCC0",
+      "c3": "#4A1A1A"
+    },
+    "colors": [
+      "#9E2A2A",
+      "#E8DCC0",
+      "#4A1A1A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Leaf": {
+    "kind": "leaf",
+    "parameters": {
+      "rough": 0.5,
+      "sss": 0.08,
+      "h1": "#2F6B2B",
+      "h2": "#3F7F32"
+    },
+    "colors": [
+      "#2F6B2B",
+      "#3F7F32"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Leaf_Dark": {
+    "kind": "leaf",
+    "parameters": {
+      "rough": 0.5,
+      "sss": 0.08,
+      "h1": "#1D4521",
+      "h2": "#2A5A2A"
+    },
+    "colors": [
+      "#1D4521",
+      "#2A5A2A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Leaf_Light": {
+    "kind": "leaf",
+    "parameters": {
+      "rough": 0.5,
+      "sss": 0.08,
+      "h1": "#5C9438",
+      "h2": "#78AE45"
+    },
+    "colors": [
+      "#5C9438",
+      "#78AE45"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Leaf_Red": {
+    "kind": "leaf",
+    "parameters": {
+      "rough": 0.5,
+      "sss": 0.08,
+      "h1": "#7A2B22",
+      "h2": "#9A3A2A"
+    },
+    "colors": [
+      "#7A2B22",
+      "#9A3A2A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Leaf_Yellow": {
+    "kind": "leaf",
+    "parameters": {
+      "rough": 0.5,
+      "sss": 0.08,
+      "h1": "#A8A23A",
+      "h2": "#C0B848"
+    },
+    "colors": [
+      "#A8A23A",
+      "#C0B848"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Leaf_Olive": {
+    "kind": "leaf",
+    "parameters": {
+      "rough": 0.5,
+      "sss": 0.08,
+      "h1": "#6B7A3E",
+      "h2": "#808E4E"
+    },
+    "colors": [
+      "#6B7A3E",
+      "#808E4E"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Hedge_Foliage": {
+    "kind": "leaf",
+    "parameters": {
+      "rough": 0.5,
+      "sss": 0.08,
+      "h1": "#24501E",
+      "h2": "#33652A"
+    },
+    "colors": [
+      "#24501E",
+      "#33652A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Flower_Orange": {
+    "kind": "leaf",
+    "parameters": {
+      "rough": 0.5,
+      "sss": 0.08,
+      "h1": "#E8742A",
+      "h2": "#F08A3A"
+    },
+    "colors": [
+      "#E8742A",
+      "#F08A3A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Flower_Pink": {
+    "kind": "leaf",
+    "parameters": {
+      "rough": 0.5,
+      "sss": 0.08,
+      "h1": "#D9558C",
+      "h2": "#E872A4"
+    },
+    "colors": [
+      "#D9558C",
+      "#E872A4"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Bark": {
+    "kind": "bark",
+    "parameters": {
+      "ring": false,
+      "rough": 0.9,
+      "hexc": "#5A4A3A"
+    },
+    "colors": [
+      "#5A4A3A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Palm_Trunk": {
+    "kind": "bark",
+    "parameters": {
+      "ring": true,
+      "rough": 0.9,
+      "hexc": "#7A6A55"
+    },
+    "colors": [
+      "#7A6A55"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Terracotta": {
+    "kind": "paint",
+    "parameters": {
+      "rough": 0.75,
+      "ao": true,
+      "peel": 0.12,
+      "dirt": 0.0,
+      "hexc": "#B0592F"
+    },
+    "colors": [
+      "#B0592F"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Clay_Dark": {
+    "kind": "paint",
+    "parameters": {
+      "rough": 0.75,
+      "ao": true,
+      "peel": 0.12,
+      "dirt": 0.0,
+      "hexc": "#5A3828"
+    },
+    "colors": [
+      "#5A3828"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Cardboard": {
+    "kind": "paint",
+    "parameters": {
+      "rough": 0.9,
+      "ao": false,
+      "peel": 0.12,
+      "dirt": 0.0,
+      "hexc": "#B8946A"
+    },
+    "colors": [
+      "#B8946A"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Paper": {
+    "kind": "paper",
+    "parameters": {
+      "hexc": "#EFEBE0"
+    },
+    "colors": [
+      "#EFEBE0"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Cane_Weave": {
+    "kind": "cane",
+    "parameters": {
+      "wicker": false,
+      "hexc": "#C9A66B",
+      "hex2": "#B58F55"
+    },
+    "colors": [
+      "#C9A66B",
+      "#B58F55"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Wicker": {
+    "kind": "cane",
+    "parameters": {
+      "wicker": true,
+      "hexc": "#E6E0D2",
+      "hex2": "#D8D0C0"
+    },
+    "colors": [
+      "#E6E0D2",
+      "#D8D0C0"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Leather_Charcoal": {
+    "kind": "leather",
+    "parameters": {
+      "rough": 0.48,
+      "hexc": "#2B2B2D"
+    },
+    "colors": [
+      "#2B2B2D"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Leather_Brown": {
+    "kind": "leather",
+    "parameters": {
+      "rough": 0.48,
+      "hexc": "#4A2E1E"
+    },
+    "colors": [
+      "#4A2E1E"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Leather_Tan": {
+    "kind": "leather",
+    "parameters": {
+      "rough": 0.48,
+      "hexc": "#9A6A3F"
+    },
+    "colors": [
+      "#9A6A3F"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_PVC_Panel_White": {
+    "kind": "pvc_panel",
+    "parameters": {
+      "hexc": "#EEECE6",
+      "pitch": 0.2
+    },
+    "colors": [
+      "#EEECE6"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Water_Pool": {
+    "kind": "water",
+    "parameters": {
+      "deep": "#1F95AD",
+      "clear": "#74CBD6"
+    },
+    "colors": [
+      "#1F95AD",
+      "#74CBD6"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Rubber_Gym": {
+    "kind": "rubber",
+    "parameters": {
+      "hexc": "#2A2B2D"
+    },
+    "colors": [
+      "#2A2B2D"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Pool_Deck_Travertine": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#8E8268",
+      "vein": null,
+      "rows": "none",
+      "coat": 0.0,
+      "bump": 0.8,
+      "speck": 0.3,
+      "grout_rough": 0.85,
+      "base": "#D5C6A8",
+      "varc": "#C8B898",
+      "sx": 0.6,
+      "sy": 0.4,
+      "gw": 0.006,
+      "rough": 0.7
+    },
+    "colors": [
+      "#8E8268",
+      "#D5C6A8",
+      "#C8B898"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Pool_Tile_Mosaic": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#9FB5B8",
+      "vein": null,
+      "rows": "none",
+      "coat": 0.4,
+      "bump": 0.5,
+      "speck": 0.0,
+      "grout_rough": 0.85,
+      "base": "#4FA6B6",
+      "varc": "#3E94A8",
+      "sx": 0.025,
+      "sy": 0.025,
+      "gw": 0.002,
+      "rough": 0.15
+    },
+    "colors": [
+      "#9FB5B8",
+      "#4FA6B6",
+      "#3E94A8"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R4_Roof_Tile_Terracotta": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#5A3020",
+      "vein": null,
+      "rows": "half",
+      "coat": 0.0,
+      "bump": 1.4,
+      "speck": 0.3,
+      "grout_rough": 0.85,
+      "base": "#A65432",
+      "varc": "#8F4528",
+      "sx": 0.3,
+      "sy": 0.2,
+      "gw": 0.01,
+      "rough": 0.65
+    },
+    "colors": [
+      "#5A3020",
+      "#A65432",
+      "#8F4528"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py"
+  },
+  "R7_Floor_Vitrified_Cream": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#BDB29E",
+      "vein": "#BBAC92",
+      "rows": "none",
+      "coat": 0.5,
+      "bump": 0.12,
+      "speck": 0.0,
+      "grout_rough": 0.85,
+      "base": "#DAD0BC",
+      "varc": "#D0C5AE",
+      "sx": 0.8,
+      "sy": 0.8,
+      "gw": 0.003,
+      "rough": 0.07
+    },
+    "colors": [
+      "#BDB29E",
+      "#BBAC92",
+      "#DAD0BC",
+      "#D0C5AE"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py; simplified Round 7 color-preserving alias",
+    "alias": "R4_Floor_Vitrified_Cream"
+  },
+  "R7_Floor_Vitrified_Ivory": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#BDB29E",
+      "vein": "#C2B59C",
+      "rows": "none",
+      "coat": 0.5,
+      "bump": 0.12,
+      "speck": 0.0,
+      "grout_rough": 0.85,
+      "base": "#E0D8C6",
+      "varc": "#D6CDB8",
+      "sx": 0.6,
+      "sy": 0.6,
+      "gw": 0.003,
+      "rough": 0.08
+    },
+    "colors": [
+      "#BDB29E",
+      "#C2B59C",
+      "#E0D8C6",
+      "#D6CDB8"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py; simplified Round 7 color-preserving alias",
+    "alias": "R4_Floor_Vitrified_Ivory"
+  },
+  "R7_Floor_Tile_Bath": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#6F675C",
+      "vein": null,
+      "rows": "none",
+      "coat": 0.0,
+      "bump": 0.6,
+      "speck": 0.4,
+      "grout_rough": 0.85,
+      "base": "#8F8678",
+      "varc": "#847B6E",
+      "sx": 0.3,
+      "sy": 0.3,
+      "gw": 0.003,
+      "rough": 0.45
+    },
+    "colors": [
+      "#6F675C",
+      "#8F8678",
+      "#847B6E"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py; simplified Round 7 color-preserving alias",
+    "alias": "R4_Floor_Tile_Bath"
+  },
+  "R7_Floor_Tile_Kitchen": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#B0A692",
+      "vein": null,
+      "rows": "none",
+      "coat": 0.35,
+      "bump": 0.2,
+      "speck": 0.0,
+      "grout_rough": 0.85,
+      "base": "#E3D9C5",
+      "varc": "#D8CDB6",
+      "sx": 0.6,
+      "sy": 0.6,
+      "gw": 0.003,
+      "rough": 0.12
+    },
+    "colors": [
+      "#B0A692",
+      "#E3D9C5",
+      "#D8CDB6"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py; simplified Round 7 color-preserving alias",
+    "alias": "R4_Floor_Tile_Kitchen"
+  },
+  "R7_Floor_Tile_Utility": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#5E5851",
+      "vein": null,
+      "rows": "none",
+      "coat": 0.0,
+      "bump": 0.7,
+      "speck": 0.5,
+      "grout_rough": 0.85,
+      "base": "#7C766E",
+      "varc": "#726C64",
+      "sx": 0.3,
+      "sy": 0.3,
+      "gw": 0.004,
+      "rough": 0.55
+    },
+    "colors": [
+      "#5E5851",
+      "#7C766E",
+      "#726C64"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py; simplified Round 7 color-preserving alias",
+    "alias": "R4_Floor_Tile_Utility"
+  },
+  "R7_Floor_Tile_Balcony": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#A8947A",
+      "vein": null,
+      "rows": "none",
+      "coat": 0.2,
+      "bump": 0.4,
+      "speck": 0.25,
+      "grout_rough": 0.85,
+      "base": "#D9B58B",
+      "varc": "#CFA87D",
+      "sx": 0.6,
+      "sy": 0.6,
+      "gw": 0.004,
+      "rough": 0.22
+    },
+    "colors": [
+      "#A8947A",
+      "#D9B58B",
+      "#CFA87D"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py; simplified Round 7 color-preserving alias",
+    "alias": "R4_Floor_Tile_Balcony_Peach"
+  },
+  "R7_Pool_Tile": {
+    "kind": "tile",
+    "parameters": {
+      "grout": "#9FB5B8",
+      "vein": null,
+      "rows": "none",
+      "coat": 0.4,
+      "bump": 0.5,
+      "speck": 0.0,
+      "grout_rough": 0.85,
+      "base": "#4FA6B6",
+      "varc": "#3E94A8",
+      "sx": 0.025,
+      "sy": 0.025,
+      "gw": 0.002,
+      "rough": 0.15
+    },
+    "colors": [
+      "#9FB5B8",
+      "#4FA6B6",
+      "#3E94A8"
+    ],
+    "source": "blender/r4_lib.py + blender/r4_mat.py; simplified Round 7 color-preserving alias",
+    "alias": "R4_Pool_Tile_Mosaic"
+  },
+  "R7_Fab_R4_Fabric_mustard": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#C79A2A"
+    },
+    "colors": [
+      "#C79A2A"
+    ],
+    "source": "scripts/R7_soft.py base_col/piping rule; original palette from blender/r4_lib.py",
+    "alias": "R4_Fabric_mustard",
+    "piping": false
+  },
+  "R7_Pipe_R4_Fabric_mustard": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#C79A2A"
+    },
+    "colors": [
+      "#C79A2A"
+    ],
+    "source": "scripts/R7_soft.py base_col/piping rule; original palette from blender/r4_lib.py",
+    "alias": "R4_Fabric_mustard",
+    "piping": true
+  },
+  "R7_Fab_R4_Fabric_white": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#EDEAE2"
+    },
+    "colors": [
+      "#EDEAE2"
+    ],
+    "source": "scripts/R7_soft.py base_col/piping rule; original palette from blender/r4_lib.py",
+    "alias": "R4_Fabric_white",
+    "piping": false
+  },
+  "R7_Pipe_R4_Fabric_white": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#EDEAE2"
+    },
+    "colors": [
+      "#EDEAE2"
+    ],
+    "source": "scripts/R7_soft.py base_col/piping rule; original palette from blender/r4_lib.py",
+    "alias": "R4_Fabric_white",
+    "piping": true
+  },
+  "R7_Fab_R4_Fabric_cream": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#E3D8C0"
+    },
+    "colors": [
+      "#E3D8C0"
+    ],
+    "source": "scripts/R7_soft.py base_col/piping rule; original palette from blender/r4_lib.py",
+    "alias": "R4_Fabric_cream",
+    "piping": false
+  },
+  "R7_Pipe_R4_Fabric_cream": {
+    "kind": "fabric",
+    "parameters": {
+      "accent": null,
+      "pattern": null,
+      "sheen": 0.6,
+      "rough": 0.92,
+      "hexc": "#E3D8C0"
+    },
+    "colors": [
+      "#E3D8C0"
+    ],
+    "source": "scripts/R7_soft.py base_col/piping rule; original palette from blender/r4_lib.py",
+    "alias": "R4_Fabric_cream",
+    "piping": true
+  },
+  "R6_Pool_Grate": {
+    "kind": "metal",
+    "linearColor": [
+      0.9,
+      0.9,
+      0.9
+    ],
+    "parameters": {
+      "rough": 0.45,
+      "metal": 0
+    },
+    "source": "blender/r6_pool.py"
+  }
+}

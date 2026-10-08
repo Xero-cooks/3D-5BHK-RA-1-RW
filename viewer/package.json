@@ -8,13 +8,14 @@
     "start": "next start --hostname 0.0.0.0",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
-    "assets:prepare": "node scripts/prepare-assets.mjs",
+    "assets:prepare": "node scripts/prepare-assets.mjs && npm run assets:derive",
     "assets:audit": "node scripts/audit-assets.mjs",
-    "release:check": "npm run assets:audit && node scripts/check-release.mjs",
+    "release:check": "node scripts/check-release.mjs && tsx --test tests/repaired.test.ts tests/derivative.test.ts",
     "test:browser": "node scripts/browser-smoke.mjs",
     "assets:ensure": "node scripts/ensure-assets.mjs",
-    "prebuild": "npm run assets:ensure",
-    "deploy:package": "node scripts/package-antideploy.mjs"
+    "prebuild": "npm run assets:ensure && npm run assets:derive",
+    "deploy:package": "node scripts/package-antideploy.mjs",
+    "assets:derive": "node scripts/derive-assets.mjs"
   },
   "type": "module",
   "dependencies": {
@@ -23,6 +24,7 @@
     "next": "^16.4.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
+    "sharp": "^0.35.5",
     "three": "^0.186.1"
   },
   "devDependencies": {

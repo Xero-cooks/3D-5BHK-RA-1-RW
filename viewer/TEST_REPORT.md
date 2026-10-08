@@ -1,3 +1,5 @@
+> Historical original-export audit below. Browser-only derivative repairs now address doorway, ramp, approach, pool-spawn, missing-color and missing-coordinate defects. See `ASSET_REPAIRS.md`; do not treat the historical blockers as the deployed derivative status. Exact Round7 procedural baking and external texture recovery still require the actual `.blend`.
+
 # Verification report — preview, not customer-release sign-off
 
 ## Environment and scope

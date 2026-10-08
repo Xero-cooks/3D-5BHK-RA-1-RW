@@ -5,7 +5,7 @@ import {Readable,Transform} from 'node:stream';
 import {pipeline} from 'node:stream/promises';
 import {resolve} from 'node:path';
 const manifest=JSON.parse(await readFile(new URL('./asset-manifest.json',import.meta.url),'utf8'));
-const output=resolve(process.env.ASSET_OUTPUT_DIRECTORY||'public/assets');
+const output=resolve(process.env.ASSET_OUTPUT_DIRECTORY||'.asset-cache');
 await mkdir(output,{recursive:true});
 async function verify(path,asset){
  const file=await stat(path).catch(e=>{if(e.code==='ENOENT')return null;throw e;});

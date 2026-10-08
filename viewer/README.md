@@ -1,6 +1,6 @@
 # Farmhouse web walkthrough
 
-**Working web-runtime preview; NOT release-complete.** The original GLB exports remain unchanged. Critical collision export defects prevent an honest free-roam release. See `ASSET_CORRECTION_REQUEST.md` and `TEST_REPORT.md`.
+**Interactive web preview with targeted browser-asset repairs.** Original production/export files remain unchanged. Door apertures, measured stair ramps, missing source colors and image coordinates are repaired in build-generated browser derivatives. See `ASSET_REPAIRS.md` for tested behavior and remaining exact-Blender-parity limitations. Physical-device performance sign-off is still pending.
 
 ## Run
 
@@ -25,10 +25,10 @@ npm test
 npm run assets:audit
 npm run build
 npm start
-npm run release:check  # EXPECTED to fail against the current broken collision ramps
+npm run release:check  # repaired geometry + actual-property traversal tests
 ```
 
-Build-time asset preparation is automatic: `prebuild` invokes `npm run assets:ensure`, which retrieves missing approved assets from checksum-pinned GitHub URLs. `npm run assets:prepare` remains available for staging a supplied local export. See `ANTIDEPLOY.md` for the small source-upload strategy. Generated `public/assets` is ignored to avoid duplicating the 129 MB LFS asset in Git.
+Build-time asset preparation is automatic: `prebuild` verifies checksum-pinned original assets into `.asset-cache`, then runs `assets:derive` to create the repaired, lighter browser assets. The runtime imports the generated SHA/size manifest, so progress and cache versioning match what is actually served. `npm run assets:prepare` remains available for staging a supplied local export. See `ANTIDEPLOY.md` for the small source-upload strategy. Generated `public/assets` is ignored to avoid duplicating the 129 MB LFS asset in Git.
 
 ## Architecture
 
@@ -40,7 +40,7 @@ Build-time asset preparation is automatic: `prebuild` invokes `npm run assets:en
 - `lib/metadata.ts`: explicit Blender-to-Three coordinate/yaw conversion and room-bound queries.
 - `lib/textures.ts`: reversible quality-dependent texture resizing with shared image caches.
 - `components/ViewerBoundary.tsx`: friendly graphics failure recovery.
-- `scripts`: reproducible original-asset staging and GLB JSON audit. No Blender code or production edits.
+- `scripts`: reproducible original-asset staging and GLB JSON audit. No Blender execution or production edits. `derive-assets.mjs` performs isolated browser-export corrections; the tracked source palette and projection/texture helpers make them reproducible.
 
 ## Assets and coordinates
 
@@ -54,7 +54,7 @@ WASD + pointer-locked mouse on desktop, Escape to pause. Mobile has 48 px transl
 
 A radius .35 m, total height 1.8 m capsule uses Rapier character sweeps against static exported triangle colliders. Controller offset .025 m, 42 degree climb limit, 46 degree slide threshold, .3 m autostep and .25 m ground snap. Two-sided internal-edge fixing avoids false ramp seams. Gravity and last-spawn fall reset below -2 m are active. Frame deltas are bounded; stalled tabs cannot produce a large movement leap. Capsule center is .9 m above feet; camera uses metadata eye height (1.6 m).
 
-Only the collision export contributes physical surfaces. Door, furniture, vegetation and decoration visual meshes do not collide. **This does not make a doorway passable when a continuous exported wall collider covers it.** The current asset must be corrected, not ignored by runtime collision code. Do not remove wall physics to fake passing this requirement.
+Only the generated collision GLB contributes physical surfaces. Door leaves, furniture, vegetation and decorations are excluded. The derivative replaces sealed bounding-box walls with the actual low-poly structural wall meshes, including their existing Boolean door openings. It adds actual entrance steps/supports and six nonzero-width ramps measured from the visual stair flights, cuts the upper-floor collision apertures, and retains walls/boundaries. The visual scene is never passed wholesale to physics. See actual front/interior doorway and all-three-stair regression tests.
 
 ## Navigation and orientation
 
@@ -68,10 +68,10 @@ Default LOW on coarse-pointer mobile; MEDIUM on desktop. Automatic downgrades af
 | --- | --- | --- | --- | --- | --- |
 | LOW | .75 | 512 | off | inexpensive transparent approximation | 2 nearest |
 | MEDIUM | 1 | 1024 | off | inexpensive transparent approximation | 4 nearest |
-| HIGH | 1.5 | 2048 | 2048 | source physical transmission | 12 nearest |
-| ULTRA | 2 | original (cap 8192) | 2048 | source physical transmission | 12 nearest |
+| HIGH | 1.5 | up to 1024 in this derivative | 2048 | source physical transmission | 12 nearest |
+| ULTRA | 2 | up to 1024 in this derivative | 2048 | source physical transmission | 12 nearest |
 
-Texture downsampling is reversible and does not change source files. Pixel ratio never exceeds device DPR. No postprocessing, screen-space reflections, SSAO, or animated environmental effects. Spatial/material batching reduces CPU draw submissions while retaining geometry and frustum culling. Alpha vegetation and glass keep their original material semantics. GPU mip memory is reported as an **upper-bound estimate**, not a hardware measurement; shared texture uploads can make actual memory lower. GPU shader milliseconds and physical-device thermal behavior still require a real-GPU profiling pass.
+Runtime downsampling is reversible within the derivative’s 1024px image cap and does not change source files. Increasing quality cannot recover discarded export pixels; the original 129 MB source is retained separately. Pixel ratio never exceeds device DPR. No postprocessing, screen-space reflections, SSAO, or animated environmental effects. Spatial/material batching reduces CPU draw submissions while retaining geometry and frustum culling. Alpha vegetation and glass keep their original material semantics. GPU mip memory is reported as an **upper-bound estimate**, not a hardware measurement; shared texture uploads can make actual memory lower. GPU shader milliseconds and physical-device thermal behavior still require a real-GPU profiling pass.
 
 Browser smoke: `npx playwright install chromium`, then `npm run test:browser` against an explicitly debug-enabled local production server (see `TEST_REPORT.md`).
 

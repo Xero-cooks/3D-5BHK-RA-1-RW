@@ -6,3 +6,5 @@ public/assets/
 !.env.example
 
 reports/browser-screenshots/
+
+.asset-cache/

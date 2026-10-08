@@ -1,13 +1,3 @@
-import { readFileSync } from "node:fs";
-const audit = JSON.parse(readFileSync("reports/asset-audit.json", "utf8"));
-const ramps = audit.find((r) => r.kind === "collision").degenerateRamps;
-if (ramps.length) {
-  console.error(
-    "RELEASE BLOCKED: zero-width stair ramps:",
-    ramps.map((r) => r.name).join(", "),
-  );
-  process.exit(1);
-}
-console.error(
-  "Geometry ramp gate passed. Manual doorway, floor aperture, entrance approach, pool, real-device and visual parity sign-off still required; see TEST_REPORT.md.",
-);
+import {readFileSync} from 'node:fs';import {unpackGLB,geometryScene} from './gltf-tools.mjs';import {Mesh,Box3} from 'three';
+const visual=unpackGLB(readFileSync('public/assets/farmhouse_visual.glb')).json;for(const m of visual.meshes)for(const p of m.primitives)if(visual.materials[p.material]?.pbrMetallicRoughness?.baseColorTexture&&p.attributes.TEXCOORD_0===undefined)throw Error('Textured mesh is missing coordinates');
+const scene=await geometryScene(readFileSync('public/assets/farmhouse_collision.glb'));let ramps=0;scene.traverse(o=>{if(o instanceof Mesh&&o.name.startsWith('COL_MeasuredRamp')){const b=new Box3().setFromObject(o);if(b.max.x-b.min.x<.7)throw Error('Degenerate stair ramp');ramps++;}});if(ramps!==6)throw Error('Expected all six measured stair flights');console.log('Derivative geometry gates passed. Actual-property traversal tests run next. Real-device performance and exact Blender parity remain separate sign-offs.');

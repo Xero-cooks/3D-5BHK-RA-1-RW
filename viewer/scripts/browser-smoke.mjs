@@ -26,7 +26,7 @@ for (const mobile of [true, false]) {
       : { width: 1280, height: 800 },
     isMobile: mobile,
     hasTouch: mobile,
-    deviceScaleFactor: mobile ? 1 : 0.5,
+    deviceScaleFactor: Number(process.env.TEST_DPR || (mobile ? 1 : 0.5)),
   });
   const page = await context.newPage();
   page.setDefaultTimeout(120000);

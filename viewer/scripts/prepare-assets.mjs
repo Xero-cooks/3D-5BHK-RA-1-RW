@@ -1,6 +1,6 @@
 import { copyFileSync, existsSync, readFileSync, mkdirSync } from "node:fs";
 const source = process.env.ASSET_SOURCE || "../web_export";
-mkdirSync("public/assets", { recursive: true });
+mkdirSync(".asset-cache", { recursive: true });
 for (const file of [
   "farmhouse_visual.glb",
   "farmhouse_collision.glb",
@@ -17,6 +17,6 @@ for (const file of [
     throw new Error(
       `${path} is not a GLB (possibly a Git LFS pointer). Run git lfs pull.`,
     );
-  copyFileSync(path, `public/assets/${file}`);
+  copyFileSync(path, `.asset-cache/${file}`);
 }
-console.log("Prepared original assets without transformation.");
+console.log("Cached original assets; browser derivatives follow.");

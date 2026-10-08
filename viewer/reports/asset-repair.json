@@ -1,0 +1,493 @@
+{
+  "geometryPreserved": true,
+  "projectedTexturePrimitives": 731,
+  "simplifiedSourceSurfaces": 16,
+  "sourceBytes": 129077104,
+  "derivedBytes": 74998604,
+  "sourceImageBytes": 72853623,
+  "derivedImageBytes": 13895254,
+  "materialsRepaired": [
+    {
+      "name": "R4_Fabric_floral",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "fabric"
+    },
+    {
+      "name": "R7_Fab_R4_Fabric_mustard",
+      "source": "scripts/R7_soft.py base_col/piping rule; original palette from blender/r4_lib.py",
+      "kind": "fabric"
+    },
+    {
+      "name": "R7_Pipe_R4_Fabric_mustard",
+      "source": "scripts/R7_soft.py base_col/piping rule; original palette from blender/r4_lib.py",
+      "kind": "fabric"
+    },
+    {
+      "name": "R7_Fab_R4_Fabric_white",
+      "source": "scripts/R7_soft.py base_col/piping rule; original palette from blender/r4_lib.py",
+      "kind": "fabric"
+    },
+    {
+      "name": "R7_Pipe_R4_Fabric_white",
+      "source": "scripts/R7_soft.py base_col/piping rule; original palette from blender/r4_lib.py",
+      "kind": "fabric"
+    },
+    {
+      "name": "R7_Fab_R4_Fabric_cream",
+      "source": "scripts/R7_soft.py base_col/piping rule; original palette from blender/r4_lib.py",
+      "kind": "fabric"
+    },
+    {
+      "name": "R7_Pipe_R4_Fabric_cream",
+      "source": "scripts/R7_soft.py base_col/piping rule; original palette from blender/r4_lib.py",
+      "kind": "fabric"
+    },
+    {
+      "name": "R4_Fabric_mandala",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "fabric"
+    },
+    {
+      "name": "R4_Leaf_Olive",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "leaf"
+    },
+    {
+      "name": "R4_Stone_Boulder",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "granite"
+    },
+    {
+      "name": "R4_Soil_Laterite",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "soil"
+    },
+    {
+      "name": "R6_Pool_Grate",
+      "source": "blender/r6_pool.py",
+      "kind": "metal"
+    },
+    {
+      "name": "R7_Pool_Tile",
+      "source": "blender/r4_lib.py + blender/r4_mat.py; simplified Round 7 color-preserving alias",
+      "kind": "tile"
+    },
+    {
+      "name": "R4_Glass_Clear",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "glass"
+    },
+    {
+      "name": "R4_Wood_Handrail",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "wood"
+    },
+    {
+      "name": "R4_Paving_Interlock_Grey",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "tile"
+    },
+    {
+      "name": "R4_Granite_Grey",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "granite"
+    },
+    {
+      "name": "R4_Concrete",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "concrete"
+    },
+    {
+      "name": "R4_Paving_Sandstone",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "tile"
+    },
+    {
+      "name": "R4_Plaster_Trim_White",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "plaster_ext"
+    },
+    {
+      "name": "R4_Terracotta",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "paint"
+    },
+    {
+      "name": "R4_Soil",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "soil"
+    },
+    {
+      "name": "R4_Leaf_Dark",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "leaf"
+    },
+    {
+      "name": "R4_Leaf",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "leaf"
+    },
+    {
+      "name": "R7_Floor_Tile_Bath",
+      "source": "blender/r4_lib.py + blender/r4_mat.py; simplified Round 7 color-preserving alias",
+      "kind": "tile"
+    },
+    {
+      "name": "R4_Laminate_White",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "laminate"
+    },
+    {
+      "name": "R4_Plaster_Exterior",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "plaster_ext"
+    },
+    {
+      "name": "R4_Rubber_Gym",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "rubber"
+    },
+    {
+      "name": "R7_Floor_Vitrified_Ivory",
+      "source": "blender/r4_lib.py + blender/r4_mat.py; simplified Round 7 color-preserving alias",
+      "kind": "tile"
+    },
+    {
+      "name": "R4_Plaster_Plinth",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "plaster_ext"
+    },
+    {
+      "name": "R4_Leather_Charcoal",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "leather"
+    },
+    {
+      "name": "R4_Marble_White",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "marble"
+    },
+    {
+      "name": "R4_Terrace_Tile_Grey",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "tile"
+    },
+    {
+      "name": "R4_Stair_Marble_Beige",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "marble"
+    },
+    {
+      "name": "R4_Wall_Tile_Bath",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "tile"
+    },
+    {
+      "name": "R4_Rug_cream",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "rug"
+    },
+    {
+      "name": "R4_Door_Teak_Main",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "wood"
+    },
+    {
+      "name": "R7_Floor_Vitrified_Cream",
+      "source": "blender/r4_lib.py + blender/r4_mat.py; simplified Round 7 color-preserving alias",
+      "kind": "tile"
+    },
+    {
+      "name": "R4_Stone_Plinth",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "granite"
+    },
+    {
+      "name": "R4_Roof_Tile_Terracotta",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "tile"
+    },
+    {
+      "name": "R4_Stone_Sill",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "granite"
+    },
+    {
+      "name": "R4_Leaf_Light",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "leaf"
+    },
+    {
+      "name": "R4_Clay_Dark",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "paint"
+    },
+    {
+      "name": "R4_Cardboard",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "paint"
+    },
+    {
+      "name": "R4_Wicker",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "cane"
+    },
+    {
+      "name": "R4_Art_Blue",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "art"
+    },
+    {
+      "name": "R4_Art_Ochre",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "art"
+    },
+    {
+      "name": "R4_Fabric_Sheer",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "sheer"
+    },
+    {
+      "name": "R4_Art_Red",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "art"
+    },
+    {
+      "name": "R4_Bark",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "bark"
+    },
+    {
+      "name": "R4_Fabric_black_floral",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "fabric"
+    },
+    {
+      "name": "R4_Rug_blue",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "rug"
+    },
+    {
+      "name": "R4_Leather_Brown",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "leather"
+    },
+    {
+      "name": "R4_Laminate_Woodgrain_Grey",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "wood"
+    },
+    {
+      "name": "R4_Leather_Tan",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "leather"
+    },
+    {
+      "name": "R4_Rug_red",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "rug"
+    },
+    {
+      "name": "R7_Floor_Tile_Balcony",
+      "source": "blender/r4_lib.py + blender/r4_mat.py; simplified Round 7 color-preserving alias",
+      "kind": "tile"
+    },
+    {
+      "name": "R4_Rug_pink",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "rug"
+    },
+    {
+      "name": "R4_Leaf_Yellow",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "leaf"
+    },
+    {
+      "name": "R4_Tile_Mosaic_Beige",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "mosaic"
+    },
+    {
+      "name": "R4_Granite_Brown",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "granite"
+    },
+    {
+      "name": "R4_Glass_Smoked",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "glass"
+    },
+    {
+      "name": "R4_Cane_Weave",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "cane"
+    },
+    {
+      "name": "R4_PVC_Panel_White",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "pvc_panel"
+    },
+    {
+      "name": "R7_Floor_Tile_Utility",
+      "source": "blender/r4_lib.py + blender/r4_mat.py; simplified Round 7 color-preserving alias",
+      "kind": "tile"
+    },
+    {
+      "name": "R7_Floor_Tile_Kitchen",
+      "source": "blender/r4_lib.py + blender/r4_mat.py; simplified Round 7 color-preserving alias",
+      "kind": "tile"
+    },
+    {
+      "name": "R4_Panel_Stone_Cladding",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "tile"
+    },
+    {
+      "name": "R4_Brick_Red",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "brick"
+    },
+    {
+      "name": "R4_Flower_Pink",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "leaf"
+    },
+    {
+      "name": "R4_Leaf_Red",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "leaf"
+    },
+    {
+      "name": "R4_Flower_Orange",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "leaf"
+    },
+    {
+      "name": "R4_Grass_Dry",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "grass"
+    },
+    {
+      "name": "R4_Hedge_Foliage",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "leaf"
+    },
+    {
+      "name": "R4_Palm_Trunk",
+      "source": "blender/r4_lib.py + blender/r4_mat.py",
+      "kind": "bark"
+    }
+  ],
+  "unresolvedMaterials": [],
+  "actualWallMeshes": 171,
+  "collisionMeshes": 210,
+  "measuredSupports": [
+    "Pav_STEP_Veranda",
+    "Res_PORCH_Slab",
+    "Res_ROOF_Slab",
+    "Res_STEP_Garden_1",
+    "Res_STEP_Garden_2",
+    "Res_STEP_Porch_1",
+    "Res_STEP_Porch_2",
+    {
+      "name": "COL_MeasuredRamp_Main_1",
+      "x0": 15.100000381469727,
+      "x1": 16.5,
+      "z0": -8.970000267028809,
+      "z1": -11.239999771118164,
+      "y0": 0.62,
+      "y1": 2.200000047683716,
+      "slope": 34.83928375209646
+    },
+    {
+      "name": "COL_MeasuredRamp_Main_2",
+      "x0": 17.700000762939453,
+      "x1": 19.399999618530273,
+      "z0": -11.239999771118164,
+      "z1": -9,
+      "y0": 2.200000047683716,
+      "y1": 3.82,
+      "slope": 35.87499333122813
+    },
+    {
+      "name": "COL_MeasuredRamp_Roof_1",
+      "x0": 19.899999618530273,
+      "x1": 21.299999237060547,
+      "z0": -8.970000267028809,
+      "z1": -11.239999771118164,
+      "y0": 3.82,
+      "y1": 5.400000095367432,
+      "slope": 34.839284562865046
+    },
+    {
+      "name": "COL_MeasuredRamp_Roof_2",
+      "x0": 22.399999618530273,
+      "x1": 23.600000381469727,
+      "z0": -11.239999771118164,
+      "z1": -9,
+      "y0": 5.400000095367432,
+      "y1": 7.000000096857548,
+      "slope": 35.537680586208424
+    },
+    {
+      "name": "COL_MeasuredRamp_Club_1",
+      "x0": 33,
+      "x1": 34.400001525878906,
+      "z0": 15.630000114440918,
+      "z1": 12.800000190734863,
+      "y0": 0.62,
+      "y1": 2.549999952316284,
+      "slope": 34.29315878043255
+    },
+    {
+      "name": "COL_MeasuredRamp_Club_2",
+      "x0": 35,
+      "x1": 36.400001525878906,
+      "z0": 12.800000190734863,
+      "z1": 15.600000381469727,
+      "y0": 2.549999952316284,
+      "y1": 4.52,
+      "slope": 35.129122795616524
+    }
+  ],
+  "stairBounds": {
+    "Main": {
+      "min": [
+        15.100000381469727,
+        0.7377777695655823,
+        -13.600000381469727
+      ],
+      "max": [
+        19.399999618530273,
+        3.6222221851348877,
+        -8.970000267028809
+      ]
+    },
+    "Roof": {
+      "min": [
+        19.899999618530273,
+        3.9377777576446533,
+        -13.600000381469727
+      ],
+      "max": [
+        23.600000381469727,
+        6.8222222328186035,
+        -8.970000267028809
+      ]
+    },
+    "Club": {
+      "min": [
+        33,
+        0.7372727394104004,
+        10.300000190734863
+      ],
+      "max": [
+        36.400001525878906,
+        4.322727203369141,
+        15.630000114440918
+      ]
+    }
+  },
+  "blendAvailable": false,
+  "exactRound7ProceduralBake": "Pending actual .blend and external/packed texture availability"
+}

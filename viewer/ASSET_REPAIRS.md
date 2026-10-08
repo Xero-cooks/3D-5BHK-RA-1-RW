@@ -57,3 +57,8 @@ npm start
 - Coordinates supplied to 731 primitive sections total (653 original image sections plus the new approximations).
 - 171 actual structural wall meshes and 210 total invisible collision meshes; 16 spawn shortcuts retained.
 - Production build: passed. Local software-WebGL renders the repaired exterior; software-GPU timing is not a consumer-GPU performance certification. Physical Android/iOS and hardware-GPU profiling remain pending.
+
+### Production browser smoke result
+Both desktop (1280×800 CSS pixels) and touch/mobile emulation (390×844) passed the production browser smoke script with zero console errors and no horizontal overflow. Each loaded both assets, opened room/settings/layout panels, teleported to Master Bedroom, moved the grounded player, and exercised look input. Desktop pointer lock succeeded. Headless synthetic Escape did not release native pointer lock; the test explicitly called `document.exitPointerLock()` afterward. Native Escape and real touch-device behavior still need physical-browser sign-off.
+
+Tests used CPU software WebGL at `TEST_DPR=0.35` to fit this remote machine; this is functional browser evidence, **not a mobile FPS benchmark**. Software-GPU FPS is low; ordinary hardware GPUs and Android/iOS require separate profiling. Debug is disabled in the normal public production build.

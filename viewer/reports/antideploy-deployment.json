@@ -1,7 +1,7 @@
 {
   "applicationId": "b2abee02-cb3c-4c40-81da-5d77ee573582",
   "url": "https://rewari-farmhouse-5bhk.antideploy.app",
-  "deploymentTaskId": "a2fa54f2-c0b7-456f-b053-12fb94048b6b",
+  "deploymentTaskId": "00ed7d74-82c2-40c6-a25f-c71ec6c6b73a",
   "status": "succeeded",
   "deploymentType": "directory upload",
   "publicAssetVerification": [
@@ -40,5 +40,13 @@
     "minorIssues": 1,
     "minorFinding": "Missing security headers"
   },
-  "liveBrowserVerification": "Public UI reached; shared browser reports graphics acceleration/WebGL unavailable, so live 3D interaction not verified there."
+  "liveBrowserVerification": "Public download progress advanced, finished, and rendered the 3D entrance. Pointer lock acquired; W movement and mouse-look exercised with no page errors. Full property routes and physical devices remain pending.",
+  "sourceCommit": "3f3cab82d39b4725688e7923fcf2bef1b9319bcd",
+  "loaderHotfix": {
+    "compressedProgressVerified": true,
+    "immutableVersionedCacheVerified": true,
+    "downloadIdleTimeoutSeconds": 60,
+    "localTestsPassed": 9,
+    "knownAssetTodo": 1
+  }
 }

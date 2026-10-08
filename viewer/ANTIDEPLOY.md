@@ -67,6 +67,11 @@ URL: https://rewari-farmhouse-5bhk.antideploy.app
 
 Application ID: `b2abee02-cb3c-4c40-81da-5d77ee573582`. Deployment task: `a2fa54f2-c0b7-456f-b053-12fb94048b6b`. Platform status: **succeeded**. This is a directory-upload deployment, not automatic deployment on GitHub pushes.
 
-The public HTML and all four original asset files returned HTTP 200 with checksum/size verification. Cloudflare rejected the Python-default user agent with error 1010; browser-identifying HTTP requests succeeded. The shared verification browser reached the public interface but reported WebGL/graphics acceleration unavailable, so full live 3D interaction was not verified in that browser. Earlier local software-WebGL tests remain documented separately.
+The public HTML and all four original asset files returned HTTP 200 with checksum/size verification. Cloudflare rejected the Python-default user agent with error 1010; browser-identifying HTTP requests succeeded. The initial check reached the public interface but did not visually verify live 3D interaction. Canvas fallback text in DOM extraction was not reliable evidence of graphics availability; subsequent hotfix verification rendered the actual scene successfully. Earlier local software-WebGL tests remain documented separately.
 
 Automatic platform scan found no blocking public-security issues and one low-severity missing-security-headers finding. Security-header hardening is a follow-up, not silently reported as fixed. The original asset release blockers and real-device performance acceptance remain pending. See `reports/antideploy-deployment.json`.
+
+
+## Loading hotfix — live
+
+Deployment task `00ed7d74-82c2-40c6-a25f-c71ec6c6b73a` succeeded at the same public URL. The live browser showed the download advancing through 76% / 109.6 MB, completed loading, rendered the 3D entrance, acquired pointer lock and accepted W movement and mouse-look without page errors. Screenshots of the entrance and changed exploration view were inspected. Versioned asset responses return `Cache-Control: public, max-age=31536000, immutable`. The original full-property/device acceptance blockers are unchanged.

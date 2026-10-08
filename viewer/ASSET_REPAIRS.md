@@ -67,3 +67,5 @@ Tests used CPU software WebGL at `TEST_DPR=0.35` to fit this remote machine; thi
 Antideploy task `54a1c6fb-d69d-4c9a-8acf-19ba5fe24436` succeeded at https://rewari-farmhouse-5bhk.antideploy.app. Public GET checks for all four versioned runtime assets returned HTTP 200 and matched their derived SHA-256 and byte sizes. The live browser reached Explore and rendered the restored entrance colors/detail. This is not merely a local build result.
 
 Automatic hosting security scan completed with no reported high issues and one low missing-security-header note. No AI/API key is required by this viewer.
+
+The public browser also exercised pointer-locked W movement from the driveway, over the porch and through the front door into the interior. Screenshots were manually inspected before/after: the door is no longer a physical blocker; the interior wall still stops the player. No page errors were captured, and the public debug panel remained absent. Low software-GPU speed makes these remote movements take longer than real-time physics on normal graphics hardware; this check is not a hardware-FPS certification.

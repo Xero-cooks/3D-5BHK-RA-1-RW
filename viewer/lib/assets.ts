@@ -2,6 +2,7 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import {
   Box3,
   BufferGeometry,
+  LoadingManager,
   Mesh,
   MeshStandardMaterial,
   Object3D,
@@ -9,36 +10,17 @@ import {
   Vector3,
 } from "three";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
-export async function loadGLB(
-  url: string,
-  onProgress: (loaded: number, total: number) => void,
-) {
-  const response = await fetch(url);
-  if (!response.ok) throw Error(`Asset request failed (${response.status})`);
-  const total = response.headers.get("Content-Encoding")
-    ? 0
-    : Number(response.headers.get("Content-Length")) || 0;
-  const reader = response.body?.getReader();
-  if (!reader) throw Error("Streaming assets unavailable");
-  const chunks: Uint8Array[] = [];
-  let loaded = 0;
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    chunks.push(value);
-    loaded += value.length;
-    onProgress(loaded, total);
-  }
-  const data = new Uint8Array(loaded);
-  let offset = 0;
-  for (const c of chunks) {
-    data.set(c, offset);
-    offset += c.length;
-  }
-  return new GLTFLoader().parseAsync(
-    data.buffer,
-    url.substring(0, url.lastIndexOf("/") + 1),
-  );
+import {downloadBinary, DownloadOptions} from './download';
+export async function loadGLB(url:string,onProgress:(loaded:number,total:number)=>void,options:DownloadOptions & {onDecode?:(done:number,total:number)=>void}={}){
+ const data=await downloadBinary(url,onProgress,options);
+ if(options.signal?.aborted)throw options.signal.reason;
+ options.onDecode?.(0,0);
+ // Yield before decoding so the completed download/next phase actually paints.
+ await new Promise(resolve=>setTimeout(resolve,20));
+ const manager=new LoadingManager();manager.onProgress=(_,done,total)=>options.onDecode?.(done,total);
+ const result=await new GLTFLoader(manager).parseAsync(data.buffer as ArrayBuffer,new URL('.',new URL(url,typeof location==='undefined'?'http://localhost':location.href)).href);
+ if(options.signal?.aborted)throw options.signal.reason;
+ return result;
 }
 // Tile + material batching reduces draw submissions without deleting architecture.
 // Transparent/transmissive/multi-material objects keep original ordering and geometry.

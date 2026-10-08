@@ -79,3 +79,8 @@ Final smoke-suite outcome: **desktop and emulated mobile both completed**, with 
 - Production server tested with `PORT=3017`: `/` and all four `/assets/` paths return HTTP 200, with the exact expected asset lengths and GLB/JSON MIME types.
 - Source archive verified at approximately 49 KiB compressed, 190 KiB unpacked: generated assets, environment files, caches and dependencies are excluded. This is below Antideploy's published 28 MiB upload limit.
 - These are local deployment-preparation checks. Account authorization, public hostname choice, remote build/runtime, live browser checks and platform security scan require the actual authorized deployment; none is inferred from these local passes.
+
+
+## Loading-screen regression fix
+
+The live browser received the visual GLB with `Content-Encoding: gzip` and no Content-Length. The old loader deliberately set total to zero for compressed responses, then rendered zero progress for every received chunk. This made a ~99 MB wire transfer appear stuck at Connecting. The corrected loader uses the checksum-pinned decoded byte count (129,077,104), displays received MB, separates download/decoding/preparation/movement stages, rejects incomplete downloads, aborts after 60 seconds with no data, and cancels requests on teardown/retry. Four new download regression tests pass (nine total passes; the source-ramp TODO remains). Versioned asset queries receive immutable caching; unsupported WebGL2 is detected before downloading the large scene.

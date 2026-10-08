@@ -7,6 +7,8 @@ import { loadGLB, optimizeScene } from "../lib/assets";
 import { setTextureQuality } from "../lib/textures";
 import { createPhysics, PlayerPhysics } from "../lib/physics";
 import { Room, Spawn, exterior } from "../lib/metadata";
+import assetManifest from "../scripts/asset-manifest.json";
+const asset=(name:string)=>{const a=assetManifest.assets.find(a=>a.name===name);if(!a)throw Error("Missing approved asset");return {...a,path:`/assets/${name}?v=${a.sha256.slice(0,16)}`};};
 
 type Bundle = {
   visual: Object3D;
@@ -22,6 +24,8 @@ export default function Walkthrough() {
   const [error, setError] = useState("");
   const [phase, setPhase] = useState("Preparing your walkthrough…");
   const [progress, setProgress] = useState(0);
+  const [detail,setDetail]=useState("Finding your rooms…");
+  const [attempt,setAttempt]=useState(0);
   const [active, setActive] = useState(false);
   const [panel, setPanel] = useState<"rooms" | "settings" | null>(null);
   const [quality, setQuality] = useState<Quality>("MEDIUM");
@@ -52,33 +56,43 @@ export default function Walkthrough() {
     setTouch(mobile);
     setQuality(mobile ? "LOW" : "MEDIUM");
     let cancelled = false;
+    const abort=new AbortController();
+    setError("");setProgress(0);setPhase("Preparing your walkthrough…");setDetail("Finding your rooms…");
     let physics: PlayerPhysics | undefined;
+    let jsonTimer:ReturnType<typeof setTimeout>|undefined;
     const began = performance.now();
     (async () => {
+      // Fail early rather than download 123 MiB and present non-working controls.
+      const probe=document.createElement('canvas');const graphics=probe.getContext('webgl2');
+      if(!graphics)throw Error('GRAPHICS_UNAVAILABLE');graphics.getExtension('WEBGL_lose_context')?.loseContext();
+      jsonTimer=setTimeout(()=>abort.abort(new Error('Room information timed out')),30000);
       const [s, r] = await Promise.all([
-        fetch("/assets/spawn_points.json").then((r) => {
+        fetch(asset("spawn_points.json").path,{signal:abort.signal}).then((r) => {
           if (!r.ok) throw Error("Room navigation unavailable");
           return r.json();
         }),
-        fetch("/assets/room_metadata.json").then((r) => {
+        fetch(asset("room_metadata.json").path,{signal:abort.signal}).then((r) => {
           if (!r.ok) throw Error("Room information unavailable");
           return r.json();
         }),
       ]);
-      const visual = await loadGLB(
-        "/assets/farmhouse_visual.glb",
-        (loaded, total) =>
-          setProgress(total ? Math.min(85, (loaded / total) * 85) : 0),
-      );
-      if (cancelled) return;
-      setPhase("Bringing the property to life…");
-      setProgress(88);
-      const metrics = await optimizeScene(visual.scene);
-      setTextureQuality(visual.scene, mobile ? 512 : 1024);
-      const collision = await loadGLB(
-        "/assets/farmhouse_collision.glb",
-        () => {},
-      );
+      clearTimeout(jsonTimer);
+      setPhase("Downloading your property…");setDetail("Starting the download…");setProgress(1);
+      const visualAsset=asset('farmhouse_visual.glb');let lastUpdate=0;
+      const visual=await loadGLB(visualAsset.path,(loaded,total)=>{
+        const now=performance.now();if(loaded!==total&&now-lastUpdate<100)return;lastUpdate=now;
+        setProgress(1+Math.min(84,loaded/total*84));
+        setDetail(`${(loaded/1048576).toFixed(1)} of ${(total/1048576).toFixed(1)} MB received`);
+      },{expectedBytes:visualAsset.bytes,signal:abort.signal,onDecode:(done,total)=>{setPhase("Preparing your rooms…");setProgress(total?85+Math.min(5,done/total*5):85);setDetail("Bringing materials and details to life…");}});
+      if(cancelled)return;
+      setPhase("Preparing your space…");setProgress(92);setDetail("Getting your walkthrough ready…");
+      await new Promise(resolve=>setTimeout(resolve,20));
+      const metrics=await optimizeScene(visual.scene);
+      if(cancelled)return;
+      setTextureQuality(visual.scene,mobile?512:1024);
+      setProgress(96);setPhase("Setting up your movement…");
+      const collisionAsset=asset('farmhouse_collision.glb');
+      const collision=await loadGLB(collisionAsset.path,()=>{},{expectedBytes:collisionAsset.bytes,signal:abort.signal});
       physics = await createPhysics(collision.scene);
       if (cancelled) {
         physics.dispose();
@@ -97,17 +111,20 @@ export default function Walkthrough() {
       });
       setProgress(100);
     })().catch((e) => {
+      clearTimeout(jsonTimer);
       console.error("Walkthrough loading failed", e);
       if (!cancelled)
         setError(
-          "Please check your connection and try again. If this persists, contact the property team.",
+          e.message==="GRAPHICS_UNAVAILABLE" ? "This browser cannot display the 3D walkthrough. Enable graphics acceleration in your browser settings, or try another modern browser, then retry." : "The property download did not finish. Check your connection and try again. Your walkthrough has not started yet.",
         );
     });
     return () => {
       cancelled = true;
+      clearTimeout(jsonTimer);
+      abort.abort();
       physics?.dispose();
     };
-  }, []);
+  }, [attempt]);
   function clear() {
     input.current.keys.clear();
     input.current.move = { x: 0, y: 0 };
@@ -224,7 +241,7 @@ export default function Walkthrough() {
           {error ? (
             <>
               <p>{error}</p>
-              <button onClick={() => location.reload()}>Try again</button>
+              <button onClick={() => setAttempt(a=>a+1)}>Try again</button>
             </>
           ) : (
             <>
@@ -234,9 +251,7 @@ export default function Walkthrough() {
                 aria-label="Preparing walkthrough"
               />
               <small>
-                {progress
-                  ? `${Math.round(progress)}%`
-                  : "Connecting to your property"}
+                {progress ? `${Math.round(progress)}% · ${detail}` : detail}
               </small>
             </>
           )}

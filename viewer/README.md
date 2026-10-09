@@ -46,7 +46,7 @@ Build-time asset preparation is automatic: `prebuild` verifies checksum-pinned o
 
 Load `farmhouse_visual.glb` for visible architecture, landscape, fixtures and furnishings. Load `farmhouse_collision.glb` into physics only: **it is never attached to the R3F scene or rendered.** GLBs are already Y-up. Do not rotate them. Source JSON positions/bounds are Blender Z-up; map `[x,y,z]` to `[x,z,-y]`. Yaw 0 faces Blender -Y, which becomes Three +Z; camera Euler yaw is `PI + yawDeg * PI / 180`. Feet spawns add the supplied eye height to the camera, not to the source coordinates.
 
-GLTFLoader supports the supplied PBR extensions with baseline WebGL. HDRI and Blender lights were not exported: a hemisphere, warm sun, and nearest-room warm points relight the property. Only the sun casts shadows on higher tiers. No external HDRI or texture URL dependency is introduced.
+GLTFLoader supports the supplied PBR extensions with baseline WebGL. HDRI and Blender lights were not exported: a hemisphere, warm sun, and nearest-room warm points relight the property. Only the sun casts shadows on higher tiers. Cached PMREM daylight/interior reflection environments light metals and polished surfaces; no external HDRI or texture URL dependency is introduced. Glass transmission remains enabled at every quality level. See `REFLECTIVE_MATERIAL_FIX.md`.
 
 ## Walking and collision
 
@@ -66,10 +66,10 @@ Default LOW on coarse-pointer mobile; MEDIUM on desktop. Automatic downgrades af
 
 | Tier | Pixel-ratio cap | Texture max edge | Sun shadow map | Glass | Local points |
 | --- | --- | --- | --- | --- | --- |
-| LOW | .75 | 512 | off | inexpensive transparent approximation | 2 nearest |
-| MEDIUM | 1 | 1024 | off | inexpensive transparent approximation | 4 nearest |
-| HIGH | 1.5 | up to 1024 in this derivative | 2048 | source physical transmission | 12 nearest |
-| ULTRA | 2 | up to 1024 in this derivative | 2048 | source physical transmission | 12 nearest |
+| LOW | .75 | 512 | off | physical transmission (.35× refraction buffer) | 2 nearest |
+| MEDIUM | 1 | 1024 | off | physical transmission (.5× refraction buffer) | 4 nearest |
+| HIGH | 1.5 | up to 1024 in this derivative | 2048 | physical transmission (1× refraction buffer) | 12 nearest |
+| ULTRA | 2 | up to 1024 in this derivative | 2048 | physical transmission (1× refraction buffer) | 12 nearest |
 
 Runtime downsampling is reversible within the derivative’s 1024px image cap and does not change source files. Increasing quality cannot recover discarded export pixels; the original 129 MB source is retained separately. Pixel ratio never exceeds device DPR. No postprocessing, screen-space reflections, SSAO, or animated environmental effects. Spatial/material batching reduces CPU draw submissions while retaining geometry and frustum culling. Alpha vegetation and glass keep their original material semantics. GPU mip memory is reported as an **upper-bound estimate**, not a hardware measurement; shared texture uploads can make actual memory lower. GPU shader milliseconds and physical-device thermal behavior still require a real-GPU profiling pass.
 

@@ -39,7 +39,7 @@ export async function optimizeScene(scene: Object3D) {
     if (Array.isArray(o.material)) return;
     const m = o.material as MeshStandardMaterial & { transmission?: number };
     o.receiveShadow = true;
-    o.castShadow = !m.transparent;
+    o.castShadow = !m.transparent && !m.transmission;
     if (
       m.transparent ||
       m.transmission ||

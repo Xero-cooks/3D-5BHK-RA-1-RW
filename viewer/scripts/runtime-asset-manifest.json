@@ -4,8 +4,8 @@
   "assets": [
     {
       "name": "farmhouse_visual.glb",
-      "bytes": 74998604,
-      "sha256": "e6270e68676d717e789f0c57b8677e48b537270bda778e821484a1442dd36e26"
+      "bytes": 74999888,
+      "sha256": "c42fdcf05fb1ecb286ffd8b62c63c1f2451287243f39c4fee9faf13f9b568317"
     },
     {
       "name": "farmhouse_collision.glb",

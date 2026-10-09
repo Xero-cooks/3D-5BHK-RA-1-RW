@@ -1,9 +1,93 @@
 {
   "geometryPreserved": true,
+  "reflectiveRepairs": [
+    {
+      "name": "R4_Chrome",
+      "changed": [
+        "roughness",
+        "metallic"
+      ]
+    },
+    {
+      "name": "R7_Pool_Tile",
+      "changed": [
+        "clearcoat"
+      ]
+    },
+    {
+      "name": "R4_Glass_Clear",
+      "changed": [
+        "transmission",
+        "volume",
+        "ior"
+      ]
+    },
+    {
+      "name": "R4_Steel_Stainless",
+      "changed": [
+        "roughness",
+        "metallic"
+      ]
+    },
+    {
+      "name": "R4_Railing_Green_Steel",
+      "changed": [
+        "roughness"
+      ]
+    },
+    {
+      "name": "R4_Glass_Frosted",
+      "changed": [
+        "transmission",
+        "volume",
+        "ior"
+      ]
+    },
+    {
+      "name": "R4_Brass_Satin",
+      "changed": [
+        "roughness",
+        "metallic"
+      ]
+    },
+    {
+      "name": "R4_Metal_Black_Powder",
+      "changed": [
+        "roughness"
+      ]
+    },
+    {
+      "name": "R4_Metal_Graphite",
+      "changed": [
+        "roughness",
+        "metallic"
+      ]
+    },
+    {
+      "name": "R7_Floor_Tile_Balcony",
+      "changed": [
+        "clearcoat"
+      ]
+    },
+    {
+      "name": "R4_Glass_Smoked",
+      "changed": [
+        "transmission",
+        "volume",
+        "ior"
+      ]
+    },
+    {
+      "name": "R4_Frame_Aluminium_White",
+      "changed": [
+        "roughness"
+      ]
+    }
+  ],
   "projectedTexturePrimitives": 731,
   "simplifiedSourceSurfaces": 16,
   "sourceBytes": 129077104,
-  "derivedBytes": 74998604,
+  "derivedBytes": 74999888,
   "sourceImageBytes": 72853623,
   "derivedImageBytes": 13895254,
   "materialsRepaired": [

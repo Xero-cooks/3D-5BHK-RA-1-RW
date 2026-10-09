@@ -7,10 +7,9 @@ import {
   Color,
   Euler,
   Vector3,
-  Mesh,
-  MeshPhysicalMaterial,
   PointLight,
 } from "three";
+import {createReflectionEnvironments,reflectionZone,transmissionScale} from '../lib/reflections';
 import { setTextureQuality } from "../lib/textures";
 import { PlayerPhysics } from "../lib/physics";
 import { Room, Spawn, worldYaw, roomAt, worldPosition } from "../lib/metadata";
@@ -61,7 +60,10 @@ export default function Scene({
   quality: Quality;
   onStats: (s: Stats) => void;
 }) {
-  const { camera, gl, setDpr } = useThree();
+  const { camera, gl, setDpr, scene } = useThree();
+  const reflections = useRef<ReturnType<typeof createReflectionEnvironments> | null>(null);
+  const zone = useRef<"interior"|"exterior">("exterior");
+  useEffect(()=>{const env=createReflectionEnvironments(gl);reflections.current=env;scene.environment=env.exterior;scene.environmentIntensity=1;return()=>{scene.environment=null;env.dispose();reflections.current=null;};},[gl,scene]);
   const lightRefs = useRef<(PointLight | null)[]>([]);
   const textureMemory = useRef(0);
   const elapsed = useRef(0);
@@ -74,6 +76,7 @@ export default function Scene({
     gl.setClearColor(new Color("#a9bcc8"));
     setDpr(Math.min(window.devicePixelRatio, levels[quality].dpr));
     gl.shadowMap.enabled = levels[quality].shadows;
+    gl.transmissionResolutionScale=transmissionScale(quality);
   }, [quality, gl, setDpr]);
   useEffect(() => {
     textureMemory.current = setTextureQuality(
@@ -86,25 +89,7 @@ export default function Scene({
             ? 2048
             : 8192,
     );
-    visual.traverse((o) => {
-      if (!(o instanceof Mesh)) return;
-      for (const mat of Array.isArray(o.material) ? o.material : [o.material]) {
-        if (!(mat instanceof MeshPhysicalMaterial)) continue;
-        const m = mat;
-        if (m.userData.originalTransmission === undefined) {
-          m.userData.originalTransmission = m.transmission;
-          m.userData.originalOpacity = m.opacity;
-          m.userData.originalTransparent = m.transparent;
-        }
-        if (m.userData.originalTransmission > 0) {
-          const cheap = quality === "LOW" || quality === "MEDIUM";
-          m.transmission = cheap ? 0 : m.userData.originalTransmission;
-          m.opacity = cheap ? 0.28 : m.userData.originalOpacity;
-          m.transparent = cheap ? true : m.userData.originalTransparent;
-          m.needsUpdate = true;
-        }
-      }
-    });
+
   }, [visual, quality]);
   useEffect(() => {
     physics.teleport(spawn);
@@ -140,6 +125,7 @@ export default function Scene({
       acc.current -= 1 / 60;
     }
     const feet = physics.feet();
+    const nextZone=reflectionZone(feet);if(reflections.current&&(zone.current!==nextZone||scene.environment===null)){zone.current=nextZone;scene.environment=reflections.current[nextZone];}
     camera.position.copy(feet).add(new Vector3(0, spawn.eyeHeight, 0));
     camera.quaternion.setFromEuler(new Euler(input.pitch, input.yaw, 0, "YXZ"));
     const nearest = rooms

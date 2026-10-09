@@ -13,13 +13,13 @@ import {
 import { createPhysics } from "../lib/physics";
 import { worldPosition, worldYaw, roomAt, Spawn } from "../lib/metadata";
 const spawns = JSON.parse(
-  readFileSync("../web_export/spawn_points.json", "utf8"),
+  readFileSync(".asset-cache/spawn_points.json", "utf8"),
 ).spawns as Spawn[];
 const rooms = JSON.parse(
-  readFileSync("../web_export/room_metadata.json", "utf8"),
+  readFileSync(".asset-cache/room_metadata.json", "utf8"),
 ).rooms;
 async function collision() {
-  const b = readFileSync("../web_export/farmhouse_collision.glb");
+  const b = readFileSync(".asset-cache/farmhouse_collision.glb");
   return (
     await new GLTFLoader().parseAsync(
       b.buffer.slice(b.byteOffset, b.byteOffset + b.byteLength),

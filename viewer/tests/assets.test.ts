@@ -6,7 +6,7 @@ import { optimizeScene } from "../lib/assets";
 test("real visual mesh hierarchy retains every triangle after runtime batching", async () => {
   // Geometry-only decode of the actual GLB, not an invented scene. Omit texture decoding
   // because Node has no ImageBitmap/DOM; material alpha and transmission are retained.
-  const original = readFileSync("../web_export/farmhouse_visual.glb");
+  const original = readFileSync(".asset-cache/farmhouse_visual.glb");
   const jsonLength = original.readUInt32LE(12);
   const j = JSON.parse(original.toString("utf8", 20, 20 + jsonLength));
   function strip(o: Record<string, unknown>) {

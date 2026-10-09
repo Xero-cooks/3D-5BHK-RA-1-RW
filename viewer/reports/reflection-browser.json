@@ -1,0 +1,129 @@
+{
+  "errors": [],
+  "checks": [
+    {
+      "quality": "LOW",
+      "environment": true,
+      "glass": [
+        {
+          "physical": true,
+          "transmission": 1,
+          "opacity": 1
+        },
+        {
+          "physical": true,
+          "transmission": 1,
+          "opacity": 1
+        }
+      ],
+      "metal": [
+        {
+          "metalness": 1,
+          "roughness": 0.04
+        },
+        {
+          "metalness": 1,
+          "roughness": 0.28
+        },
+        {
+          "metalness": 1,
+          "roughness": 0.25
+        }
+      ],
+      "scale": 0.35
+    },
+    {
+      "quality": "MEDIUM",
+      "environment": true,
+      "glass": [
+        {
+          "physical": true,
+          "transmission": 1,
+          "opacity": 1
+        },
+        {
+          "physical": true,
+          "transmission": 1,
+          "opacity": 1
+        }
+      ],
+      "metal": [
+        {
+          "metalness": 1,
+          "roughness": 0.04
+        },
+        {
+          "metalness": 1,
+          "roughness": 0.28
+        },
+        {
+          "metalness": 1,
+          "roughness": 0.25
+        }
+      ],
+      "scale": 0.5
+    },
+    {
+      "quality": "HIGH",
+      "environment": true,
+      "glass": [
+        {
+          "physical": true,
+          "transmission": 1,
+          "opacity": 1
+        },
+        {
+          "physical": true,
+          "transmission": 1,
+          "opacity": 1
+        }
+      ],
+      "metal": [
+        {
+          "metalness": 1,
+          "roughness": 0.04
+        },
+        {
+          "metalness": 1,
+          "roughness": 0.28
+        },
+        {
+          "metalness": 1,
+          "roughness": 0.25
+        }
+      ],
+      "scale": 1
+    },
+    {
+      "quality": "ULTRA",
+      "environment": true,
+      "glass": [
+        {
+          "physical": true,
+          "transmission": 1,
+          "opacity": 1
+        },
+        {
+          "physical": true,
+          "transmission": 1,
+          "opacity": 1
+        }
+      ],
+      "metal": [
+        {
+          "metalness": 1,
+          "roughness": 0.04
+        },
+        {
+          "metalness": 1,
+          "roughness": 0.28
+        },
+        {
+          "metalness": 1,
+          "roughness": 0.25
+        }
+      ],
+      "scale": 1
+    }
+  ]
+}

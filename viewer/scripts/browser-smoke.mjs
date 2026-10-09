@@ -1,5 +1,5 @@
 import { chromium } from "@playwright/test";
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync, existsSync } from "node:fs";
 import { execSync } from "node:child_process";
 mkdirSync("reports/browser-screenshots", { recursive: true });
 const browser = await chromium.launch({
@@ -12,13 +12,14 @@ const browser = await chromium.launch({
     "--use-angle=swiftshader",
   ],
 });
-const results = [];
+const devices=process.env.TEST_DEVICE==='desktop'?[false]:process.env.TEST_DEVICE==='mobile'?[true]:[true,false];
+const results = process.env.TEST_DEVICE && existsSync("reports/browser-results.json") ? JSON.parse(readFileSync('reports/browser-results.json','utf8')).filter(r=>!devices.includes(r.mobile)) : [];
 const save = () =>
   writeFileSync(
     "reports/browser-results.json",
     JSON.stringify(results, null, 2),
   );
-for (const mobile of [true, false]) {
+for (const mobile of devices) {
   const tag = mobile ? "mobile" : "desktop";
   const context = await browser.newContext({
     viewport: mobile
@@ -50,7 +51,7 @@ for (const mobile of [true, false]) {
     await page.addStyleTag({ content: ".debug{display:none!important}" });
     await page.screenshot({
       path: `reports/browser-screenshots/${tag}-${name}.png`,
-      timeout: 120000,
+      timeout: Number(process.env.TEST_CAPTURE_TIMEOUT || 120000),
     });
   }
   try {

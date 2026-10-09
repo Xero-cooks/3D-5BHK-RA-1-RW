@@ -36,3 +36,8 @@ CHROMIUM_PATH=/path/to/chromium node scripts/reflection-browser-test.mjs
 npm run build
 ```
 Normal public builds omit `NEXT_PUBLIC_ENABLE_DEBUG`. Reflection sample screenshots are local QA output, not a route exposed to customers.
+
+### Full-scene QA status for this update
+The production mobile-emulated walkthrough completed with zero console errors, working room teleport/touch movement, and no horizontal overflow. The first full-scene desktop screenshot exceeded the CPU software-GPU capture timeout (no page errors were captured); a lower-DPR desktop retest is running. This is not a claim of completed real-device profiling or a published live update. Deployment is gated on completed browser results and fresh Antideploy account approval.
+
+The browser runner supports `TEST_DEVICE=desktop|mobile` for isolated retests and `TEST_CAPTURE_TIMEOUT` for slow software-GPU capture. Default runs still test both devices. Isolated runs preserve the other device's recorded result.

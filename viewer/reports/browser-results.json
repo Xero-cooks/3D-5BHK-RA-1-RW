@@ -1,0 +1,428 @@
+[
+  {
+    "mobile": true,
+    "errors": [],
+    "warnings": [
+      "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+    ],
+    "initial": {
+      "stats": {
+        "fps": 1.4336917562724014,
+        "position": [
+          12,
+          0.08494464159011839,
+          -20
+        ],
+        "room": "Entrance Drive",
+        "floor": "Ground / exterior",
+        "grounded": true,
+        "collisions": 0,
+        "feet": {
+          "x": 12,
+          "y": 0.08494464159011839,
+          "z": -20
+        },
+        "calls": 435,
+        "triangles": 1537600,
+        "geometries": 418,
+        "textures": 51,
+        "textureMiBUpperBound": 251
+      },
+      "quality": "LOW",
+      "loadedAssets": [
+        "visual",
+        "collision"
+      ],
+      "loadSeconds": 5.348,
+      "trianglesBefore": 2845128,
+      "trianglesAfter": 2845128,
+      "sourceMeshes": 3039,
+      "batches": 512,
+      "textures": 189,
+      "estimatedTextureMiB": 938,
+      "collisionMeshes": 210
+    },
+    "loadMs": 11592,
+    "locations": [
+      "Living Hall↗",
+      "Dining↗",
+      "Kitchen↗",
+      "Bedroom G1↗",
+      "Bedroom G2↗",
+      "Study↗",
+      "Bathroom G1↗",
+      "Master Bedroom↗",
+      "Bedroom 03↗",
+      "Bedroom 04↗",
+      "Balcony↗",
+      "Entrance Drive↗",
+      "Pool Deck↗",
+      "Garden↗",
+      "Clubhouse Lobby↗",
+      "Pavilion Hall↗"
+    ],
+    "master": {
+      "stats": {
+        "fps": 0.1656451880072884,
+        "position": [
+          3.5,
+          3.8449984550476075,
+          -2.5
+        ],
+        "room": "Master Bedroom",
+        "floor": "First floor",
+        "grounded": true,
+        "collisions": 0,
+        "feet": {
+          "x": 3.5,
+          "y": 3.8449984550476075,
+          "z": -2.5
+        },
+        "calls": 440,
+        "triangles": 1826124,
+        "geometries": 558,
+        "textures": 51,
+        "textureMiBUpperBound": 251
+      },
+      "quality": "LOW",
+      "loadedAssets": [
+        "visual",
+        "collision"
+      ],
+      "loadSeconds": 5.348,
+      "trianglesBefore": 2845128,
+      "trianglesAfter": 2845128,
+      "sourceMeshes": 3039,
+      "batches": 512,
+      "textures": 189,
+      "estimatedTextureMiB": 938,
+      "collisionMeshes": 210
+    },
+    "before": {
+      "stats": {
+        "fps": 0.330491109789167,
+        "position": [
+          3.5,
+          3.8449984550476075,
+          -2.5
+        ],
+        "room": "Master Bedroom",
+        "floor": "First floor",
+        "grounded": true,
+        "collisions": 0,
+        "feet": {
+          "x": 3.5,
+          "y": 3.8449984550476075,
+          "z": -2.5
+        },
+        "calls": 440,
+        "triangles": 1826124,
+        "geometries": 558,
+        "textures": 51,
+        "textureMiBUpperBound": 251
+      },
+      "quality": "LOW",
+      "loadedAssets": [
+        "visual",
+        "collision"
+      ],
+      "loadSeconds": 5.348,
+      "trianglesBefore": 2845128,
+      "trianglesAfter": 2845128,
+      "sourceMeshes": 3039,
+      "batches": 512,
+      "textures": 189,
+      "estimatedTextureMiB": 938,
+      "collisionMeshes": 210
+    },
+    "afterMovement": {
+      "stats": {
+        "fps": 0.26760148786431254,
+        "position": [
+          4.619998931884766,
+          3.844016170501709,
+          -2.5
+        ],
+        "room": "Master Bedroom",
+        "floor": "First floor",
+        "grounded": true,
+        "collisions": 1,
+        "feet": {
+          "x": 4.619998931884766,
+          "y": 3.844016170501709,
+          "z": -2.5
+        },
+        "calls": 423,
+        "triangles": 1711978,
+        "geometries": 558,
+        "textures": 51,
+        "textureMiBUpperBound": 251
+      },
+      "quality": "LOW",
+      "loadedAssets": [
+        "visual",
+        "collision"
+      ],
+      "loadSeconds": 5.348,
+      "trianglesBefore": 2845128,
+      "trianglesAfter": 2845128,
+      "sourceMeshes": 3039,
+      "batches": 512,
+      "textures": 189,
+      "estimatedTextureMiB": 938,
+      "collisionMeshes": 210
+    },
+    "overflow": false,
+    "final": {
+      "stats": {
+        "fps": 0.5119541289100985,
+        "position": [
+          4.619998931884766,
+          3.844016170501709,
+          -2.5
+        ],
+        "room": "Master Bedroom",
+        "floor": "First floor",
+        "grounded": true,
+        "collisions": 0,
+        "feet": {
+          "x": 4.619998931884766,
+          "y": 3.844016170501709,
+          "z": -2.5
+        },
+        "calls": 403,
+        "triangles": 1703486,
+        "geometries": 585,
+        "textures": 51,
+        "textureMiBUpperBound": 251
+      },
+      "quality": "LOW",
+      "loadedAssets": [
+        "visual",
+        "collision"
+      ],
+      "loadSeconds": 5.348,
+      "trianglesBefore": 2845128,
+      "trianglesAfter": 2845128,
+      "sourceMeshes": 3039,
+      "batches": 512,
+      "textures": 189,
+      "estimatedTextureMiB": 938,
+      "collisionMeshes": 210
+    }
+  },
+  {
+    "mobile": false,
+    "errors": [],
+    "warnings": [
+      "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+    ],
+    "initial": {
+      "stats": {
+        "fps": 1.4804944851576345,
+        "position": [
+          12,
+          0.08494464159011839,
+          -20
+        ],
+        "room": "Entrance Drive",
+        "floor": "Ground / exterior",
+        "grounded": true,
+        "collisions": 0,
+        "feet": {
+          "x": 12,
+          "y": 0.08494464159011839,
+          "z": -20
+        },
+        "calls": 967,
+        "triangles": 2754262,
+        "geometries": 901,
+        "textures": 64,
+        "textureMiBUpperBound": 938
+      },
+      "quality": "MEDIUM",
+      "loadedAssets": [
+        "visual",
+        "collision"
+      ],
+      "loadSeconds": 4.0580999999996274,
+      "trianglesBefore": 2845128,
+      "trianglesAfter": 2845128,
+      "sourceMeshes": 3039,
+      "batches": 512,
+      "textures": 189,
+      "estimatedTextureMiB": 938,
+      "collisionMeshes": 210
+    },
+    "loadMs": 10107,
+    "locations": [
+      "Living Hall↗",
+      "Dining↗",
+      "Kitchen↗",
+      "Bedroom G1↗",
+      "Bedroom G2↗",
+      "Study↗",
+      "Bathroom G1↗",
+      "Master Bedroom↗",
+      "Bedroom 03↗",
+      "Bedroom 04↗",
+      "Balcony↗",
+      "Entrance Drive↗",
+      "Pool Deck↗",
+      "Garden↗",
+      "Clubhouse Lobby↗",
+      "Pavilion Hall↗"
+    ],
+    "master": {
+      "stats": {
+        "fps": 0.15068637644470986,
+        "position": [
+          3.5,
+          3.8449984550476075,
+          -2.5
+        ],
+        "room": "Master Bedroom",
+        "floor": "First floor",
+        "grounded": true,
+        "collisions": 0,
+        "feet": {
+          "x": 3.5,
+          "y": 3.8449984550476075,
+          "z": -2.5
+        },
+        "calls": 750,
+        "triangles": 2218108,
+        "geometries": 941,
+        "textures": 64,
+        "textureMiBUpperBound": 251
+      },
+      "quality": "LOW",
+      "loadedAssets": [
+        "visual",
+        "collision"
+      ],
+      "loadSeconds": 4.0580999999996274,
+      "trianglesBefore": 2845128,
+      "trianglesAfter": 2845128,
+      "sourceMeshes": 3039,
+      "batches": 512,
+      "textures": 189,
+      "estimatedTextureMiB": 938,
+      "collisionMeshes": 210
+    },
+    "before": {
+      "stats": {
+        "fps": 0.2922096896733732,
+        "position": [
+          3.5,
+          3.8449984550476075,
+          -2.5
+        ],
+        "room": "Master Bedroom",
+        "floor": "First floor",
+        "grounded": true,
+        "collisions": 0,
+        "feet": {
+          "x": 3.5,
+          "y": 3.8449984550476075,
+          "z": -2.5
+        },
+        "calls": 750,
+        "triangles": 2218108,
+        "geometries": 941,
+        "textures": 64,
+        "textureMiBUpperBound": 251
+      },
+      "quality": "LOW",
+      "loadedAssets": [
+        "visual",
+        "collision"
+      ],
+      "loadSeconds": 4.0580999999996274,
+      "trianglesBefore": 2845128,
+      "trianglesAfter": 2845128,
+      "sourceMeshes": 3039,
+      "batches": 512,
+      "textures": 189,
+      "estimatedTextureMiB": 938,
+      "collisionMeshes": 210
+    },
+    "pointerLocked": true,
+    "afterMovement": {
+      "stats": {
+        "fps": 0.5809731299927379,
+        "position": [
+          3.7799997329711914,
+          3.8438716888427735,
+          -2.5
+        ],
+        "room": "Master Bedroom",
+        "floor": "First floor",
+        "grounded": true,
+        "collisions": 0,
+        "feet": {
+          "x": 3.7799997329711914,
+          "y": 3.8438716888427735,
+          "z": -2.5
+        },
+        "calls": 750,
+        "triangles": 2218108,
+        "geometries": 941,
+        "textures": 64,
+        "textureMiBUpperBound": 251
+      },
+      "quality": "LOW",
+      "loadedAssets": [
+        "visual",
+        "collision"
+      ],
+      "loadSeconds": 4.0580999999996274,
+      "trianglesBefore": 2845128,
+      "trianglesAfter": 2845128,
+      "sourceMeshes": 3039,
+      "batches": 512,
+      "textures": 189,
+      "estimatedTextureMiB": 938,
+      "collisionMeshes": 210
+    },
+    "nativeEscapeReleased": false,
+    "overflow": false,
+    "final": {
+      "stats": {
+        "fps": 0.22087244616234125,
+        "position": [
+          3.7799997329711914,
+          3.8438716888427735,
+          -2.5
+        ],
+        "room": "Master Bedroom",
+        "floor": "First floor",
+        "grounded": true,
+        "collisions": 0,
+        "feet": {
+          "x": 3.7799997329711914,
+          "y": 3.8438716888427735,
+          "z": -2.5
+        },
+        "calls": 558,
+        "triangles": 1775656,
+        "geometries": 941,
+        "textures": 64,
+        "textureMiBUpperBound": 251
+      },
+      "quality": "LOW",
+      "loadedAssets": [
+        "visual",
+        "collision"
+      ],
+      "loadSeconds": 4.0580999999996274,
+      "trianglesBefore": 2845128,
+      "trianglesAfter": 2845128,
+      "sourceMeshes": 3039,
+      "batches": 512,
+      "textures": 189,
+      "estimatedTextureMiB": 938,
+      "collisionMeshes": 210
+    }
+  }
+]

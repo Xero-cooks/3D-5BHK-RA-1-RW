@@ -1,0 +1,44 @@
+{
+  "name": "farmhouse-walkthrough",
+  "version": "0.1.0",
+  "description": "Responsive property walkthrough preview",
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "assets:prepare": "node scripts/prepare-assets.mjs && npm run assets:derive",
+    "assets:audit": "node scripts/audit-assets.mjs",
+    "release:check": "node scripts/check-release.mjs && tsx --test tests/repaired.test.ts tests/derivative.test.ts",
+    "test:browser": "node scripts/browser-smoke.mjs",
+    "assets:ensure": "node scripts/ensure-assets.mjs",
+    "prebuild": "npm run assets:ensure && npm run assets:derive",
+    "deploy:package": "node scripts/package-antideploy.mjs",
+    "assets:derive": "node scripts/derive-assets.mjs",
+    "test:reflections": "node scripts/reflection-browser-test.mjs"
+  },
+  "type": "module",
+  "dependencies": {
+    "@dimforge/rapier3d-compat": "^0.21.0",
+    "@react-three/fiber": "^9.8.1",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "sharp": "^0.35.5",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "@types/three": "^0.186.0",
+    "esbuild": "^0.28.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  }
+}

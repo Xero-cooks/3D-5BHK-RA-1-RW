@@ -1,0 +1,371 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #172723;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+button,
+select {
+  font: inherit;
+}
+button {
+  min-width: 44px;
+  min-height: 44px;
+  cursor: pointer;
+  color: inherit;
+  border: 1px solid #ffffff30;
+  background: #182b27d9;
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+button:hover {
+  background: #344940;
+}
+button:focus-visible,
+select:focus-visible {
+  outline: 2px solid #eacb8c;
+  outline-offset: 3px;
+}
+.walkthrough,
+.canvas-host {
+  position: absolute;
+  inset: 0;
+  height: 100dvh;
+}
+.loading {
+  height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(ellipse at 65% 20%, #39534a, #14251f 70%);
+  padding: 24px;
+}
+.loading-card {
+  width: min(430px, 100%);
+}
+h1 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(42px, 8vw, 64px);
+  line-height: 1.05;
+  margin: 24px 0;
+}
+p {
+  line-height: 1.6;
+  color: #eee;
+}
+small {
+  display: block;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #d5ded8;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  font-weight: 600;
+  color: #e8d4aa;
+}
+progress {
+  width: 100%;
+  height: 4px;
+  accent-color: #eacb8c;
+  margin: 22px 0 12px;
+}
+.brand {
+  position: absolute;
+  top: calc(24px + env(safe-area-inset-top));
+  left: 24px;
+  text-shadow: 0 1px 6px #000;
+}
+.brand strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: 26px;
+  margin-top: 8px;
+}
+.location {
+  position: absolute;
+  right: 24px;
+  top: calc(24px + env(safe-area-inset-top));
+  text-align: right;
+  background: #172723c9;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+.entry {
+  position: absolute;
+  left: clamp(24px, 6vw, 90px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(410px, calc(100% - 48px));
+  padding: 28px;
+  background: #12241de8;
+  border: 1px solid #ffffff25;
+  border-radius: 12px;
+}
+.entry h1 {
+  margin: 18px 0;
+}
+.primary {
+  background: #ecd6a6;
+  color: #15251d;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 22px 0 12px;
+}
+.primary:hover {
+  background: #fbe7bc;
+}
+.toolbar {
+  position: absolute;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+.panel {
+  position: absolute;
+  z-index: 6;
+  top: calc(108px + env(safe-area-inset-top));
+  right: 24px;
+  bottom: calc(92px + env(safe-area-inset-bottom));
+  width: 330px;
+  overflow: auto;
+  background: #14271ff5;
+  border: 1px solid #ffffff30;
+  border-radius: 12px;
+  padding: 20px;
+}
+.panel-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.panel h2 {
+  font-size: 21px;
+  margin: 0;
+}
+.panel h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 28px;
+  color: #e8d4aa;
+}
+.room {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  margin: 6px 0;
+  background: #ffffff08;
+}
+.panel label {
+  display: block;
+  margin: 24px 0;
+}
+.panel select {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  background: #254033;
+  color: #fff;
+  border-radius: 8px;
+}
+.crosshair {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 4px;
+  width: 4px;
+  background: #ffffffc0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.touch-look {
+  position: absolute;
+  inset: 100px 0 100px;
+  touch-action: none;
+  z-index: 1;
+}
+.dpad {
+  position: absolute;
+  left: 20px;
+  bottom: calc(95px + env(safe-area-inset-bottom));
+  display: grid;
+  grid-template: repeat(2, 48px) / repeat(3, 48px);
+  gap: 5px;
+  z-index: 4;
+  touch-action: none;
+}
+.dpad button {
+  background: #10221b65;
+  color: #fff;
+  font-size: 24px;
+  padding: 0;
+  user-select: none;
+  touch-action: none;
+}
+.dpad button:active {
+  background: #ead4a5a0;
+}
+.up {
+  grid-area: 1/2;
+}
+.left {
+  grid-area: 2/1;
+}
+.down {
+  grid-area: 2/2;
+}
+.right {
+  grid-area: 2/3;
+}
+.minimap {
+  position: absolute;
+  left: auto;
+  right: 24px;
+  top: 110px;
+  width: 220px;
+  background: #14271fed;
+  border-radius: 8px;
+  padding: 12px;
+  z-index: 3;
+  font-size: 12px;
+}
+.minimap svg {
+  display: block;
+  width: 100%;
+  height: 150px;
+}
+.minimap small {
+  font-size: 11px;
+}
+.debug {
+  position: absolute;
+  right: 12px;
+  bottom: 90px;
+  max-height: 45vh;
+  overflow: auto;
+  padding: 12px;
+  background: #000d;
+  font-size: 11px;
+  pointer-events: none;
+}
+.error,
+.fallback {
+  position: absolute;
+  inset: 25%;
+  background: #152b22;
+  padding: 24px;
+  z-index: 10;
+}
+.error {
+  inset: auto 24px 90px;
+}
+.loading-card button {
+  margin-top: 16px;
+}
+@media (max-width: 600px) {
+  .brand {
+    left: 16px;
+    top: calc(16px + env(safe-area-inset-top));
+  }
+  .brand strong {
+    font-size: 22px;
+  }
+  .brand .eyebrow {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+  .location {
+    right: 16px;
+    top: calc(16px + env(safe-area-inset-top));
+    max-width: 45%;
+    padding: 8px;
+    font-size: 13px;
+  }
+  .location small {
+    font-size: 11px;
+  }
+  .entry {
+    padding: 22px;
+  }
+  .entry p {
+    font-size: 14px;
+  }
+  .toolbar {
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    gap: 5px;
+    white-space: nowrap;
+  }
+  .toolbar button {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  .panel {
+    top: calc(90px + env(safe-area-inset-top));
+    left: 16px;
+    right: 16px;
+    width: auto;
+    bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+  .minimap {
+    left: auto;
+    right: 16px;
+    top: 95px;
+    width: 160px;
+  }
+  .minimap svg {
+    height: 90px;
+  }
+}
+@media (max-height: 500px) {
+  .entry {
+    top: 100px;
+    transform: none;
+    padding: 16px;
+  }
+  .entry h1 {
+    font-size: 32px;
+    margin: 8px 0;
+  }
+  .entry p {
+    margin: 8px 0;
+  }
+  .entry small {
+    display: none;
+  }
+  .entry .primary {
+    margin: 8px 0;
+  }
+  .panel {
+    top: 80px;
+    bottom: 75px;
+  }
+  .brand {
+    top: 12px;
+  }
+  .location {
+    top: 12px;
+  }
+  .minimap {
+    top: 85px;
+  }
+  .dpad {
+    bottom: 75px;
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "applicationId": "b2abee02-cb3c-4c40-81da-5d77ee573582",
+  "url": "https://rewari-farmhouse-5bhk.antideploy.app",
+  "deploymentTaskId": "00ed7d74-82c2-40c6-a25f-c71ec6c6b73a",
+  "status": "succeeded",
+  "deploymentType": "directory upload",
+  "publicAssetVerification": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 6620
+    },
+    {
+      "path": "/assets/farmhouse_visual.glb",
+      "status": 200,
+      "bytes": 129077104,
+      "checksumVerified": true
+    },
+    {
+      "path": "/assets/farmhouse_collision.glb",
+      "status": 200,
+      "bytes": 46700,
+      "checksumVerified": true
+    },
+    {
+      "path": "/assets/spawn_points.json",
+      "status": 200,
+      "bytes": 2298,
+      "checksumVerified": true
+    },
+    {
+      "path": "/assets/room_metadata.json",
+      "status": 200,
+      "bytes": 2341,
+      "checksumVerified": true
+    }
+  ],
+  "security": {
+    "blockingIssues": 0,
+    "minorIssues": 1,
+    "minorFinding": "Missing security headers"
+  },
+  "liveBrowserVerification": "Public download progress advanced, finished, and rendered the 3D entrance. Pointer lock acquired; W movement and mouse-look exercised with no page errors. Full property routes and physical devices remain pending.",
+  "sourceCommit": "3f3cab82d39b4725688e7923fcf2bef1b9319bcd",
+  "loaderHotfix": {
+    "compressedProgressVerified": true,
+    "immutableVersionedCacheVerified": true,
+    "downloadIdleTimeoutSeconds": 60,
+    "localTestsPassed": 9,
+    "knownAssetTodo": 1
+  }
+}

@@ -1,0 +1,12 @@
+node_modules/
+.next/
+public/assets/
+*.tsbuildinfo
+.env*
+!.env.example
+
+reports/browser-screenshots/
+
+.asset-cache/
+
+reports/reflection-screenshots/
